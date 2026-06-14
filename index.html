@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HONEW STUDIO 候鳥影像工作室 | 空間攝影 • 品牌影像</title>
     
+    <!-- 👑 瀏覽器標籤頁小圖示 (Favicon) - 採用極簡螢光綠候鳥翅膀 SVG 向量圖 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M 10,75 C 25,45 55,15 100,55' stroke='%231aff30' stroke-width='12' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+    
     <!-- 預先載入首屏第一張大圖 -->
     <link rel="preload" as="image" href="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287257/hero-01.jpg">
 
@@ -43,19 +46,13 @@
             overflow-x: hidden;
         }
 
-        /* 呼吸感字體設定：放寬行距，確保不擁擠 */
-        .condensed-title { 
-            letter-spacing: 0.03em; 
-            line-height: 1.45; 
-        }
-
         /* 自定義微光漸變滾動條 */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #ebf4f6; }
         ::-webkit-scrollbar-thumb { background: #cbdcdb; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #1aff30; }
 
-        /* 3D 卡片翻轉效果 (還原最滑順版本) */
+        /* 3D 卡片翻轉效果 */
         .card-container { perspective: 1500px; }
         .card-3d {
             transform-style: preserve-3d;
@@ -81,7 +78,7 @@
             100% { stroke-dashoffset: 0; }
         }
 
-        /* 👑 Apple 風格精品動畫：光學模糊 + 緩動微縮放 */
+        /* Apple 風格精品動畫：光學模糊 + 緩動微縮放 */
         .lazy-img {
             filter: blur(12px);
             transform: scale(1.04);
@@ -108,6 +105,20 @@
         /* 遮罩隔離 */
         .mask-fix {
             -webkit-mask-image: -webkit-radial-gradient(white, black);
+        }
+
+        /* 👑 優雅內斂的漸層發光彈跳動畫 (去除匠氣、細緻微光) */
+        .scroll-glow-light {
+            background: linear-gradient(to bottom, transparent 0%, rgba(26,255,48,0.3) 65%, #1aff30 100%);
+            box-shadow: 0 1px 3px rgba(26, 255, 48, 0.3); 
+            border-radius: 2px;
+        }
+        @keyframes smoothBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(150%); } 
+        }
+        .animate-glow-bounce {
+            animation: smoothBounce 2.2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -157,10 +168,10 @@
                 </a>
             </div>
 
-            <button id="menu-btn" class="md:hidden flex flex-col justify-between w-6 h-4 group focus:outline-none">
-                <span class="w-full h-[1.5px] bg-brand-slate transition-transform duration-300 origin-top-left"></span>
+            <button id="menu-btn" class="md:hidden flex flex-col justify-between w-6 h-4 group focus:outline-none transition-transform duration-300">
+                <span class="w-full h-[1.5px] bg-brand-slate transition-all duration-300 origin-top-left"></span>
                 <span class="w-3/4 h-[1.5px] bg-brand-slate transition-all duration-300 self-end group-hover:w-full"></span>
-                <span class="w-full h-[1.5px] bg-brand-slate transition-transform duration-300 origin-bottom-left"></span>
+                <span class="w-full h-[1.5px] bg-brand-slate transition-all duration-300 origin-bottom-left"></span>
             </button>
         </div>
     </nav>
@@ -172,30 +183,47 @@
         <a href="#contact" class="mobile-link px-6 py-3 border border-brand-slate/30 rounded-full hover:border-brand-neon transition-all duration-300">聯絡候鳥</a>
     </div>
 
-    <section class="relative min-h-screen flex items-center justify-center overflow-visible pt-20">
+    <!-- 👑 首頁主視覺區塊：全面優化垂直留白與呼吸比例 -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-visible pt-24 pb-16 lg:py-0">
         <div class="absolute inset-0 grid-mesh z-0"></div>
 
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-5 flex flex-col gap-6 lg:pr-6 gs-reveal">
-                <div class="inline-flex items-center gap-2">
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+            
+            <!-- 文字敘述欄 -->
+            <div class="lg:col-span-5 flex flex-col lg:pr-6 gs-reveal">
+                
+                <!-- 上方極簡標籤：字重調整為 font-medium，與 PHILOSOPHY 和 PORTFOLIO 的字重完美一致 -->
+                <div class="inline-flex items-center gap-2.5 mb-6 md:mb-8">
                     <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>
-                    <span class="text-xs uppercase tracking-[0.4em] text-brand-muted">Hone the Vision, Refine the Value</span>
+                    <span class="text-xs uppercase tracking-[0.4em] text-brand-muted font-medium">Hone the Vision, Refine the Value</span>
                 </div>
-                <h1 class="text-3xl md:text-5xl font-light text-brand-slate condensed-title">
-                    在季節更迭中，<br>
-                    尋找最適合<span class="font-normal border-b-2 border-brand-neon pb-1">生存的風景</span>
+                
+                <!-- 👑 RWD 標題排版優化：完全還原原始尺寸 (1.75rem / 3xl / 5xl) 與原版字重 (300 搭配 400)，並移除 mb-8 邊距，解決段落間距過大問題 -->
+                <h1 class="text-[1.75rem] sm:text-3xl md:text-5xl font-light text-brand-slate tracking-[0.08em] leading-[1.5] md:leading-[1.4] mt-6">
+                    <span class="block mb-2 md:mb-4">在季節更迭中，</span>
+                    <span class="block">
+                        尋找<span class="font-normal relative inline-block mx-0.5">
+                            最適合的風景
+                            <span class="absolute left-0 bottom-[1.5px] md:bottom-[3px] w-full h-[2px] bg-brand-neon"></span>
+                        </span>
+                    </span>
                 </h1>
-                <p class="text-sm md:text-base text-brand-muted font-light leading-relaxed tracking-wide mt-4">
+                
+                <!-- 段落：將 mt 縮減為最精緻的 mt-5 md:mt-6，讓文字自然服貼於大標題下方，重現黃金呼吸感 -->
+                <p class="text-sm md:text-base text-brand-muted font-light leading-relaxed tracking-wide mt-5 md:mt-6 mb-8 md:mb-10 max-w-lg">
                     候鳥的生命是一場無止盡的探索。空間攝影則是將生活的哲學與視覺語彙真實呈現。我們不追求繁複的修飾，只專注於光影與空間最細膩的對話。
                 </p>
-                <div class="mt-4 flex flex-wrap gap-4">
-                    <a href="#portfolio" class="px-6 py-3 bg-brand-slate text-brand-ice text-sm tracking-widest rounded-full hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 shadow-lg shadow-brand-slate/10 flex items-center gap-2">
+                
+                <!-- 行動呼籲按鈕 -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="#portfolio" class="px-7 py-3.5 bg-brand-slate text-brand-ice text-xs tracking-[0.2em] rounded-full hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 shadow-lg shadow-brand-slate/10 flex items-center gap-2">
                         <span>探索作品集</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
             </div>
 
+            <!-- 右側圖片展示欄 -->
             <div class="lg:col-span-7 relative flex justify-end gs-reveal">
                 <div class="relative w-full aspect-[16/9] rounded-2xl shadow-2xl shadow-brand-slate/10 bg-brand-neutral border border-white/40 group" style="transform: translateZ(0);">
                     <div class="absolute inset-0 rounded-2xl overflow-hidden mask-fix">
@@ -218,15 +246,19 @@
             </div>
         </div>
         
-        <!-- 🚀 響應式優化 Scroll Down: 手機版(S)隱藏, 平板版(M)為白色壓圖上, 電腦版(L)維持原色在外部 -->
-        <div class="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 flex-col items-center gap-2 text-white lg:text-brand-muted opacity-90 z-20 drop-shadow-md lg:drop-shadow-none">
-            <span class="text-[10px] tracking-[0.4em] uppercase">Scroll Down</span>
-            <div class="w-[1px] h-12 bg-white/40 lg:bg-brand-slate/20 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1/2 bg-brand-neon animate-bounce"></div>
+        <!-- 👑 響應式優化 Scroll Down (經典彈跳回歸 + 收斂至極致纖細的微光) -->
+        <div class="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 flex-col items-center gap-2 text-brand-slate/60 hover:text-brand-slate opacity-90 z-20 hover:opacity-100 transition-all duration-300 cursor-pointer" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <span class="text-[9px] tracking-[0.5em] uppercase font-light">Scroll Down</span>
+            <div class="relative w-4 h-12 flex justify-center mt-1">
+                <!-- 軌道底色：極致纖細 1px 寬度，高透光率 -->
+                <div class="absolute top-0 w-[1px] h-full bg-brand-slate/10 rounded-full"></div>
+                <!-- 游標本體：極致纖細 1.5px，輕量精緻，毫無匠氣 -->
+                <div class="absolute top-0 w-[1.5px] h-[40%] scroll-glow-light animate-glow-bounce"></div>
             </div>
         </div>
     </section>
 
+    <!-- 品牌理念區塊 -->
     <section id="about" class="py-24 md:py-32 bg-brand-neutral relative z-10 -mt-[1px] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -261,7 +293,7 @@
                     
                     <div class="flex flex-col gap-6 text-brand-muted font-light leading-relaxed text-sm md:text-base">
                         <p>「候鳥影像 HONEW STUDIO」源於對美學的偏執與追尋。我們深知設計師對細節的堅持。</p>
-                        <p>空間設計關乎生活的哲學，而空間攝影則是將這份哲學與視覺語彙真實呈現。透過專業器材的高動態範圍與細膩調色，我們捕捉的不只是結構，更是空間的氣息與溫度。</p>
+                        <p>空間設計關乎生活的哲學，而空間攝影則是將這份哲學與視覺語彙真實呈現。透過專業器材的高動態範圍與細膩調色，我們捕捉的不著眼結構，更是空間的氣息與溫度。</p>
                         <p class="border-l-2 border-brand-neon pl-4 italic text-brand-slate font-normal">
                             "Honing the Vision, Refining the Value."<br>
                             這是候鳥的承諾，讓影像成為您提案時最有力的後盾，不再只是支出，而是精準獲客的精準投資。
@@ -287,6 +319,7 @@
         </div>
     </section>
 
+    <!-- 精選作品區塊 -->
     <section id="portfolio" class="py-24 md:py-32 bg-[#ebf4f6] relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 gs-reveal">
@@ -302,14 +335,16 @@
                 </div>
             </div>
 
-            <!-- 作品集區塊：使用中文客製化參數，確保專業且貼切 -->
+            <!-- 作品集區塊 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                
+                <!-- 作品 1 -->
                 <div class="portfolio-item group cursor-pointer" data-category="interior" onclick="openLightbox(this)">
                     <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
                         <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
                             <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287264/portfolio-01.jpg" 
                                  alt="一穰設計 | 柞居" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]"
-                                 data-director="張仁謙 (Ren Zhang)" data-light="自然採光與柔和漫射" data-vibe="極簡純粹的美學質感">
+                                 data-director="Ren Zhang" data-light="自然光 / 漫射調" data-vibe="極簡主義 / 建築語彙">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                                 <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
                             </div>
@@ -324,12 +359,13 @@
                     </div>
                 </div>
 
+                <!-- 作品 2 -->
                 <div class="portfolio-item group cursor-pointer" data-category="interior" onclick="openLightbox(this)">
                     <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
                         <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
                             <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781347878/portfolio-02.jpg" 
                                  alt="一穰設計 | 寬和" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]"
-                                 data-director="張仁謙 (Ren Zhang)" data-light="人造光源與溫暖色調" data-vibe="靜謐優雅的空間氛圍">
+                                 data-director="Ren Zhang" data-light="人造光源 / 暖色調" data-vibe="靜謐優雅 / 氛圍空間">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                                 <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
                             </div>
@@ -344,12 +380,13 @@
                     </div>
                 </div>
 
+                <!-- 作品 3 -->
                 <div class="portfolio-item group cursor-pointer" data-category="interior" onclick="openLightbox(this)">
                     <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
                         <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
                             <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287255/portfolio-03.jpg" 
                                  alt="耘品設計 | 楊梅別墅" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]"
-                                 data-director="張仁謙 (Ren Zhang)" data-light="混合光源與立體層次" data-vibe="沈穩溫潤的視覺重量">
+                                 data-director="Ren Zhang" data-light="混合光源 / 立體感" data-vibe="沈穩溫潤 / 空間重量">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                                 <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
                             </div>
@@ -364,12 +401,13 @@
                     </div>
                 </div>
 
+                <!-- 作品 4 -->
                 <div class="portfolio-item group cursor-pointer" data-category="interior" onclick="openLightbox(this)">
                     <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
                         <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
                             <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287251/portfolio-04.jpg" 
                                  alt="MORI 森研築 | 豐景" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]"
-                                 data-director="張仁謙 (Ren Zhang)" data-light="局部聚光與材質紋理" data-vibe="自然人文的有機語彙">
+                                 data-director="Ren Zhang" data-light="聚光燈 / 材質紋理" data-vibe="有機脈絡 / 人文感性">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                                 <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
                             </div>
@@ -384,12 +422,13 @@
                     </div>
                 </div>
 
+                <!-- 作品 5 -->
                 <div class="portfolio-item group cursor-pointer" data-category="interior" onclick="openLightbox(this)">
                     <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
                         <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
                             <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287251/portfolio-05.jpg" 
                                  alt="一穰設計 | 半伴寓所" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]"
-                                 data-director="張仁謙 (Ren Zhang)" data-light="通透的環境自然光" data-vibe="舒適愜意的生活尺度">
+                                 data-director="Ren Zhang" data-light="通透日光 / 自然色溫" data-vibe="愜意生活 / 極簡尺度">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                                 <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
                             </div>
@@ -404,12 +443,13 @@
                     </div>
                 </div>
 
+                <!-- 作品 6 -->
                 <div class="portfolio-item group cursor-pointer" data-category="interior" onclick="openLightbox(this)">
                     <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
                         <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
                             <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287253/portfolio-06.jpg" 
                                  alt="A Square Ltd. | 現代別墅" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]"
-                                 data-director="張仁謙 (Ren Zhang)" data-light="明亮的開闊空間光影" data-vibe="大氣通透的場域界定">
+                                 data-director="Ren Zhang" data-light="明亮開闊 / 環境光源" data-vibe="大氣通透 / 場域界定">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                                 <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
                             </div>
@@ -427,7 +467,7 @@
         </div>
     </section>
 
-    <!-- 👑 無縫加載燈箱與精品語彙 -->
+    <!-- 無縫加載燈箱與精品語彙 -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-brand-slate/95 backdrop-blur-md hidden flex-col justify-center items-center p-4">
         <button onclick="closeLightbox()" class="absolute top-6 right-6 text-brand-ice/80 hover:text-brand-neon text-3xl transition-colors focus:outline-none z-50">
             <i class="fa-solid fa-xmark"></i>
@@ -465,7 +505,7 @@
         </div>
     </div>
 
-    <!-- 恢復為「倒數第二版」的 Reels 手機模擬器區塊 -->
+    <!-- Reels 手機模擬器區塊 -->
     <section class="py-24 md:py-32 bg-brand-slate text-brand-ice relative overflow-hidden">
         <div class="absolute inset-0 grid-mesh opacity-10 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
@@ -483,7 +523,7 @@
                         在數位敘事年代，靜態平面是品牌的第一眼印象，而動態影像則是品牌與受眾產生共鳴的橋樑。
                     </p>
                     <p class="text-sm md:text-base text-brand-ice/70 font-light leading-relaxed tracking-wide">
-                        我們提供高品質的動靜態後期方案，從專業調色到不同數位載體的靈活調度，為品牌產出高品質的 Reels 短影音與品牌紀錄片。
+                        我們提供高品質的動靜態後期方案，從專業調色到不同數位載體的靈活調度，為 brand 產出高品質的 Reels 短影音與 brand 紀錄片。
                     </p>
                 </div>
 
@@ -510,7 +550,6 @@
                                     <span class="text-[10px] text-white/70">892</span>
                                 </div>
                                 <div class="flex flex-col items-center gap-1 cursor-pointer group">
-                                    <span class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-brand-neon transition-colors"><i class="fa-solid fa-comment"></i></span>
                                     <span class="text-[10px] text-white/70">45</span>
                                 </div>
                                 <div class="flex flex-col items-center gap-1 cursor-pointer group">
@@ -690,7 +729,44 @@
             }, 100);
         });
 
-        // --- 2. 懶加載 (Lazy Load) ---
+        // --- 2. 手機版選單動畫交互邏輯 ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('translate-x-full');
+                if (isOpen) {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.classList.remove('translate-x-0');
+                    // 還原三折線按鈕
+                    menuBtn.children[0].style.transform = 'none';
+                    menuBtn.children[1].style.opacity = '1';
+                    menuBtn.children[2].style.transform = 'none';
+                } else {
+                    mobileMenu.classList.remove('translate-x-full');
+                    mobileMenu.classList.add('translate-x-0');
+                    // 變換成 X 交叉按鈕
+                    menuBtn.children[0].style.transform = 'translateY(6px) rotate(45deg)';
+                    menuBtn.children[1].style.opacity = '0';
+                    menuBtn.children[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+                }
+            });
+
+            // 點擊選單項目後自動縮回
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.classList.remove('translate-x-0');
+                    menuBtn.children[0].style.transform = 'none';
+                    menuBtn.children[1].style.opacity = '1';
+                    menuBtn.children[2].style.transform = 'none';
+                });
+            });
+        }
+
+        // --- 3. 懶加載 (Lazy Load) ---
         document.addEventListener("DOMContentLoaded", () => {
             const lazyImages = document.querySelectorAll("img.lazy-img");
             if ("IntersectionObserver" in window) {
@@ -711,7 +787,7 @@
             }
         });
 
-        // --- 3. 3D 名片滑鼠追蹤 ---
+        // --- 4. 3D 名片滑鼠追蹤 ---
         const cardContainer = document.querySelector('.card-container');
         const card3D = document.getElementById('interactive-card');
         let cardFlipped = false;
@@ -737,18 +813,18 @@
             card3D.style.transform = cardFlipped ? `rotateY(180deg)` : `rotateY(0deg)`;
         });
 
-        // --- 4. 👑 無縫加載燈箱 ---
+        // --- 5. 無縫加載燈箱 ---
         function openLightbox(item) {
             const img = item.querySelector('img');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxThumb = document.getElementById('lightbox-thumb');
             
-            // 瞬間墊入低畫質縮圖
+            // 瞬間墊入低畫質縮圖防延遲
             lightboxThumb.src = img.src;
             lightboxImg.style.opacity = 0; 
             
             // 背景請求高畫質原圖
-            const highResSrc = img.src.replace('w_800', 'w_1080');
+            const highResSrc = img.src.replace('w_800', 'w_1200');
             const tempImg = new Image();
             tempImg.onload = () => {
                 lightboxImg.src = highResSrc;
@@ -774,7 +850,7 @@
             document.body.style.overflow = '';
         }
 
-        // --- 5. 輪播圖切換 ---
+        // --- 6. 首頁輪播圖切換 ---
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot');
         let currentSlide = 0;
@@ -792,7 +868,7 @@
             dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
         }, 4500);
 
-        // --- 6. 👑 頂級一次性 GSAP 動畫 ---
+        // --- 7. 頂級 GSAP 動畫 ---
         function initGSAP() {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -808,7 +884,7 @@
                 { scrollTrigger: { trigger: "#philosophy-images", start: "top 80%", once: true }, y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out" }
             );
 
-            // 還原為最柔順的作品集過渡動畫
+            // 最柔順的作品集過渡動畫
             gsap.fromTo('.portfolio-item', 
                 { y: 60, opacity: 0 }, 
                 { scrollTrigger: { trigger: "#portfolio-grid", start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.0, stagger: 0.15, ease: "power2.out" }
