@@ -7,7 +7,7 @@
     <title>HONEW STUDIO 候鳥影像工作室 | 空間攝影 • 品牌影像</title>
     
     <!-- 👑 瀏覽器標籤頁小圖示 (Favicon) - 2版：精密調校極簡黑灰細體 "候" 字 SVG 向量圖 -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Cpath d='M5,22 C15,12 30,2 50,15 C70,2 85,12 95,22' stroke='%231aff30' stroke-width='1.8' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg stroke='%231aff30' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M20,70 C30,52 55,25 85,20 C72,42 60,54 45,74 C35,73 25,72 20,70 Z'/%3E%3Cpath d='M32,58 C44,46 64,34 76,30'/%3E%3Cpath d='M36,64 C47,53 62,43 70,39'/%3E%3Cpath d='M40,69 C50,60 58,52 64,49'/%3E%3C/g%3E%3C/svg%3E">
     
     <!-- 預先載入首屏第一張大圖 -->
     <link rel="preload" as="image" href="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287257/hero-01.jpg">
@@ -532,18 +532,18 @@
                             <div class="w-16 h-1 bg-white/20 rounded-full"></div>
                         </div>
                         <div class="absolute inset-0 rounded-[32px] overflow-hidden mask-fix">
-                            <div class="absolute inset-0 bg-cover bg-center reels-kenburns" 
-                                 style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=400&q=80');">
+                            <div class="absolute inset-0 bg-cover bg-center animate-[slowPan_25s_infinite_alternate]" 
+                                 id="reels-bg" style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=400&q=80');">
                             </div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 z-10"></div>
                             
                             <div class="absolute inset-0 flex items-center justify-center z-20">
-                                <button class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center">
+                                <button id="reels-play-btn" class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center">
                                     <i class="fa-solid fa-play text-xl ml-1"></i>
                                 </button>
                             </div>
                             
-                            <div class="absolute right-4 bottom-24 z-20 flex flex-col items-center gap-6 text-white text-xs">
+                            <div id="reels-actions" class="absolute right-4 bottom-24 z-20 flex flex-col items-center gap-6 text-white text-xs opacity-0 translate-y-3 transition-all duration-700">
                                 <div class="flex flex-col items-center gap-1 cursor-pointer group">
                                     <span class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-brand-neon transition-colors"><i class="fa-solid fa-heart"></i></span>
                                     <span class="text-[10px] text-white/70">892</span>
@@ -557,7 +557,7 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-6 left-6 right-16 z-20 text-white flex flex-col gap-2">
+                            <div id="reels-caption" class="absolute bottom-6 left-6 right-16 z-20 text-white flex flex-col gap-2 opacity-0 translate-y-3 transition-all duration-700">
                                 <div class="flex items-center gap-2">
                                     <div class="w-6 h-6 rounded-full bg-brand-neon flex items-center justify-center text-[10px] text-brand-slate font-bold">候</div>
                                     <span class="text-xs font-semibold">honew.studio</span>
@@ -575,14 +575,7 @@
     </section>
 
     <style>
-        @keyframes reelsFloat {
-        0% { transform: scale(1.08) translate3d(0,0,0); }
-        100% { transform: scale(1.00) translate3d(-8px,-12px,0); }
-    }
-    .reels-kenburns{
-        animation: reelsFloat 32s ease-in-out infinite alternate;
-        will-change: transform;
-    }
+        @keyframes slowPan { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(-10px, -15px); } }
     </style>
 
     <!-- 服務項目區塊 -->
@@ -1103,5 +1096,35 @@
             });
         }
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const btn=document.getElementById('reels-play-btn');
+ const bg=document.getElementById('reels-bg');
+ const actions=document.getElementById('reels-actions');
+ const caption=document.getElementById('reels-caption');
+ if(!btn||!bg) return;
+ let active=false;
+ btn.addEventListener('click',()=>{
+   active=!active;
+   bg.classList.toggle('reels-active',active);
+   actions.classList.toggle('opacity-0',!active);
+   actions.classList.toggle('translate-y-3',!active);
+   caption.classList.toggle('opacity-0',!active);
+   caption.classList.toggle('translate-y-3',!active);
+   btn.style.opacity=active?'0.65':'1';
+   btn.style.transform=active?'scale(0.88)':'scale(1)';
+   btn.innerHTML=active?'<i class="fa-solid fa-pause"></i>':'<i class="fa-solid fa-play text-xl ml-1"></i>';
+ });
+});
+</script>
+
+<style>
+.reels-active{animation: reelsCinematic 28s ease-in-out infinite alternate;}
+@keyframes reelsCinematic{
+0%{transform:scale(1.02) translate3d(0,0,0);}
+100%{transform:scale(1.12) translate3d(-8px,-14px,0);}
+}
+</style>
 </body>
 </html>
