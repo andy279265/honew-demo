@@ -6,9 +6,9 @@
     <!-- 候鳥影像官網 - 2版細節優化整合 -->
     <title>HONEW STUDIO 候鳥影像工作室 | 空間攝影 • 品牌影像</title>
     
-<!-- 👑 瀏覽器標籤頁小圖示 (Favicon) - 螢光綠漸層 SVG 向量圖 -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='greenGlow' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2380ff8c' /%3E%3Cstop offset='40%25' stop-color='%231aff30' /%3E%3Cstop offset='100%25' stop-color='%2300660f' /%3E%3C/linearGradient%3E%3ClinearGradient id='glassOverlay' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='white' stop-opacity='0.8' /%3E%3Cstop offset='40%25' stop-color='white' stop-opacity='0.1' /%3E%3Cstop offset='100%25' stop-color='white' stop-opacity='0' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='42' fill='url(%23greenGlow)' /%3E%3Ccircle cx='50' cy='50' r='42' fill='url(%23glassOverlay)' /%3E%3Ccircle cx='50' cy='50' r='41' fill='none' stroke='white' stroke-width='2' stroke-opacity='0.6' /%3E%3C/svg%3E">
-   
+    <!-- 👑 瀏覽器標籤頁小圖示 (Favicon) - 2版：精密調校極簡黑灰細體 "候" 字 SVG 向量圖 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Cpath d='M 5,20 C 15,8 35,0 50,15 C 65,0 85,8 95,20' stroke='%232c302e' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+    
     <!-- 預先載入首屏第一張大圖 -->
     <link rel="preload" as="image" href="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287257/hero-01.jpg">
 
@@ -27,21 +27,21 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
+                        sans: ['"Satoshi"', '"Noto Sans TC"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
-            font-family: "Inter", "Noto Sans TC", sans-serif;
+            font-family: "Satoshi", "Noto Sans TC", sans-serif;
             background-color: #ebf4f6;
             color: #2c302e;
             overflow-x: hidden;
@@ -200,7 +200,7 @@
                 </div>
                 
                 <!-- 👑 已退回上一版：移除錯加的 whitespace-nowrap，字距 80% / 行高 120% 維持完美 -->
-                <h1 class="text-[1.75rem] sm:text-3xl md:text-5xl font-light text-brand-slate tracking-[0.064em] leading-[1.26] md:leading-[1.176] mt-6">
+                <h1 class="text-[1.75rem] sm:text-3xl md:text-5xl font-light text-brand-slate tracking-[0.03em] leading-[1.26] md:leading-[1.176] mt-6">
                     <span class="block mb-2 md:mb-4">在季節更迭中，</span>
                     <span class="block">
                         尋找<span class="font-normal relative inline-block mx-0.5">
