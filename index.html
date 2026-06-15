@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 候鳥影像官網 - 2版細節優化整合 -->
     <title>HONEW STUDIO 候鳥影像工作室 | 空間攝影 • 品牌影像</title>
     
-    <!-- 👑 瀏覽器標籤頁小圖示 (Favicon) - 採用極簡螢光綠候鳥翅膀 SVG 向量圖 -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M 10,75 C 25,45 55,15 100,55' stroke='%231aff30' stroke-width='12' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+    <!-- 👑 瀏覽器標籤頁小圖示 (Favicon) - 2版：精密調校極簡黑灰細體 "候" 字 SVG 向量圖 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui, -apple-system, %22Noto Sans TC%22, sans-serif' font-weight='200' font-size='68' fill='%232c302e'%3E候%3C/text%3E%3C/svg%3E">
     
     <!-- 預先載入首屏第一張大圖 -->
     <link rel="preload" as="image" href="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287257/hero-01.jpg">
@@ -107,7 +108,7 @@
             -webkit-mask-image: -webkit-radial-gradient(white, black);
         }
 
-        /* 👑 優雅內斂的漸層發光彈跳動畫 (去除匠氣、細緻微光) */
+        /* 👑 優雅內斂的漸層發光彈跳動畫 */
         .scroll-glow-light {
             background: linear-gradient(to bottom, transparent 0%, rgba(26,255,48,0.3) 65%, #1aff30 100%);
             box-shadow: 0 1px 3px rgba(26, 255, 48, 0.3); 
@@ -183,7 +184,7 @@
         <a href="#contact" class="mobile-link px-6 py-3 border border-brand-slate/30 rounded-full hover:border-brand-neon transition-all duration-300">聯絡候鳥</a>
     </div>
 
-    <!-- 👑 首頁主視覺區塊：全面優化垂直留白與呼吸比例 -->
+    <!-- 首頁主視覺區塊 -->
     <section class="relative min-h-screen flex items-center justify-center overflow-visible pt-24 pb-16 lg:py-0">
         <div class="absolute inset-0 grid-mesh z-0"></div>
 
@@ -192,25 +193,25 @@
             <!-- 文字敘述欄 -->
             <div class="lg:col-span-5 flex flex-col lg:pr-6 gs-reveal">
                 
-                <!-- 上方極簡標籤：字重調整為 font-medium，與 PHILOSOPHY 和 PORTFOLIO 的字重完美一致 -->
+                <!-- 上方極簡標籤 -->
                 <div class="inline-flex items-center gap-2.5 mb-6 md:mb-8">
                     <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>
-                    <span class="text-xs uppercase tracking-[0.4em] text-brand-muted font-medium">Hone the Vision, Refine the Value</span>
+                    <span class="text-xs uppercase tracking-[0.34em] text-brand-muted font-medium">Hone the Vision, Refine the Value</span>
                 </div>
                 
-                <!-- 👑 RWD 標題排版優化：完全還原原始尺寸 (1.75rem / 3xl / 5xl) 與原版字重 (300 搭配 400)，並移除 mb-8 邊距，解決段落間距過大問題 -->
-                <h1 class="text-[1.75rem] sm:text-3xl md:text-5xl font-light text-brand-slate tracking-[0.08em] leading-[1.5] md:leading-[1.4] mt-6">
+                <!-- 👑 已退回上一版：移除錯加的 whitespace-nowrap，字距 80% / 行高 120% 維持完美 -->
+                <h1 class="text-[1.75rem] sm:text-3xl md:text-5xl font-light text-brand-slate tracking-[0.064em] leading-[1.26] md:leading-[1.176] mt-6">
                     <span class="block mb-2 md:mb-4">在季節更迭中，</span>
                     <span class="block">
                         尋找<span class="font-normal relative inline-block mx-0.5">
                             最適合的風景
-                            <span class="absolute left-0 bottom-[1.5px] md:bottom-[3px] w-full h-[2px] bg-brand-neon"></span>
+                            <span class="absolute left-0 w-full bg-brand-neon animate-pulse" style="height: 1.6px; bottom: -6px;"></span>
                         </span>
                     </span>
                 </h1>
                 
-                <!-- 段落：將 mt 縮減為最精緻的 mt-5 md:mt-6，讓文字自然服貼於大標題下方，重現黃金呼吸感 -->
-                <p class="text-sm md:text-base text-brand-muted font-light leading-relaxed tracking-wide mt-5 md:mt-6 mb-8 md:mb-10 max-w-lg">
+                <!-- 段落 -->
+                <p class="text-sm md:text-base text-brand-muted font-light leading-relaxed tracking-wide mt-8 md:mt-10 mb-8 md:mb-10 max-w-lg">
                     候鳥的生命是一場無止盡的探索。空間攝影則是將生活的哲學與視覺語彙真實呈現。我們不追求繁複的修飾，只專注於光影與空間最細膩的對話。
                 </p>
                 
@@ -246,13 +247,11 @@
             </div>
         </div>
         
-        <!-- 👑 響應式優化 Scroll Down (經典彈跳回歸 + 收斂至極致纖細的微光) -->
+        <!-- 👑 響應式優化 Scroll Down (經典彈跳回歸) -->
         <div class="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 flex-col items-center gap-2 text-brand-slate/60 hover:text-brand-slate opacity-90 z-20 hover:opacity-100 transition-all duration-300 cursor-pointer" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
             <span class="text-[9px] tracking-[0.5em] uppercase font-light">Scroll Down</span>
             <div class="relative w-4 h-12 flex justify-center mt-1">
-                <!-- 軌道底色：極致纖細 1px 寬度，高透光率 -->
                 <div class="absolute top-0 w-[1px] h-full bg-brand-slate/10 rounded-full"></div>
-                <!-- 游標本體：極致纖細 1.5px，輕量精緻，毫無匠氣 -->
                 <div class="absolute top-0 w-[1.5px] h-[40%] scroll-glow-light animate-glow-bounce"></div>
             </div>
         </div>
@@ -305,7 +304,7 @@
                             <div class="text-3xl font-mono font-light text-brand-slate flex items-center gap-1">
                                 <span class="counter-val" data-target="100">0</span><span class="text-brand-neon text-xl">+</span>
                             </div>
-                            <div class="text-xs text-brand-muted tracking-widest mt-1">合作設計師與品牌</div>
+                            <div class="text-xs text-brand-muted tracking-widest mt-1">合作設計師與 brand</div>
                         </div>
                         <div>
                             <div class="text-3xl font-mono font-light text-brand-slate flex items-center gap-1">
@@ -579,6 +578,7 @@
         @keyframes slowPan { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(-10px, -15px); } }
     </style>
 
+    <!-- 服務項目區塊 -->
     <section id="services" class="py-16 md:py-24 bg-brand-neutral relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-10 gs-reveal">
@@ -588,39 +588,63 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="services-grid">
-                <div class="gs-service-card bg-brand-ice/50 rounded-2xl p-8 md:p-10 border border-brand-slate/5 hover:border-brand-neon/40 hover:bg-white transition-all duration-500 shadow-sm flex flex-col gap-6 group">
-                    <div class="w-14 h-14 rounded-xl bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl">
-                        <i class="fa-solid fa-hotel"></i>
+                
+                <!-- 服務卡片 1 -->
+                <!-- 💡 解決卡頓精髓：GSAP 入場動畫僅綁定在此無樣式外層，完全與內層 Hover 轉場（transition-all）隔離 -->
+                <div class="gs-service-card">
+                    <!-- 🍏 Apple 經典毛玻璃美學：超大圓角 32px、高透光白背景 (bg-white/40)、超細光學折射白邊框 (border-white/60)、深度模糊與自然漫射陰影 -->
+                    <div class="h-full bg-white/40 backdrop-blur-xl rounded-[32px] p-8 md:p-10 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(44,48,46,0.12)] hover:-translate-y-2 hover:bg-white/60 transition-all duration-500 flex flex-col gap-6 group">
+                        <div class="w-14 h-14 rounded-[20px] bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl shadow-sm">
+                            <i class="fa-solid fa-hotel"></i>
+                        </div>
+                        <h4 class="text-xl font-medium tracking-wide text-brand-slate">建築與室內空間攝影</h4>
+                        <p class="text-sm text-brand-muted font-light leading-relaxed">
+                            針對建築外觀、室內公私領域進行全天候光影捕捉。搭配高動態範圍調整及頂級透視控制，完美還原設計師的巧思，將空間靈魂轉化為高附加價值的平面與短影音。
+                        </p>
                     </div>
-                    <h4 class="text-xl font-medium tracking-wide text-brand-slate">建築與室內空間攝影</h4>
-                    <p class="text-sm text-brand-muted font-light leading-relaxed">
-                        針對建築外觀、室內公私領域進行全天候光影捕捉。搭配高動態範圍調整及頂級透視控制，完美還原設計師的巧思，將空間靈魂轉化為高附加價值的平面與短影音。
-                    </p>
                 </div>
 
-                <div class="gs-service-card bg-brand-ice/50 rounded-2xl p-8 md:p-10 border border-brand-slate/5 hover:border-brand-neon/40 hover:bg-white transition-all duration-500 shadow-sm flex flex-col gap-6 group">
-                    <div class="w-14 h-14 rounded-xl bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl">
-                        <i class="fa-solid fa-shop"></i>
+                <!-- 服務卡片 2 -->
+                <div class="gs-service-card">
+                    <div class="h-full bg-white/40 backdrop-blur-xl rounded-[32px] p-8 md:p-10 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(44,48,46,0.12)] hover:-translate-y-2 hover:bg-white/60 transition-all duration-500 flex flex-col gap-6 group">
+                        <div class="w-14 h-14 rounded-[20px] bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl shadow-sm">
+                            <i class="fa-solid fa-shop"></i>
+                        </div>
+                        <h4 class="text-xl font-medium tracking-wide text-brand-slate">商業門市與品牌活動</h4>
+                        <p class="text-sm text-brand-muted font-light leading-relaxed">
+                            實體展區、概念店與旅宿的氛圍演繹。我們不僅僅捕捉美麗的畫面，更深入思考品牌與受眾的共鳴，讓觀者能在螢幕前感知實體空間的細緻與魅力。
+                        </p>
                     </div>
-                    <h4 class="text-xl font-medium tracking-wide text-brand-slate">商業門市與品牌活動</h4>
-                    <p class="text-sm text-brand-muted font-light leading-relaxed">
-                        實體展區、概念店與旅宿的氛圍演繹。我們不僅僅捕捉美麗的畫面，更深入思考品牌與受眾的共鳴，讓觀者能在螢幕前感知實體空間的細緻與魅力。
-                    </p>
                 </div>
 
-                <div class="gs-service-card bg-brand-ice/50 rounded-2xl p-8 md:p-10 border border-brand-slate/5 hover:border-brand-neon/40 hover:bg-white transition-all duration-500 shadow-sm flex flex-col gap-6 group">
-                    <div class="w-14 h-14 rounded-xl bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <!-- 服務卡片 3 -->
+                <div class="gs-service-card">
+                    <div class="h-full bg-white/40 backdrop-blur-xl rounded-[32px] p-8 md:p-10 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(44,48,46,0.12)] hover:-translate-y-2 hover:bg-white/60 transition-all duration-500 flex flex-col gap-6 group">
+                        <div class="w-14 h-14 rounded-[20px] bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl shadow-sm">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="text-xl font-medium tracking-wide text-brand-slate">品牌整合顧問 & Reels</h4>
+                        <p class="text-sm text-brand-muted font-light leading-relaxed">
+                            提供自「平面影像顧問」至「品牌宣傳短片」的一體化流程。包含專業色準校正、社群載體格式靈活切換等服務，協助您的形象資產在市場中脫穎而出。
+                        </p>
                     </div>
-                    <h4 class="text-xl font-medium tracking-wide text-brand-slate">品牌整合顧問 & Reels</h4>
-                    <p class="text-sm text-brand-muted font-light leading-relaxed">
-                        提供自「平面影像顧問」至「品牌宣傳短片」的一體化流程。包含專業色準校正、社群載體格式靈活切換等服務，協助您的形象資產在市場中脫穎而出。
-                    </p>
                 </div>
+
+            </div>
+
+            <!-- 👑 2版新增：精品美學官方 LINE 諮詢與報價 CTA 區塊 (不帶有刺眼的業務色彩，呈現優雅的商業通道) -->
+            <div class="mt-16 flex flex-col items-center gap-4 text-center gs-reveal">
+                <p class="text-xs uppercase tracking-[0.35em] text-brand-muted font-medium">Estimate & Consultation</p>
+                <a href="https://line.me/R/ti/p/@your_line_id" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-slate text-brand-ice text-xs tracking-[0.25em] rounded-full hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 shadow-lg shadow-brand-slate/5 hover:shadow-xl hover:shadow-brand-slate/10 group">
+                    <span>獲取專案預估與線上諮詢</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neon group-hover:bg-brand-slate transition-colors duration-500"></span>
+                    <i class="fa-brands fa-line text-[15px] text-[#06C755] group-hover:text-brand-slate transition-colors duration-500"></i>
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- 聯絡我們與互動名片 -->
     <section id="contact" class="py-24 md:py-32 bg-brand-ice relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -654,16 +678,38 @@
                                         </div>
                                         <span class="text-[7px] font-light tracking-widest text-brand-muted uppercase block mt-0.5">STUDIO HONEW | Photography</span>
                                     </div>
-                                    <div class="flex flex-col gap-1 text-[8px] text-brand-slate">
-                                        <!-- 依照實體名片更新 -->
-                                        <div class="text-[7.5px] text-brand-muted mb-2 leading-relaxed tracking-widest">
+                                    
+                                    <!-- 👑 2版優化：解決螢光綠配白底不清楚的問題，改為高級感黑灰微圖標，並轉化為可點擊跳轉的活連結 -->
+                                    <div class="flex flex-col gap-2.5 text-[8.5px] text-brand-slate">
+                                        <div class="text-[7.5px] text-brand-muted mb-1.5 leading-relaxed tracking-widest">
                                             <p>商業 / 空間攝影</p>
                                             <p>活動 / 婚禮紀錄</p>
                                             <p>品牌 / 企業形象</p>
                                         </div>
-                                        <p class="font-mono flex items-center gap-1.5"><span class="w-3 text-brand-neon font-bold">T</span> +886 976 961 929</p>
-                                        <p class="font-mono flex items-center gap-1.5"><span class="w-3 text-brand-neon font-bold">IG</span> @ren.chian_1122</p>
-                                        <p class="font-mono flex items-center gap-1.5"><span class="w-3 text-brand-neon font-bold">E</span> ren.chian_1122@gmail.com</p>
+                                        
+                                        <!-- 電話聯絡 (手機自動撥號 / 電腦自動複製) -->
+                                        <a href="tel:+886976961929" onclick="handlePhoneContact(event)" class="flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
+                                            <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300">
+                                                <i class="fa-solid fa-phone"></i>
+                                            </span>
+                                            <span class="font-mono tracking-wider">+886 976 961 929</span>
+                                        </a>
+                                        
+                                        <!-- 個人 IG -->
+                                        <a href="https://instagram.com/chian_1122" target="_blank" class="flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
+                                            <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </span>
+                                            <span class="font-mono tracking-wider">@chian_1122</span>
+                                        </a>
+                                        
+                                        <!-- 工作室 IG -->
+                                        <a href="https://instagram.com/honew.studio" target="_blank" class="flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
+                                            <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300">
+                                                <i class="fa-solid fa-camera"></i>
+                                            </span>
+                                            <span class="font-mono tracking-wider">@honew.studio</span>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="flex flex-col justify-between items-end h-full w-1/3">
@@ -672,7 +718,7 @@
                                         <span class="text-[8px] font-light text-brand-muted tracking-wider block mt-0.5">Ren Zhang</span>
                                     </div>
                                     <div class="w-14 h-14 bg-brand-neutral p-1 rounded-md border border-brand-slate/5 shadow-inner">
-                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://instagram.com/ren.chian_1122" alt="IG QR Code" class="w-full h-full object-contain">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://instagram.com/chian_1122" alt="IG QR Code" class="w-full h-full object-contain">
                                     </div>
                                 </div>
                             </div>
@@ -689,26 +735,72 @@
                         </p>
                     </div>
 
-                    <form id="contact-form" class="flex flex-col gap-5">
+                    <!-- 👑 Web3Forms 正式整合版 (已加入必備隱藏欄位與表單設定) -->
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-5">
+                        
+                        <!-- ⚠️ 請在此處填入您註冊 Web3Forms 所取得的 Access Key -->
+                        <input type="hidden" name="access_key" value="9cf83986-13ab-4c62-ba0d-b0b5cee2cc39">
+                        
+                        <!-- 系統自訂選項 -->
+                        <input type="hidden" name="subject" value="【候鳥影像官網】收到新的諮詢委託！">
+                        <input type="hidden" name="from_name" value="候鳥影像 官網表單系統">
+                        <!-- 防垃圾信機器人蜜罐欄位 -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <input class="bg-white/60 border border-brand-slate/10 focus:border-brand-neon focus:bg-white text-sm rounded-xl px-4 py-3 outline-none transition-all duration-300" type="text" id="name" required placeholder="您的姓名 / 單位">
-                            <input class="bg-white/60 border border-brand-slate/10 focus:border-brand-neon focus:bg-white text-sm rounded-xl px-4 py-3 outline-none transition-all duration-300" type="tel" id="phone" required placeholder="聯絡電話">
+                            <input class="bg-white/60 border border-brand-slate/10 focus:border-brand-neon focus:bg-white text-sm rounded-xl px-4 py-3 outline-none transition-all duration-300" type="text" id="name" name="name" required placeholder="您的姓名 / 單位">
+                            <input class="bg-white/60 border border-brand-slate/10 focus:border-brand-neon focus:bg-white text-sm rounded-xl px-4 py-3 outline-none transition-all duration-300" type="tel" id="phone" name="phone" required placeholder="聯絡電話">
                         </div>
-                        <textarea class="bg-white/60 border border-brand-slate/10 focus:border-brand-neon focus:bg-white text-sm rounded-xl px-4 py-3 outline-none transition-all duration-300 h-28 resize-none" id="msg" required placeholder="專案詳情描述..."></textarea>
-                        <button type="submit" class="w-full bg-brand-slate text-brand-ice tracking-[0.2em] py-4 rounded-xl hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 font-medium text-xs uppercase shadow-lg">
-                            送出諮詢委託
-                        </button>
+                        <textarea class="bg-white/60 border border-brand-slate/10 focus:border-brand-neon focus:bg-white text-sm rounded-xl px-4 py-3 outline-none transition-all duration-300 h-28 resize-none" id="msg" name="message" required placeholder="專案詳情描述..."></textarea>
+                        
+                        <div class="flex items-center justify-between">
+                            <button type="submit" class="w-full bg-brand-slate text-brand-ice tracking-[0.2em] py-4 rounded-xl hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 font-medium text-xs uppercase shadow-lg">
+                                送出諮詢委託
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 👑 Footer 聯絡與社群升級區塊 -->
     <footer class="bg-brand-neutral text-brand-slate py-16 border-t border-brand-slate/5">
-        <div class="max-w-7xl mx-auto px-6 text-center text-xs tracking-widest text-brand-muted">
-            <p>© 2026 HONEW STUDIO 候鳥影像工作室. All Rights Reserved.</p>
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-8">
+            
+            <!-- 👑 2版：精品美學社群與聯絡快捷按鈕 (100% 智慧自適應跳轉) -->
+            <div class="flex items-center justify-center gap-5">
+                <!-- 個人 IG -->
+                <a href="https://instagram.com/chian_1122" target="_blank" class="w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group" title="個人 Instagram">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                </a>
+                <!-- 工作室 IG -->
+                <a href="https://instagram.com/honew.studio" target="_blank" class="w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group" title="工作室 Instagram">
+                    <i class="fa-solid fa-camera text-sm"></i>
+                </a>
+                <!-- LINE 官方 -->
+                <a href="https://line.me/R/ti/p/@your_line_id" target="_blank" class="w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-[#06C755] hover:border-[#06C755] hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group" title="官方 LINE 諮詢">
+                    <i class="fa-brands fa-line text-base"></i>
+                </a>
+                <!-- 電話撥打 (👑 手機自動撥打、電腦自動高雅複製) -->
+                <a href="tel:+886976961929" onclick="handlePhoneContact(event)" class="w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group" title="聯絡電話專線">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                </a>
+            </div>
+
+            <!-- 版權聲明 -->
+            <div class="text-center text-xs tracking-widest text-brand-muted flex flex-col gap-2">
+                <p>© 2026 HONEW STUDIO 候鳥影像工作室. All Rights Reserved.</p>
+                <p class="text-[9px] text-brand-muted/50 uppercase tracking-[0.3em]">Honing the Vision, Refining the Value.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- 🍏 Apple 風格微光毛玻璃提示通知 (Toast) - 高階極簡美學反饋 -->
+    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-brand-slate/90 backdrop-blur-md text-brand-ice text-xs tracking-[0.2em] px-6 py-3.5 rounded-full border border-white/10 shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-500 flex items-center gap-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse"></span>
+        <span id="toast-msg">已複製聯絡電話 0976961929</span>
+    </div>
 
     <script>
         // --- 1. 預載與轉場 ---
@@ -844,6 +936,7 @@
             document.body.style.overflow = 'hidden';
         }
 
+        // 關閉燈箱
         function closeLightbox() {
             document.getElementById('lightbox').classList.add('hidden');
             document.getElementById('lightbox').classList.remove('flex');
@@ -868,16 +961,57 @@
             dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
         }, 4500);
 
-        // --- 7. 頂級 GSAP 動畫 ---
+        // --- 7. 👑 2版新增：智慧自適應電話聯絡處理器 (手機直接撥打，桌機無痛複製並顯示 Apple 質感 Toast 提示) ---
+        function handlePhoneContact(event) {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+            
+            if (!isMobile) {
+                // 如果是桌機，攔截預設開啟 Facetime 視窗，改為複製號碼
+                event.preventDefault();
+                
+                // 使用臨時 Input（iframe 相容性最高）
+                const tempInput = document.createElement("input");
+                tempInput.value = "0976961929";
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, 99999); // 支援部分舊版裝置
+                
+                try {
+                    document.execCommand("copy");
+                    showToast("已複製聯絡電話 0976961929");
+                } catch (err) {
+                    console.error("複製失敗", err);
+                }
+                
+                document.body.removeChild(tempInput);
+            }
+            // 手機端則不作任何攔截，自然執行 <a href="tel:..."> 進行直撥
+        }
+
+        // 👑 彈出提示通知
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            if (!toast || !toastMsg) return;
+            
+            toastMsg.textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // --- 8. 頂級 GSAP 動畫 ---
         function initGSAP() {
             gsap.registerPlugin(ScrollTrigger);
 
-            gsap.utils.toArray('.gs-reveal').forEach(el => {
-                gsap.fromTo(el, 
-                    { y: 40, opacity: 0 }, 
-                    { scrollTrigger: { trigger: el, start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
-                );
-            });
+            gsap.fromTo('.gs-reveal', 
+                { y: 40, opacity: 0 }, 
+                { scrollTrigger: { trigger: '.gs-reveal', start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+            );
 
             gsap.fromTo('.gs-img-reveal', 
                 { y: 50, opacity: 0 }, 
@@ -890,6 +1024,7 @@
                 { scrollTrigger: { trigger: "#portfolio-grid", start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.0, stagger: 0.15, ease: "power2.out" }
             );
 
+            // 👑 服務項目過渡動畫
             gsap.fromTo('.gs-service-card', 
                 { y: 50, opacity: 0 }, 
                 { scrollTrigger: { trigger: "#services", start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.0, stagger: 0.15, ease: "power2.out" }
@@ -905,7 +1040,7 @@
                 });
             });
 
-            // 3D 名片迎賓翻轉 (還原為最滑順、帶有物理回彈感的上一版設定)
+            // 3D 名名迎賓翻轉 (還原為最滑順、帶有物理回彈感的上一版設定)
             gsap.fromTo(card3D, 
                 { rotateY: 180 }, 
                 { 
@@ -918,6 +1053,47 @@
                     }
                 }
             );
+        }
+
+        // --- 9. 👑 Web3Forms AJAX 無縫傳送整合 (不再跳轉第三方頁面) ---
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // 攔截預設的跳轉頁面行為
+                
+                const button = contactForm.querySelector('button[type="submit"]');
+                const originalText = button.textContent;
+                button.textContent = "訊息傳送中...";
+                button.disabled = true;
+
+                const formData = new FormData(contactForm);
+                
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json' // 👑 關鍵設定：要求回傳 JSON 而非 HTML，這樣才不會跳轉或報錯
+                    },
+                    body: formData
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        showToast("表單已成功送出！候鳥將盡快與您聯繫。");
+                        contactForm.reset();
+                    } else {
+                        console.error(json);
+                        showToast("傳送失敗，請直接撥打電話與我們聯繫。");
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    showToast("伺服器連線異常，請直接撥打電話聯繫。");
+                })
+                .finally(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                });
+            });
         }
     </script>
 </body>
