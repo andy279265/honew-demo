@@ -50,21 +50,21 @@
             cursor: none !important;
         }
 
-        /* --- 液態毛玻璃游標樣式 --- */
+        /* --- 巨型液態毛玻璃游標樣式 --- */
         #custom-cursor {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 28px;  /* 尺寸再縮小，提升靈巧度 */
-            height: 28px; 
+            top: -100px; /* 初始隱藏於畫面外 */
+            left: -100px;
+            width: 64px;  /* 基礎尺寸大幅增加 */
+            height: 64px; 
             pointer-events: none;
-            z-index: 9999;
-            backdrop-filter: blur(2px); /* 模糊度調低，更透澈不干擾 */
-            -webkit-backdrop-filter: blur(2px);
-            background: rgba(255, 255, 255, 0.15);
+            z-index: 99999; /* 確保涵蓋在燈箱(120)之上 */
+            backdrop-filter: blur(1.5px); /* 模糊度再度調低，保留高透度 */
+            -webkit-backdrop-filter: blur(1.5px);
+            background: rgba(255, 255, 255, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transform: translate(-50%, -50%); /* 由 GSAP xPercent/yPercent 處理 */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transform: translate(-50%, -50%); /* 永遠居中於 left/top */
             animation: liquidMorph 4s ease-in-out infinite alternate;
             transition: width 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
                         height 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
@@ -73,7 +73,7 @@
                         opacity 0.3s ease;
         }
         
-        /* 💎 在游標正中央加上實體準星，解決小物件難以精準點擊的問題 */
+        /* 💎 在游標正中央加上實體準星，確保面積大依然能精準點擊 */
         #custom-cursor::after {
             content: '';
             position: absolute;
@@ -96,10 +96,10 @@
 
         /* 游標懸停放大態 (移到可點擊按鈕時) */
         #custom-cursor.cursor-hover {
-            width: 42px; /* 放大幅度縮小，避免遮擋按鈕 */
-            height: 42px;
+            width: 86px; /* 懸停時更加放大 */
+            height: 86px;
             background: rgba(26, 255, 48, 0.1);
-            border-color: rgba(26, 255, 48, 0.3);
+            border-color: rgba(26, 255, 48, 0.25);
             animation: liquidMorphHover 2s ease-in-out infinite alternate;
         }
         
@@ -118,10 +118,10 @@
 
         /* 游標點擊收縮態 */
         #custom-cursor.cursor-click {
-            width: 22px;
-            height: 22px;
-            background: rgba(255, 255, 255, 0.5);
-            border-color: rgba(255, 255, 255, 0.8);
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.7);
         }
 
         /* 在行動裝置或不支援懸停的設備上自動還原預設觸控體驗 */
@@ -323,9 +323,9 @@
     <section id="about" class="py-24 md:py-32 bg-brand-neutral relative z-10 -mt-[1px] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- 圖片加入懸停動畫與 cursor-interact -->
+                <!-- 圖片加入懸停動畫 (已拔除 cursor-interact，不會放大鼠標) -->
                 <div class="lg:col-span-6 grid grid-cols-12 gap-4" id="philosophy-images">
-                    <div class="col-span-7 aspect-[3/4] rounded-2xl shadow-lg border border-white gs-img-reveal cursor-interact group">
+                    <div class="col-span-7 aspect-[3/4] rounded-2xl shadow-lg border border-white gs-img-reveal group">
                         <div class="absolute inset-0 rounded-2xl overflow-hidden mask-fix">
                             <div class="w-full h-full transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
                                 <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto:good,w_800/v1781287259/about-01.jpg" alt="極簡空間光影" class="lazy-img w-full h-full object-cover">
@@ -333,14 +333,14 @@
                         </div>
                     </div>
                     <div class="col-span-5 flex flex-col gap-4 justify-end">
-                        <div class="aspect-square rounded-2xl shadow-lg border border-white gs-img-reveal cursor-interact group">
+                        <div class="aspect-square rounded-2xl shadow-lg border border-white gs-img-reveal group">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden mask-fix">
                                 <div class="w-full h-full transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
                                     <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto:good,w_600/v1781287265/about-02.webp" alt="局部軟裝質地" class="lazy-img w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
-                        <div class="aspect-[3/4] rounded-2xl shadow-lg border border-white gs-img-reveal cursor-interact group">
+                        <div class="aspect-[3/4] rounded-2xl shadow-lg border border-white gs-img-reveal group">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden mask-fix">
                                 <div class="w-full h-full transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
                                     <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto:good,w_600/v1781287261/about-03.webp" alt="細膩建築切角" class="lazy-img w-full h-full object-cover">
@@ -371,7 +371,7 @@
                     <div class="grid grid-cols-2 gap-6 pt-6 border-t border-brand-slate/10">
                         <div>
                             <div class="text-3xl font-mono font-light text-brand-slate flex items-center gap-1">
-                                <span class="counter-val" data-target="30">0</span><span class="text-brand-neon text-xl">+</span>
+                                <span class="counter-val" data-target="100">0</span><span class="text-brand-neon text-xl">+</span>
                             </div>
                             <div class="text-xs text-brand-muted tracking-widest mt-1">合作設計師與 brand</div>
                         </div>
@@ -603,7 +603,8 @@
                         </div>
 
                         <div class="absolute inset-0 rounded-[32px] overflow-hidden mask-fix">
-                            <div id="reels-bg" class="absolute inset-0 bg-cover bg-center animate-[slowPan_25s_infinite_alternate]" 
+                            <!-- 👑 動畫加速且幅度加大 -->
+                            <div id="reels-bg" class="absolute inset-0 bg-cover bg-center animate-[slowPan_8s_ease-in-out_infinite_alternate]" 
                                  style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80');">
                             </div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 z-10"></div>
@@ -644,7 +645,8 @@
         </div>
     </section>
 
-    <style> @keyframes slowPan { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(-10px, -15px); } } </style>
+    <!-- 放大且加劇 reels 動態幅度 -->
+    <style> @keyframes slowPan { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.25) translate(-20px, -30px); } } </style>
 
     <!-- 服務項目區塊 -->
     <section id="services" class="py-16 md:py-24 bg-brand-neutral relative">
@@ -769,9 +771,11 @@
                                     STUDIO HONEW | Photography
                                 </div>
                             </div>
-                            <!-- 背面 -->
+                            <!-- 👑 背面：優化左下方排版間距 -->
                             <div class="card-back absolute inset-0 w-full h-full bg-white rounded-[18px] p-6 flex justify-between overflow-hidden border border-brand-slate/5 shadow-lg">
-                                <div class="flex flex-col justify-between h-full w-2/3">
+                                <div class="flex flex-col h-full w-2/3">
+                                    
+                                    <!-- 標題 -->
                                     <div>
                                         <div class="flex items-center gap-1.5">
                                             <span class="text-[12px] font-medium tracking-[0.15em] text-brand-slate">候鳥影像工作室</span>
@@ -780,13 +784,18 @@
                                         <span class="text-[7px] font-light tracking-widest text-brand-muted uppercase block mt-0.5">STUDIO HONEW | Photography</span>
                                     </div>
                                     
-                                    <div class="flex flex-col gap-2.5 text-[8.5px] text-brand-slate">
-                                        <div class="text-[7.5px] text-brand-muted mb-1.5 leading-relaxed tracking-widest">
-                                            <p>商業 / 空間攝影</p>
-                                            <p>活動 / 婚禮紀錄</p>
-                                            <p>品牌 / 企業形象</p>
-                                        </div>
-                                        
+                                    <!-- 服務分類 (推高至上半部) -->
+                                    <div class="text-[7.5px] text-brand-muted mt-3 leading-relaxed tracking-widest">
+                                        <p>商業 / 空間攝影</p>
+                                        <p>活動 / 婚禮紀錄</p>
+                                        <p>品牌 / 企業形象</p>
+                                    </div>
+                                    
+                                    <!-- 空白彈性推擠區塊，製造明顯的上下區隔 -->
+                                    <div class="flex-grow"></div>
+                                    
+                                    <!-- 緊湊的聯絡資訊群 (靠攏在左下角) -->
+                                    <div class="flex flex-col gap-1.5 text-[8.5px] text-brand-slate pb-1">
                                         <a href="tel:+886976961929" onclick="handlePhoneContact(event)" class="cursor-interact flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
                                             <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-solid fa-phone"></i></span>
                                             <span class="font-mono tracking-wider">+886 976 961 929</span>
@@ -800,6 +809,7 @@
                                             <span class="font-mono tracking-wider">@honew.studio</span>
                                         </a>
                                     </div>
+                                    
                                 </div>
                                 <div class="flex flex-col justify-between items-end h-full w-1/3">
                                     <div class="text-right">
@@ -870,26 +880,49 @@
     </div>
 
     <script>
-        // --- 0. Apple 毛玻璃自訂游標邏輯 (透過 GSAP quickTo 達到極致順滑) ---
+        // --- 0. 最穩定！原生 JavaScript 毛玻璃自訂游標邏輯 (完全防當防破圖) ---
         document.addEventListener("DOMContentLoaded", () => {
             const cursor = document.getElementById('custom-cursor');
-            if(cursor) {
-                gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-                let xTo = gsap.quickTo(cursor, "x", {duration: 0.15, ease: "power3"});
-                let yTo = gsap.quickTo(cursor, "y", {duration: 0.15, ease: "power3"});
-
+            if(cursor && window.innerWidth > 768) {
+                // 初次顯示
+                cursor.style.top = '50%';
+                cursor.style.left = '50%';
+                
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
+                let cursorX = mouseX;
+                let cursorY = mouseY;
+                
+                // 只記錄滑鼠位置，不動 DOM 效能最好
                 window.addEventListener("mousemove", e => {
-                    xTo(e.clientX);
-                    yTo(e.clientY);
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
                 });
 
+                // RequestAnimationFrame 達成極致絲滑的慣性跟隨
+                function renderCursor() {
+                    cursorX += (mouseX - cursorX) * 0.2;
+                    cursorY += (mouseY - cursorY) * 0.2;
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
+                    requestAnimationFrame(renderCursor);
+                }
+                requestAnimationFrame(renderCursor);
+
+                // 點擊動畫
                 window.addEventListener("mousedown", () => cursor.classList.add('cursor-click'));
                 window.addEventListener("mouseup", () => cursor.classList.remove('cursor-click'));
 
-                const interactables = document.querySelectorAll('.cursor-interact, a, button, input, textarea');
-                interactables.forEach(el => {
-                    el.addEventListener("mouseenter", () => cursor.classList.add('cursor-hover'));
-                    el.addEventListener("mouseleave", () => cursor.classList.remove('cursor-hover'));
+                // 綁定可互動元素的懸停動畫 (燈箱內的元件也能正確觸發)
+                document.body.addEventListener("mouseover", (e) => {
+                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                        cursor.classList.add('cursor-hover');
+                    }
+                });
+                document.body.addEventListener("mouseout", (e) => {
+                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                        cursor.classList.remove('cursor-hover');
+                    }
                 });
             }
         });
@@ -1008,7 +1041,7 @@
         
         if(slides.length > 0) startSlideShow();
 
-        // --- 6. 👑 作品集分類動態篩選邏輯 ---
+        // --- 6. 作品集分類動態篩選邏輯 ---
         document.addEventListener("DOMContentLoaded", () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -1016,7 +1049,6 @@
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // 更新按鈕樣式
                     document.querySelector('.active-filter')?.classList.remove('active-filter', 'border-brand-neon');
                     document.querySelector('.active-filter')?.classList.add('border-brand-slate/15');
                     
@@ -1060,20 +1092,16 @@
             document.getElementById('lightbox-light').textContent = img.dataset.light;
             document.getElementById('lightbox-vibe').textContent = img.dataset.vibe;
 
-            document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex');
+            document.getElementById('lightbox').classList.remove('hidden'); 
+            document.getElementById('lightbox').classList.add('flex');
             document.body.style.overflow = 'hidden';
-            
-            // 開啟時隱藏自訂游標以防遮擋畫面
-            const cursor = document.getElementById('custom-cursor');
-            if (cursor) cursor.style.display = 'none';
+            // 💡 不再隱藏自訂游標！讓毛玻璃在燈箱內依然能完美運作
         }
 
         function closeLightbox() {
-            document.getElementById('lightbox').classList.add('hidden'); document.getElementById('lightbox').classList.remove('flex');
+            document.getElementById('lightbox').classList.add('hidden'); 
+            document.getElementById('lightbox').classList.remove('flex');
             document.body.style.overflow = '';
-            
-            const cursor = document.getElementById('custom-cursor');
-            if (cursor && window.innerWidth > 768) cursor.style.display = 'flex';
         }
 
         // --- 8. 雜項共用工具 ---
