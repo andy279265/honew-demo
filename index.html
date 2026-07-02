@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HONEW STUDIO 候鳥影像工作室 | 空間攝影 • 品牌影像</title>
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='%231aff30'/%3E%3C/svg%3E">
+    <link class="cursor-interact" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='%231aff30'/%3E%3C/svg%3E">
     <link rel="preload" as="image" href="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287257/hero-01.jpg">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,7 +30,7 @@
         }
     </script>
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -41,30 +41,26 @@
             background-color: #ebf4f6;
             color: #2c302e;
             overflow-x: hidden;
-            /* 隱藏全站預設游標，由自訂毛玻璃游標接管 */
             cursor: none; 
         }
 
-        /* 確保所有可點擊元素也隱藏預設游標 */
-        a, button, input, textarea, .cursor-interact {
+        a, button, input, select, textarea, .cursor-interact {
             cursor: none !important;
         }
 
-        /* --- 巨型液態毛玻璃游標樣式 --- */
+        /* --- 完美移植主站液態毛玻璃游標 --- */
         #custom-cursor {
             position: fixed;
-            top: -100px; /* 初始隱藏於畫面外 */
-            left: -100px;
-            width: 64px;  /* 基礎尺寸大幅增加 */
-            height: 64px; 
+            top: -100px; left: -100px;
+            width: 64px; height: 64px; 
             pointer-events: none;
-            z-index: 99999; /* 確保涵蓋在燈箱(120)之上 */
-            backdrop-filter: blur(1.5px); /* 模糊度再度調低，保留高透度 */
+            z-index: 99999; 
+            backdrop-filter: blur(1.5px); 
             -webkit-backdrop-filter: blur(1.5px);
             background: rgba(255, 255, 255, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            transform: translate(-50%, -50%); /* 永遠居中於 left/top */
+            transform: translate(-50%, -50%); 
             animation: liquidMorph 4s ease-in-out infinite alternate;
             transition: width 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
                         height 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
@@ -73,42 +69,31 @@
                         opacity 0.3s ease;
         }
         
-        /* 💎 在游標正中央加上實體準星，確保面積大依然能精準點擊 */
         #custom-cursor::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 4px;
-            height: 4px;
-            background-color: #1aff30; /* 品牌螢光綠準星 */
+            width: 4px; height: 4px;
+            background-color: #ffffff;
             border-radius: 50%;
             transition: width 0.3s, height 0.3s, opacity 0.3s;
         }
 
-        /* 模擬 Apple 水滴液態流動感 */
         @keyframes liquidMorph {
             0% { border-radius: 50%; }
             50% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
             100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
         }
 
-        /* 游標懸停放大態 (移到可點擊按鈕時) */
         #custom-cursor.cursor-hover {
-            width: 86px; /* 懸停時更加放大 */
-            height: 86px;
+            width: 86px; height: 86px;
             background: rgba(26, 255, 48, 0.1);
             border-color: rgba(26, 255, 48, 0.25);
             animation: liquidMorphHover 2s ease-in-out infinite alternate;
         }
         
-        /* 懸停時準星消失，讓內部透空 */
-        #custom-cursor.cursor-hover::after {
-            width: 0;
-            height: 0;
-            opacity: 0;
-        }
+        #custom-cursor.cursor-hover::after { width: 0; height: 0; opacity: 0; }
 
         @keyframes liquidMorphHover {
             0% { border-radius: 50%; }
@@ -116,22 +101,18 @@
             100% { border-radius: 65% 35% 45% 55% / 55% 65% 45% 45%; }
         }
 
-        /* 游標點擊收縮態 */
         #custom-cursor.cursor-click {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             background: rgba(255, 255, 255, 0.4);
             border-color: rgba(255, 255, 255, 0.7);
         }
 
-        /* 在行動裝置或不支援懸停的設備上自動還原預設觸控體驗 */
         @media (hover: none) and (pointer: coarse), (max-width: 768px) {
             #custom-cursor { display: none !important; }
-            body, a, button, input, textarea, .cursor-interact { cursor: auto !important; }
+            body, a, button, input, select, textarea, .cursor-interact { cursor: auto !important; }
             a, button, .cursor-interact { cursor: pointer !important; }
         }
 
-        /* 自定義滾動條 */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #ebf4f6; }
         ::-webkit-scrollbar-thumb { background: #cbdcdb; border-radius: 3px; }
@@ -198,7 +179,7 @@
                 <path class="logo-wing-path" d="M 10,45 C 25,25 55,5 100,32 C 145,5 175,25 190,45" stroke="#1aff30" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
             <div class="mt-4 flex flex-col items-center opacity-0 transform translate-y-4 animate-[fadeIn_0.8s_0.15s_forwards] ease-out">
-                <span class="text-xl md:text-2xl font-light tracking-[0.25em] text-brand-slate">候鳥影像工作室</span>
+                <span class="text-xl md:text-2xl font-light tracking-[0.25em] text-brand-slate inline-block scale-y-[0.88] origin-center">候鳥影像工作室</span>
                 <span class="text-[9px] md:text-xs font-light tracking-[0.5em] text-brand-muted mt-2 uppercase">STUDIO HONEW | Photography</span>
             </div>
             
@@ -220,7 +201,7 @@
                     </svg>
                 </div>
                 <div class="flex items-center gap-1.5 mt-1.5">
-                    <span class="text-sm font-medium tracking-[0.2em] text-brand-slate transition-all duration-300 group-hover:text-brand-neon">候鳥影像</span>
+                    <span class="text-sm font-light tracking-[0.2em] text-brand-slate transition-all duration-300 group-hover:text-brand-neon inline-block scale-y-[0.95] origin-center">候鳥影像</span>
                     <span class="w-[4px] h-[4px] rounded-full bg-brand-neon"></span>
                 </div>
             </a>
@@ -281,7 +262,6 @@
                 </div>
             </div>
 
-            <!-- 右側圖片展示欄：3:2 攝影比例 -->
             <div class="lg:col-span-7 relative flex justify-end gs-reveal">
                 <div class="relative w-full aspect-[3/2] rounded-2xl shadow-2xl shadow-brand-slate/10 bg-brand-neutral border border-white/40 group overflow-hidden mask-fix" style="transform: translateZ(0);">
                     <div class="hero-slide absolute inset-0 transition-opacity duration-[1.5s] ease-in-out opacity-100 z-10">
@@ -294,7 +274,6 @@
                         <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781348170/hero-03.jpg" alt="候鳥空間攝影 3" class="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-[3s] ease-out">
                     </div>
                     
-                    <!-- 輪播控制條：加入 padding 擴大可點擊範圍 -->
                     <div class="absolute bottom-6 right-6 z-20 flex items-center gap-3">
                         <div onclick="goToSlide(0)" class="cursor-interact py-2">
                             <button class="hero-dot w-6 h-[2px] bg-white transition-all duration-300 hover:h-[4px]"></button>
@@ -323,7 +302,6 @@
     <section id="about" class="py-24 md:py-32 bg-brand-neutral relative z-10 -mt-[1px] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- 圖片加入懸停動畫 (已拔除 cursor-interact，不會放大鼠標) -->
                 <div class="lg:col-span-6 grid grid-cols-12 gap-4" id="philosophy-images">
                     <div class="col-span-7 aspect-[3/4] rounded-2xl shadow-lg border border-white gs-img-reveal group">
                         <div class="absolute inset-0 rounded-2xl overflow-hidden mask-fix">
@@ -371,15 +349,15 @@
                     <div class="grid grid-cols-2 gap-6 pt-6 border-t border-brand-slate/10">
                         <div>
                             <div class="text-3xl font-mono font-light text-brand-slate flex items-center gap-1">
-                                <span class="counter-val" data-target="100">0</span><span class="text-brand-neon text-xl">+</span>
+                                <span class="counter-val" data-target="30">0</span><span class="text-brand-neon text-xl">+</span>
                             </div>
-                            <div class="text-xs text-brand-muted tracking-widest mt-1">合作設計師與 brand</div>
+                            <div class="text-xs text-brand-muted tracking-widest mt-1">合作設計師 與 品牌</div>
                         </div>
                         <div>
                             <div class="text-3xl font-mono font-light text-brand-slate flex items-center gap-1">
-                                <span class="counter-val" data-target="99">0</span><span class="text-brand-neon text-xl">%</span>
+                                <span class="counter-val" data-target="100">0</span><span class="text-brand-neon text-xl">%</span>
                             </div>
-                            <div class="text-xs text-brand-muted tracking-widest mt-1">高動態與色準要求</div>
+                            <div class="text-xs text-brand-muted tracking-widest mt-1">高品質與色準要求</div>
                         </div>
                     </div>
                 </div>
@@ -387,7 +365,7 @@
         </div>
     </section>
 
-    <!-- 精選作品區塊 (還原作品，僅更新分類篩選鈕) -->
+    <!-- 精選作品區塊 -->
     <section id="portfolio" class="py-24 md:py-32 bg-[#ebf4f6] relative min-h-screen">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 gs-reveal">
@@ -395,170 +373,82 @@
                     <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted font-medium mb-3">Portfolio</h2>
                     <h3 class="text-3xl md:text-4xl font-light text-brand-slate tracking-wide leading-relaxed">精選攝影作品</h3>
                 </div>
-                <!-- 新增分類按鈕 -->
                 <div class="flex flex-wrap gap-2 text-xs md:text-sm tracking-widest font-light" id="portfolio-filters">
-                    <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-neon active-filter transition-all duration-300" data-filter="all">全部類別</button>
+                    <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-neon active-filter transition-all duration-300" data-filter="all">全部</button>
                     <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="interior">室內空間</button>
                     <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="commercial">商業攝影</button>
                     <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="event">展演紀錄</button>
-                    <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="wedding">婚禮/求婚紀錄</button>
+                    <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="wedding">婚禮/求婚</button>
+                    <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="reels">行銷短影音</button>
+                    <button class="filter-btn cursor-interact px-5 py-2 rounded-full border border-brand-slate/15 hover:border-brand-neon transition-all duration-300" data-filter="films">品牌短片</button>
                 </div>
             </div>
 
-            <!-- 作品集展示區塊：已還原為原本的 6 項室內空間作品 -->
+            <!-- 作品集區塊 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
-                
-                <!-- 1 -->
-                <div class="portfolio-item group cursor-interact" data-category="interior" onclick="openLightbox(this)">
-                    <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
-                        <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
-                            <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287264/portfolio-01.jpg" alt="一穰設計 | 柞居" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]" data-director="Ren Zhang" data-light="自然光 / 漫射調" data-vibe="極簡主義 / 建築語彙">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">一穰設計 | 柞居</h4>
-                            <p class="text-xs text-brand-muted tracking-widest mt-1">室內空間 / 台北 電梯大樓</p>
-                        </div>
-                        <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">2025</span>
-                    </div>
-                </div>
-
-                <!-- 2 -->
-                <div class="portfolio-item group cursor-interact" data-category="interior" onclick="openLightbox(this)">
-                    <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
-                        <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
-                            <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781347878/portfolio-02.jpg" alt="一穰設計 | 寬和" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]" data-director="Ren Zhang" data-light="人造光源 / 暖色調" data-vibe="靜謐優雅 / 氛圍空間">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">一穰設計 | 寬和</h4>
-                            <p class="text-xs text-brand-muted tracking-widest mt-1">室內空間 / 台中北屯 集合住宅</p>
-                        </div>
-                        <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">2025</span>
-                    </div>
-                </div>
-
-                <!-- 3 -->
-                <div class="portfolio-item group cursor-interact" data-category="interior" onclick="openLightbox(this)">
-                    <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
-                        <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
-                            <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287255/portfolio-03.jpg" alt="耘品設計 | 楊梅別墅" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]" data-director="Ren Zhang" data-light="混合光源 / 立體感" data-vibe="沈穩溫潤 / 空間重量">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">耘品設計 | 楊梅別墅</h4>
-                            <p class="text-xs text-brand-muted tracking-widest mt-1">室內空間 / 桃園楊梅 透天別墅</p>
-                        </div>
-                        <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">2026</span>
-                    </div>
-                </div>
-
-                <!-- 4 -->
-                <div class="portfolio-item group cursor-interact" data-category="interior" onclick="openLightbox(this)">
-                    <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
-                        <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
-                            <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287251/portfolio-04.jpg" alt="MORI 森研築 | 豐景" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]" data-director="Ren Zhang" data-light="聚光燈 / 材質紋理" data-vibe="有機脈絡 / 人文感性">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">MORI 森研築 | 豐景</h4>
-                            <p class="text-xs text-brand-muted tracking-widest mt-1">室內空間 / 桃園山鼻 集合住宅</p>
-                        </div>
-                        <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">2025</span>
-                    </div>
-                </div>
-
-                <!-- 5 -->
-                <div class="portfolio-item group cursor-interact" data-category="interior" onclick="openLightbox(this)">
-                    <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
-                        <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
-                            <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287251/portfolio-05.jpg" alt="一穰設計 | 半伴寓所" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]" data-director="Ren Zhang" data-light="通透日光 / 自然色溫" data-vibe="愜意生活 / 極簡尺度">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">一穰設計 | 半伴寓所</h4>
-                            <p class="text-xs text-brand-muted tracking-widest mt-1">室內空間 / 台南新化 集合住宅</p>
-                        </div>
-                        <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">2024</span>
-                    </div>
-                </div>
-
-                <!-- 6 -->
-                <div class="portfolio-item group cursor-interact" data-category="interior" onclick="openLightbox(this)">
-                    <div class="relative aspect-[3/2] rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
-                        <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
-                            <img data-src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287253/portfolio-06.jpg" alt="A Square Ltd. | 現代別墅" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]" data-director="Ren Zhang" data-light="明亮開闊 / 環境光源" data-vibe="大氣通透 / 場域界定">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                <span class="text-brand-ice text-xs tracking-widest uppercase">查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-1">
-                        <div>
-                            <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">A Square Ltd. | 現代別墅</h4>
-                            <p class="text-xs text-brand-muted tracking-widest mt-1">室內空間 / 台中北屯 別墅</p>
-                        </div>
-                        <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">2025</span>
-                    </div>
-                </div>
+                <!-- 由 JavaScript 自動插入內容 -->
             </div>
             
-            <!-- 無篩選結果時的提示 -->
             <div id="no-portfolio-msg" class="hidden text-center py-20 text-brand-muted tracking-widest text-sm font-light">
-                目前此類別尚無公開作品，歡迎直接聯繫我們了解更多。
+                此類別作品即將陸續更新，歡迎直接聯繫我們了解更多。
             </div>
         </div>
     </section>
 
-    <!-- 燈箱 -->
+    <!-- 智慧多重串流燈箱系統 (動態解析 YouTube/Vimeo / HTML5 WebM ✕ MP4 雙解碼播放器) -->
     <div id="lightbox" class="fixed inset-0 z-[120] bg-brand-slate/95 backdrop-blur-md hidden flex-col justify-center items-center p-4">
-        <button onclick="closeLightbox()" class="cursor-interact absolute top-6 right-6 text-brand-ice/80 hover:text-brand-neon text-3xl transition-colors focus:outline-none">
+        <!-- 關閉按鈕 -->
+        <button onclick="closeLightbox(event)" class="cursor-interact absolute top-6 right-6 text-brand-ice/80 hover:text-brand-neon text-3xl transition-colors focus:outline-none z-[130]">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <div class="max-w-6xl w-full flex flex-col items-center mt-8">
-            <div class="relative w-full flex justify-center cursor-interact" onclick="closeLightbox()">
-                <img id="lightbox-thumb" src="" alt="" class="max-h-[75vh] rounded-lg object-contain shadow-2xl border border-white/10 absolute z-0 filter blur-sm opacity-50">
-                <img id="lightbox-img" src="" alt="" class="max-h-[75vh] rounded-lg object-contain shadow-2xl border border-white/10 relative z-10 transition-opacity duration-700 opacity-0">
+        
+        <!-- 上一張/下一張按鈕 -->
+        <button onclick="prevLightboxImage(event)" class="cursor-interact absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white/50 hover:text-brand-neon text-3xl md:text-5xl transition-colors z-[130] focus:outline-none hidden group" id="lightbox-prev">
+            <i class="fa-solid fa-chevron-left group-hover:-translate-x-1 transition-transform"></i>
+        </button>
+        <button onclick="nextLightboxImage(event)" class="cursor-interact absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white/50 hover:text-brand-neon text-3xl md:text-5xl transition-colors z-[130] focus:outline-none hidden group" id="lightbox-next">
+            <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <div class="max-w-6xl w-full flex flex-col items-center mt-8 relative">
+            <div class="relative w-full flex justify-center cursor-interact items-center h-[65vh] md:h-[75vh]" onclick="nextLightboxImage(event)">
+                <!-- 圖片計數器 -->
+                <div id="lightbox-counter" class="absolute top-4 right-4 z-50 bg-black/60 backdrop-blur-sm text-white text-[10px] px-3 py-1.5 rounded-full tracking-[0.2em] font-mono hidden border border-white/10"></div>
+                
+                <!-- 載入中動畫 (Spinner) -->
+                <div id="lightbox-spinner" class="absolute inset-0 flex items-center justify-center z-20 hidden pointer-events-none">
+                    <div class="w-10 h-10 border-[3px] border-white/20 border-t-brand-neon rounded-full animate-spin"></div>
+                </div>
+
+                <img id="lightbox-thumb" src="" alt="" class="max-h-full rounded-lg object-contain shadow-2xl border border-white/10 absolute z-0 filter blur-sm opacity-50 hidden">
+                <img id="lightbox-img" src="" alt="" class="max-h-full rounded-lg object-contain shadow-2xl border border-white/10 relative z-10 transition-opacity duration-300 opacity-0 hidden">
+                
+                <!-- 👑 雙 source 影片播放核心 (不寫單一 src，而是透過 JS 動態注入多重 source) -->
+                <video id="lightbox-video" controls class="max-h-full rounded-lg object-contain shadow-2xl border border-brand-neon/30 relative z-10 transition-opacity duration-500 opacity-0 hidden cursor-auto bg-black" preload="metadata"></video>
+                <!-- YouTube / Vimeo 專用外嵌 Iframe 容器 -->
+                <iframe id="lightbox-iframe" class="max-h-full w-full max-w-4xl aspect-video rounded-lg shadow-2xl border border-white/10 relative z-10 transition-opacity duration-500 opacity-0 hidden bg-black" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
+            
             <div class="w-full mt-6 text-brand-ice flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-t border-white/10 pt-5">
                 <div>
                     <h4 id="lightbox-title" class="text-xl font-light tracking-wide"></h4>
                     <p id="lightbox-category" class="text-xs text-brand-neon tracking-widest mt-1.5 uppercase"></p>
                 </div>
+                <!-- 👑 動態自適應參數欄位 -->
                 <div class="flex flex-wrap items-center gap-6 text-xs tracking-widest bg-white/5 border border-white/10 px-6 py-3.5 rounded-xl backdrop-blur-sm">
                     <div class="flex flex-col gap-1">
-                        <span class="text-[9px] text-brand-muted uppercase tracking-[0.2em]">Director of Photography</span>
-                        <span id="lightbox-director" class="text-brand-ice font-medium"></span>
+                        <span id="lightbox-label-1" class="text-[9px] text-brand-muted uppercase tracking-[0.2em] font-medium">Photographer</span>
+                        <span id="lightbox-director" class="text-brand-ice font-normal"></span>
                     </div>
                     <div class="w-[1px] h-8 bg-white/10"></div>
                     <div class="flex flex-col gap-1">
-                        <span class="text-[9px] text-brand-muted uppercase tracking-[0.2em]">Lighting Setup</span>
-                        <span id="lightbox-light" class="text-brand-ice font-medium"></span>
+                        <span id="lightbox-label-2" class="text-[9px] text-brand-muted uppercase tracking-[0.2em] font-medium">Client / Brand</span>
+                        <span id="lightbox-light" class="text-brand-ice font-normal"></span>
                     </div>
                     <div class="w-[1px] h-8 bg-white/10"></div>
                     <div class="flex flex-col gap-1">
-                        <span class="text-[9px] text-brand-muted uppercase tracking-[0.2em]">Atmosphere</span>
-                        <span id="lightbox-vibe" class="text-brand-ice font-medium"></span>
+                        <span id="lightbox-label-3" class="text-[9px] text-brand-muted uppercase tracking-[0.2em] font-medium">Project Type</span>
+                        <span id="lightbox-vibe" class="text-brand-ice font-normal"></span>
                     </div>
                 </div>
             </div>
@@ -575,10 +465,10 @@
                         <span class="w-2 h-2 rounded-full bg-brand-neon"></span>
                         <span class="text-xs uppercase tracking-[0.4em] text-brand-neon">REELS & VIDEO</span>
                     </div>
-                    <h2 class="text-3xl md:text-5xl font-light tracking-wide leading-tight">
-                        動靜之間，<br>
-                        品牌價值的<span class="font-normal border-b border-brand-neon pb-1 text-brand-neon">全方位傳達。</span>
-                    </h2>
+                    <h2 class="text-3xl md:text-5xl font-light tracking-[-0.055em] flex flex-col gap-3 md:gap-4.5 leading-none">
+    <span>動靜之間，</span>
+    <span>品牌價值的<span class="font-normal border-b border-brand-neon pb-1 text-brand-neon">全方位傳達。</span></span>
+</h2>
                     <p class="text-sm md:text-base text-brand-ice/70 font-light leading-relaxed tracking-wide">
                         在數位敘事年代，靜態平面是品牌的第一眼印象，而動態影像則是品牌與受眾產生共鳴的橋樑。
                     </p>
@@ -591,7 +481,7 @@
                         </div>
                         <div>
                             <h4 class="text-sm font-medium tracking-wider">靈活的數位載體調度</h4>
-                            <p class="text-xs text-brand-ice/50 mt-0.5">專為 Instagram / Xiaohongshu 優化排版</p>
+                            <p class="text-xs text-brand-ice/50 mt-0.5">專為 Instagram / Youtube Shorts 優化排版</p>
                         </div>
                     </div>
                 </div>
@@ -603,7 +493,6 @@
                         </div>
 
                         <div class="absolute inset-0 rounded-[32px] overflow-hidden mask-fix">
-                            <!-- 👑 動畫加速且幅度加大 -->
                             <div id="reels-bg" class="absolute inset-0 bg-cover bg-center animate-[slowPan_8s_ease-in-out_infinite_alternate]" 
                                  style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=80');">
                             </div>
@@ -633,7 +522,7 @@
                                     <span class="text-xs font-semibold">honew.studio</span>
                                     <span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded uppercase font-mono">Reels</span>
                                 </div>
-                                <p class="text-[11px] text-white/80 line-clamp-2 leading-relaxed">台北當代藝術空間 ✕ 動態呼吸感運鏡。讓影像不再是成本，而是精準獲客的投資。</p>
+                                <p class="text-[11px] text-white/80 line-clamp-2 leading-relaxed">現代簡約敘事 ✕ 極致光影捕捉。將空間靈魂轉化為動態美學，精準傳遞設計細節。</p>
                                 <div class="flex items-center gap-2 text-[10px] text-brand-neon font-mono">
                                     <i class="fa-solid fa-music"></i> 原聲音樂 - HONEW STUDIO
                                 </div>
@@ -645,8 +534,16 @@
         </div>
     </section>
 
-    <!-- 放大且加劇 reels 動態幅度 -->
-    <style> @keyframes slowPan { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.25) translate(-20px, -30px); } } </style>
+    <style> 
+        @keyframes floatCard { 
+            0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); } 
+            50% { transform: translateY(-10px) rotateX(2deg) rotateY(-1deg); } 
+        } 
+        @keyframes slowPan { 
+            0% { transform: scale(1) translate(0, 0); } 
+            100% { transform: scale(1.25) translate(-20px, -30px); } 
+        }
+    </style>
 
     <!-- 服務項目區塊 -->
     <section id="services" class="py-16 md:py-24 bg-brand-neutral relative">
@@ -658,6 +555,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="services-grid">
+                <!-- 服務卡片1 -->
                 <div class="gs-service-card cursor-interact">
                     <div class="h-full bg-white/40 backdrop-blur-xl rounded-[32px] p-8 md:p-10 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(44,48,46,0.12)] hover:-translate-y-2 hover:bg-white/60 transition-all duration-500 flex flex-col gap-6 group">
                         <div class="w-14 h-14 rounded-[20px] bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl shadow-sm"><i class="fa-solid fa-hotel"></i></div>
@@ -665,6 +563,7 @@
                         <p class="text-sm text-brand-muted font-light leading-relaxed">針對建築外觀、室內公私領域進行全天候光影捕捉。搭配高動態範圍調整及頂級透視控制，完美還原設計師的巧思，將空間靈魂轉化為高附加價值的平面與短影音。</p>
                     </div>
                 </div>
+                <!-- 服務卡片2 -->
                 <div class="gs-service-card cursor-interact">
                     <div class="h-full bg-white/40 backdrop-blur-xl rounded-[32px] p-8 md:p-10 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(44,48,46,0.12)] hover:-translate-y-2 hover:bg-white/60 transition-all duration-500 flex flex-col gap-6 group">
                         <div class="w-14 h-14 rounded-[20px] bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl shadow-sm"><i class="fa-solid fa-shop"></i></div>
@@ -672,6 +571,7 @@
                         <p class="text-sm text-brand-muted font-light leading-relaxed">實體展區、概念店與旅宿的氛圍演繹。我們不僅僅捕捉美麗的畫面，更深入思考品牌與受眾的共鳴，讓觀者能在螢幕前感知實體空間的細緻與魅力。</p>
                     </div>
                 </div>
+                <!-- 服務卡片3 -->
                 <div class="gs-service-card cursor-interact">
                     <div class="h-full bg-white/40 backdrop-blur-xl rounded-[32px] p-8 md:p-10 border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(44,48,46,0.12)] hover:-translate-y-2 hover:bg-white/60 transition-all duration-500 flex flex-col gap-6 group">
                         <div class="w-14 h-14 rounded-[20px] bg-brand-slate text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate transition-colors duration-500 text-xl shadow-sm"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
@@ -738,7 +638,7 @@
             
             <div class="mt-16 flex flex-col items-center gap-4 text-center gs-reveal">
                 <p class="text-xs uppercase tracking-[0.35em] text-brand-muted font-medium">Estimate & Consultation</p>
-                <a href="https://line.me/R/ti/p/@your_line_id" target="_blank" class="cursor-interact inline-flex items-center gap-3 px-8 py-4 bg-brand-slate text-brand-ice text-xs tracking-[0.25em] rounded-full hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 shadow-lg shadow-brand-slate/5 hover:shadow-xl hover:shadow-brand-slate/10 group">
+                <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact inline-flex items-center gap-3 px-8 py-4 bg-brand-slate text-brand-ice text-xs tracking-[0.25em] rounded-full hover:bg-brand-neon hover:text-brand-slate transition-all duration-500 shadow-lg shadow-brand-slate/5 hover:shadow-xl hover:shadow-brand-slate/10 group">
                     <span>獲取專案預估與線上諮詢</span>
                     <span class="w-1.5 h-1.5 rounded-full bg-brand-neon group-hover:bg-brand-slate transition-colors duration-500"></span>
                     <i class="fa-brands fa-line text-[15px] text-[#06C755] group-hover:text-brand-slate transition-colors duration-500"></i>
@@ -752,15 +652,15 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                 <div class="lg:col-span-6 flex flex-col items-center justify-center gap-4">
-                    <span class="text-xs tracking-[0.4em] text-brand-muted mb-2"><i class="fa-solid fa-rotate mr-2 text-brand-neon"></i> 滑鼠懸停翻轉名片</span>
+                    <span class="text-xs tracking-[0.4em] text-brand-muted mb-2"><i class="fa-solid fa-rotate mr-2 text-brand-neon"></i> 滑鼠懸停點擊翻轉名片</span>
                     
                     <div class="card-container w-full max-w-[380px] aspect-[1.62/1] cursor-interact">
                         <div id="interactive-card" class="card-3d w-full h-full relative shadow-2xl rounded-[18px] border border-brand-slate/10">
                             <!-- 正面 -->
                             <div class="card-front absolute inset-0 w-full h-full bg-white rounded-[18px] p-6 flex flex-col justify-between overflow-hidden shadow-inner border border-brand-slate/5">
                                 <div class="flex items-center justify-between">
-                                    <svg class="w-20 h-8" viewBox="0 0 100 30" fill="none">
-                                        <path d="M 5,20 C 15,8 35,0 50,15 C 65,0 85,8 95,20" stroke="#1aff30" stroke-width="2.5" stroke-linecap="round"/>
+                                    <svg class="w-16 h-6" viewBox="0 0 100 30" fill="none">
+                                        <path d="M 5,20 C 15,8 35,0 50,15 C 65,0 85,8 95,20" stroke="#1aff30" stroke-width="2" stroke-linecap="round"/>
                                     </svg>
                                     <span class="text-[11px] font-light tracking-[0.2em] text-brand-slate">候鳥</span>
                                 </div>
@@ -771,11 +671,9 @@
                                     STUDIO HONEW | Photography
                                 </div>
                             </div>
-                            <!-- 👑 背面：優化左下方排版間距 -->
+                            <!-- 背面 -->
                             <div class="card-back absolute inset-0 w-full h-full bg-white rounded-[18px] p-6 flex justify-between overflow-hidden border border-brand-slate/5 shadow-lg">
                                 <div class="flex flex-col h-full w-2/3">
-                                    
-                                    <!-- 標題 -->
                                     <div>
                                         <div class="flex items-center gap-1.5">
                                             <span class="text-[12px] font-medium tracking-[0.15em] text-brand-slate">候鳥影像工作室</span>
@@ -783,42 +681,38 @@
                                         </div>
                                         <span class="text-[7px] font-light tracking-widest text-brand-muted uppercase block mt-0.5">STUDIO HONEW | Photography</span>
                                     </div>
-                                    
-                                    <!-- 服務分類 (推高至上半部) -->
-                                    <div class="text-[7.5px] text-brand-muted mt-3 leading-relaxed tracking-widest">
+                                    <!-- 「服務項目」說明文字字級縮小至 80%（10px -> 8px） -->
+                                    <div class="text-[8px] text-brand-muted mt-7 leading-relaxed tracking-widest">
                                         <p>商業 / 空間攝影</p>
                                         <p>活動 / 婚禮紀錄</p>
                                         <p>品牌 / 企業形象</p>
                                     </div>
-                                    
-                                    <!-- 空白彈性推擠區塊，製造明顯的上下區隔 -->
                                     <div class="flex-grow"></div>
                                     
-                                    <!-- 緊湊的聯絡資訊群 (靠攏在左下角) -->
-                                    <div class="flex flex-col gap-1.5 text-[8.5px] text-brand-slate pb-1">
-                                        <a href="tel:+886976961929" onclick="handlePhoneContact(event)" class="cursor-interact flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
-                                            <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-solid fa-phone"></i></span>
-                                            <span class="font-mono tracking-wider">+886 976 961 929</span>
+                                    <!-- 按鈕及內部字整體等比縮小至 80%，左下角按鈕放大至 110% 重新計算 (w-[106px] h-[20px], 字級 text-[9px], 圖示 w-[15px] h-[15px]) -->
+                                    <div class="flex flex-col gap-1.5 text-[9px] text-brand-slate pb-1">
+                                        <a href="tel:+886976961929" onclick="handlePhoneContact(event); event.stopPropagation();" class="cursor-interact flex items-center gap-1.5 group/card-item transition-all duration-300 bg-brand-slate/5 hover:bg-brand-slate text-brand-slate hover:text-brand-neon rounded-full p-0.5 pr-2 w-[106px] h-[20px]">
+                                            <span class="w-[15px] h-[15px] rounded-full bg-white flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-solid fa-phone"></i></span>
+                                            <span class="font-mono tracking-tight text-[9px] font-medium">0976 961 929</span>
                                         </a>
-                                        <a href="https://instagram.com/chian_1122" target="_blank" class="cursor-interact flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
-                                            <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-brands fa-instagram"></i></span>
-                                            <span class="font-mono tracking-wider">@chian_1122</span>
+                                        <a href="https://instagram.com/chian_1122" target="_blank" onclick="event.stopPropagation();" class="cursor-interact flex items-center gap-1.5 group/card-item transition-all duration-300 bg-brand-slate/5 hover:bg-brand-slate text-brand-slate hover:text-brand-neon rounded-full p-0.5 pr-2 w-[106px] h-[20px]">
+                                            <span class="w-[15px] h-[15px] rounded-full bg-white flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-brands fa-instagram"></i></span>
+                                            <span class="font-mono tracking-tight text-[9px] font-medium">@ren.chian_1122</span>
                                         </a>
-                                        <a href="https://instagram.com/honew.studio" target="_blank" class="cursor-interact flex items-center gap-2 group/card-item hover:text-brand-neon transition-colors duration-300">
-                                            <span class="w-4 h-4 rounded-full bg-brand-slate/5 flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:bg-brand-slate group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-solid fa-camera"></i></span>
-                                            <span class="font-mono tracking-wider">@honew.studio</span>
+                                        <a href="https://instagram.com/honew.studio" target="_blank" onclick="event.stopPropagation();" class="cursor-interact flex items-center gap-1.5 group/card-item transition-all duration-300 bg-brand-slate/5 hover:bg-brand-slate text-brand-slate hover:text-brand-neon rounded-full p-0.5 pr-2 w-[106px] h-[20px]">
+                                            <span class="w-[15px] h-[15px] rounded-full bg-white flex items-center justify-center text-[7.5px] text-brand-slate/60 group-hover/card-item:text-brand-neon transition-colors duration-300"><i class="fa-solid fa-camera"></i></span>
+                                            <span class="font-mono tracking-tight text-[9px] font-medium">@honew.studio</span>
                                         </a>
                                     </div>
-                                    
                                 </div>
                                 <div class="flex flex-col justify-between items-end h-full w-1/3">
                                     <div class="text-right">
                                         <span class="text-sm font-semibold tracking-widest text-brand-slate block">張 仁 謙</span>
-                                        <span class="text-[8px] font-light text-brand-muted tracking-wider block mt-0.5">Ren Zhang</span>
+                                        <span class="text-[10.5px] tracking-[0.06em] text-brand-muted block mt-0.5" style="font-weight: 200;">Ren Zhang</span>
                                     </div>
-                                    <div class="w-14 h-14 bg-brand-neutral p-1 rounded-md border border-brand-slate/5 shadow-inner">
-                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://instagram.com/chian_1122" alt="IG QR Code" class="w-full h-full object-contain">
-                                    </div>
+                                    <a href="https://line.me/R/ti/p/@your_line_id" target="_blank" onclick="event.stopPropagation();" class="cursor-interact block w-14 h-14 bg-brand-neutral p-1 rounded-md border border-brand-slate/5 shadow-inner hover:border-brand-neon hover:shadow-lg hover:shadow-brand-neon/10 transition-all duration-300">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://line.me/R/ti/p/%40your_line_id" alt="LINE QR Code" class="w-full h-full object-contain">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -861,9 +755,9 @@
     <footer class="bg-brand-ice text-brand-slate py-16 border-t border-brand-slate/5">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-8">
             <div class="flex items-center justify-center gap-5">
-                <a href="https://instagram.com/chian_1122" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="https://instagram.com/ren.chian_1122" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group"><i class="fa-brands fa-instagram text-base"></i></a>
                 <a href="https://instagram.com/honew.studio" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group"><i class="fa-solid fa-camera text-sm"></i></a>
-                <a href="https://line.me/R/ti/p/@your_line_id" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-[#06C755] hover:border-[#06C755] hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group"><i class="fa-brands fa-line text-base"></i></a>
+                <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-[#06C755] hover:border-[#06C755] hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group"><i class="fa-brands fa-line text-base"></i></a>
                 <a href="tel:+886976961929" onclick="handlePhoneContact(event)" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon hover:border-brand-neon hover:shadow-lg hover:shadow-brand-slate/5 transition-all duration-300 group"><i class="fa-solid fa-phone text-sm"></i></a>
             </div>
             <div class="text-center text-xs tracking-widest text-brand-muted flex flex-col gap-2">
@@ -874,17 +768,132 @@
     </footer>
 
     <!-- Toast -->
-    <div id="toast" class="fixed top-8 left-1/2 transform -translate-x-1/2 z-[130] bg-brand-slate/90 backdrop-blur-md text-brand-ice text-xs tracking-[0.2em] px-6 py-3.5 rounded-full border border-white/10 shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-500 flex items-center gap-3">
+    <div id="toast" class="fixed top-8 left-1/2 transform -translate-x-1/2 z-[9999] bg-brand-slate/90 backdrop-blur-md text-brand-ice text-xs tracking-[0.2em] px-6 py-3.5 rounded-full border border-white/10 shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-500 flex items-center gap-3">
         <span class="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse"></span>
-        <span id="toast-msg">已複製聯絡電話 0976961929</span>
+        <span id="toast-msg">訊息</span>
     </div>
 
+    <!-- JavaScript 邏輯區 -->
     <script>
-        // --- 0. 最穩定！原生 JavaScript 毛玻璃自訂游標邏輯 (完全防當防破圖) ---
-        document.addEventListener("DOMContentLoaded", () => {
+        // 👑 【核心 SOP 系統】所有的作品集資料皆於此陣列統一管理，再也不需動 HTML 排版！
+        const portfolioData = [
+            // --- 室內空間 (6個) ---
+            {
+                category: 'interior', type: 'image',
+                title: '一穰設計 | 柞居', subtitle: '室內空間 / 台北 電梯大樓', year: '2025',
+                thumb: 'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287264/portfolio-01.jpg',
+                media: [
+                  'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1782817298/portfolio-01',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1782817298/世貿新城-20_vfkqq3.jpg',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1782817298/世貿新城-9_cdozcp',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1782817298/世貿新城-5_qjtijy',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1782817298/世貿新城-2_ntxop7'
+                ],
+                director: 'Ren Zhang', light: '自然光 / 漫射調', vibe: '極簡主義 / 建築語彙'
+            },
+            {
+                category: 'interior', type: 'image',
+                title: '一穰設計 | 寬和', subtitle: '室內空間 / 台中北屯 集合住宅', year: '2025',
+                thumb: 'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781347878/hero-01',
+                media: [
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/hero-01',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/帝璟寬和-9_ws2yan',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/帝璟寬和-12_rdo3xn',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/帝璟寬和-17_rgdxni',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/帝璟寬和-2_dffze0',
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/帝璟寬和-4_cppzkq'
+                ],
+                director: 'Ren Zhang', light: '人造光源 / 暖色調', vibe: '靜謐優雅 / 氛圍空間'
+            },
+            {
+                category: 'interior', type: 'image',
+                title: '耘品設計 | 楊梅別墅', subtitle: '室內空間 / 桃園楊梅 透天別墅', year: '2026',
+                thumb: 'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287255/portfolio-03.jpg',
+                media: [
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287255/portfolio-03.jpg'
+                    
+                ],
+                director: 'Ren Zhang', light: '混合光源 / 立體感', vibe: '沈穩溫潤 / 空間重量'
+            },
+            {
+                category: 'interior', type: 'image',
+                title: 'MORI 森研築 | 豐景', subtitle: '室內空間 / 桃園山鼻 集合住宅', year: '2025',
+                thumb: 'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287251/portfolio-04.jpg',
+                media: [
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287251/portfolio-04.jpg'],
+                director: 'Ren Zhang', light: '聚光燈 / 材質紋理', vibe: '有機脈絡 / 人文感性'
+            },
+            {
+                category: 'interior', type: 'image',
+                title: '一穰設計 | 半伴寓所', subtitle: '室內空間 / 台南新化 集合住宅', year: '2024',
+                thumb: 'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287251/portfolio-05.jpg',
+                media: [
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287251/portfolio-05.jpg'],
+                director: 'Ren Zhang', light: '通透日光 / 自然色溫', vibe: '愜意生活 / 極簡尺度'
+            },
+            {
+                category: 'interior', type: 'image',
+                title: 'A Square Ltd. | 現代別墅', subtitle: '室內空間 / 台中北屯 別墅', year: '2025',
+                thumb: 'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_800/v1781287253/portfolio-06.jpg',
+                media: [
+                    'https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287253/portfolio-06.jpg'
+                ],
+                director: 'Ren Zhang', light: '明亮開闊 / 環境光源', vibe: '大氣通透 / 場域界定'
+            },
+           
+        ];
+
+        // 👑 自動化渲染作品集 HTML 邏輯
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+            
+            portfolioData.forEach((item, index) => {
+                const isVideo = item.type === 'video';
+                const aspectClass = item.category === 'reels' ? 'aspect-[3/4]' : 'aspect-[3/2]';
+                
+                const countLabel = isVideo ? 
+                    `<span class="text-brand-ice text-xs font-mono bg-black/40 px-2 py-1 rounded backdrop-blur-sm shadow-sm"><i class="fa-solid fa-play"></i></span>` : 
+                    `<span class="text-brand-ice text-xs font-mono bg-black/40 px-2 py-1 rounded backdrop-blur-sm shadow-sm"><i class="fa-regular fa-images"></i> ${item.media.length}</span>`;
+                
+                const overlayAction = isVideo ? '觀看影片 <i class="fa-solid fa-play ml-1"></i>' : '查看高畫質細節 <i class="fa-solid fa-expand ml-1"></i>';
+                
+                const centerPlay = isVideo ? `
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                         <div class="w-14 h-14 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white border border-white/20 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 scale-90 group-hover:scale-100 shadow-xl">
+                             <i class="fa-solid fa-play ml-1"></i>
+                         </div>
+                    </div>` : '';
+
+                const html = `
+                    <div class="portfolio-item group cursor-interact hidden" data-category="${item.category}" onclick="openLightboxFromData(${index})">
+                        <div class="relative ${aspectClass} rounded-xl shadow-lg bg-brand-neutral border border-white/40 mb-4">
+                            <div class="absolute inset-0 rounded-xl overflow-hidden mask-fix">
+                                <img data-src="${item.thumb}" alt="${item.title}" class="lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.8s]">
+                                ${centerPlay}
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-slate/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-between p-6 z-20">
+                                    <span class="text-brand-ice text-xs tracking-widest uppercase shadow-sm">${overlayAction}</span>
+                                    ${countLabel}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start px-1">
+                            <div>
+                                <h4 class="text-base font-light text-brand-slate tracking-wide group-hover:text-brand-neon transition-colors duration-300">${item.title}</h4>
+                                <p class="text-xs text-brand-muted tracking-widest mt-1">${item.subtitle}</p>
+                            </div>
+                            <span class="text-[10px] border border-brand-slate/10 px-2 py-0.5 rounded text-brand-muted font-mono">${item.year}</span>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        // 👑 自訂游標初始化
+        function initCursor() {
             const cursor = document.getElementById('custom-cursor');
             if(cursor && window.innerWidth > 768) {
-                // 初次顯示
                 cursor.style.top = '50%';
                 cursor.style.left = '50%';
                 
@@ -893,13 +902,11 @@
                 let cursorX = mouseX;
                 let cursorY = mouseY;
                 
-                // 只記錄滑鼠位置，不動 DOM 效能最好
                 window.addEventListener("mousemove", e => {
                     mouseX = e.clientX;
                     mouseY = e.clientY;
                 });
 
-                // RequestAnimationFrame 達成極致絲滑的慣性跟隨
                 function renderCursor() {
                     cursorX += (mouseX - cursorX) * 0.2;
                     cursorY += (mouseY - cursorY) * 0.2;
@@ -909,25 +916,75 @@
                 }
                 requestAnimationFrame(renderCursor);
 
-                // 點擊動畫
                 window.addEventListener("mousedown", () => cursor.classList.add('cursor-click'));
                 window.addEventListener("mouseup", () => cursor.classList.remove('cursor-click'));
 
-                // 綁定可互動元素的懸停動畫 (燈箱內的元件也能正確觸發)
                 document.body.addEventListener("mouseover", (e) => {
-                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea')) {
                         cursor.classList.add('cursor-hover');
                     }
                 });
                 document.body.addEventListener("mouseout", (e) => {
-                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea')) {
                         cursor.classList.remove('cursor-hover');
                     }
                 });
             }
+        }
+
+        // 👑 作品集分類篩選控制 & 預設載入修正
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const noMsg = document.getElementById('no-portfolio-msg');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const portfolioItems = document.querySelectorAll('.portfolio-item');
+                    
+                    document.querySelector('.active-filter')?.classList.remove('active-filter', 'border-brand-neon');
+                    document.querySelector('.active-filter')?.classList.add('border-brand-slate/15');
+                    
+                    btn.classList.add('active-filter', 'border-brand-neon');
+                    btn.classList.remove('border-brand-slate/15');
+
+                    const filterValue = btn.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    portfolioItems.forEach(item => {
+                        if(filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            gsap.fromTo(item, {opacity: 0, scale: 0.95, y: 15}, {opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out"});
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    if (noMsg) noMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                    ScrollTrigger.refresh();
+                });
+            });
+        }
+
+        // 👑 整合式 DOMContentLoaded 事件：完全根治異步點選的 race condition 問題
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 先行生成所有作品集 DOM
+            renderPortfolio();
+            
+            // 2. 綁定篩選器點擊事件監聽器
+            setupFilters();
+            
+            // 3. 事件綁定完全完成後，再以程式自動觸發點選「室內空間（interior）」
+            const defaultFilterBtn = document.querySelector('.filter-btn[data-filter="interior"]');
+            if (defaultFilterBtn) {
+                defaultFilterBtn.click();
+            }
+
+            // 4. 初始化游標系統
+            initCursor();
         });
 
-        // --- 1. 預載與轉場 ---
+        // --- 預載與轉場 ---
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             const preloaderBar = document.getElementById('preloader-bar');
@@ -947,7 +1004,7 @@
             }, 15);
         });
 
-        // --- 2. 手機版選單 ---
+        // --- 手機版選單 ---
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -970,8 +1027,8 @@
             });
         }
 
-        // --- 3. 懶加載 ---
-        document.addEventListener("DOMContentLoaded", () => {
+        // --- 懶加載 ---
+        function initLazyLoad() {
             const lazyImages = document.querySelectorAll("img.lazy-img");
             if ("IntersectionObserver" in window) {
                 let lazyObserver = new IntersectionObserver((entries, observer) => {
@@ -985,13 +1042,38 @@
                 }, { rootMargin: "0px 0px 800px 0px" });
                 lazyImages.forEach(img => lazyObserver.observe(img));
             }
-        });
+        }
 
-        // --- 4. 3D 名片滑鼠追蹤 ---
+        // --- 3D 名片滑鼠追蹤與防穿透優化 ---
         const cardContainer = document.querySelector('.card-container');
         const card3D = document.getElementById('interactive-card');
         let cardFlipped = false;
+        
+        function updateCardPointerEvents() {
+            if(!card3D) return;
+            const front = card3D.querySelector('.card-front');
+            const back = card3D.querySelector('.card-back');
+            
+            if (cardFlipped) {
+                setTimeout(() => {
+                    if (cardFlipped) { front.style.visibility = 'hidden'; }
+                }, 150);
+                back.style.visibility = 'visible';
+                back.style.pointerEvents = 'auto';
+                front.style.pointerEvents = 'none';
+            } else {
+                setTimeout(() => {
+                    if (!cardFlipped) { back.style.visibility = 'hidden'; }
+                }, 150);
+                front.style.visibility = 'visible';
+                front.style.pointerEvents = 'auto';
+                back.style.pointerEvents = 'none';
+            }
+        }
+
         if(cardContainer && card3D) {
+            updateCardPointerEvents();
+
             cardContainer.addEventListener('mousemove', (e) => {
                 if(!card3D.classList.contains('interactive')) return; 
                 const rect = cardContainer.getBoundingClientRect();
@@ -1003,13 +1085,9 @@
                 if(!card3D.classList.contains('interactive')) return;
                 card3D.style.transform = cardFlipped ? `rotateY(180deg)` : `rotateX(0deg) rotateY(0deg)`;
             });
-            cardContainer.addEventListener('click', () => {
-                if(!card3D.classList.contains('interactive')) return;
-                cardFlipped = !cardFlipped; card3D.style.transform = cardFlipped ? `rotateY(180deg)` : `rotateY(0deg)`;
-            });
         }
 
-        // --- 5. 首頁大圖輪播與點擊切換邏輯 ---
+        // --- 首頁大圖輪播 ---
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot');
         let currentSlide = 0;
@@ -1036,79 +1114,213 @@
         function goToSlide(index) {
             clearInterval(slideInterval);
             switchSlide(index);
-            startSlideShow(); // 重置計時器
+            startSlideShow(); 
         }
-        
         if(slides.length > 0) startSlideShow();
 
-        // --- 6. 作品集分類動態篩選邏輯 ---
-        document.addEventListener("DOMContentLoaded", () => {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            const noMsg = document.getElementById('no-portfolio-msg');
+        // 👑 網址轉內嵌 YouTube/Vimeo 播放連結解析器
+        function getEmbedUrl(url) {
+            if (typeof url !== 'string') return null;
+            let ytRegExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            let ytMatch = url.match(ytRegExp);
+            if (ytMatch && ytMatch[2].length === 11) {
+                return `https://www.youtube.com/embed/${ytMatch[2]}?autoplay=1&rel=0&modestbranding=1`;
+            }
+            let vimeoRegExp = /vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
+            let vimeoMatch = url.match(vimeoRegExp);
+            if (vimeoMatch) {
+                return `https://player.vimeo.com/video/${vimeoMatch[3]}?autoplay=1&byline=0&portrait=0&title=0`;
+            }
+            return null;
+        }
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelector('.active-filter')?.classList.remove('active-filter', 'border-brand-neon');
-                    document.querySelector('.active-filter')?.classList.add('border-brand-slate/15');
-                    
-                    btn.classList.add('active-filter', 'border-brand-neon');
-                    btn.classList.remove('border-brand-slate/15');
+        // --- 👑 雙格式極速秒開燈箱與播放器系統 (動態自適應參數欄位) ---
+        let currentLightboxImages = [];
+        let currentLightboxIndex = 0;
+        let isLightboxVideo = false;
 
-                    const filterValue = btn.getAttribute('data-filter');
-                    let visibleCount = 0;
-
-                    portfolioItems.forEach(item => {
-                        if(filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                            gsap.fromTo(item, {opacity: 0, scale: 0.95, y: 15}, {opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power2.out"});
-                            visibleCount++;
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-
-                    if (noMsg) noMsg.style.display = visibleCount === 0 ? 'block' : 'none';
-                    ScrollTrigger.refresh();
-                });
-            });
-        });
-
-        // --- 7. 無縫加載燈箱 ---
-        function openLightbox(item) {
-            const img = item.querySelector('img');
+        function openLightboxFromData(index) {
+            const data = portfolioData[index];
+            const isVideo = data.type === 'video';
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxThumb = document.getElementById('lightbox-thumb');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            const lightboxIframe = document.getElementById('lightbox-iframe');
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+            const counter = document.getElementById('lightbox-counter');
+            const spinner = document.getElementById('lightbox-spinner');
             
-            lightboxThumb.src = img.src; lightboxImg.style.opacity = 0; 
-            const highResSrc = img.src.replace('w_800', 'w_1200');
-            const tempImg = new Image();
-            tempImg.onload = () => { lightboxImg.src = highResSrc; lightboxImg.style.opacity = 1; };
-            tempImg.src = highResSrc;
+            // 重置媒體元素
+            lightboxImg.classList.add('hidden');
+            lightboxThumb.classList.add('hidden');
+            lightboxVideo.classList.add('hidden');
+            lightboxIframe.classList.add('hidden');
+            spinner.classList.add('hidden');
+            
+            lightboxImg.style.opacity = 0;
+            lightboxThumb.style.opacity = 0;
+            lightboxVideo.style.opacity = 0;
+            lightboxIframe.style.opacity = 0;
+            
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+            lightboxVideo.innerHTML = ''; // 清空先前的 sources
+            lightboxIframe.src = '';
 
-            document.getElementById('lightbox-title').textContent = img.alt;
-            document.getElementById('lightbox-category').textContent = item.querySelector('p').textContent;
-            document.getElementById('lightbox-director').textContent = img.dataset.director;
-            document.getElementById('lightbox-light').textContent = img.dataset.light;
-            document.getElementById('lightbox-vibe').textContent = img.dataset.vibe;
+            if (isVideo) {
+                isLightboxVideo = true;
+                currentLightboxImages = [];
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+                counter.classList.add('hidden');
+
+                // 解析 YouTube / Vimeo 網址
+                const embedUrl = getEmbedUrl(data.media);
+                
+                if (embedUrl) {
+                    // 👑 情況 A：使用外嵌平台 iframe 播放 (最適合大容量長影片)
+                    lightboxIframe.src = embedUrl;
+                    lightboxIframe.classList.remove('hidden');
+                    setTimeout(() => { lightboxIframe.style.opacity = 1; }, 50);
+                } else {
+                    // 👑 情況 B：使用原生播放器
+                    // 如果 data.media 是個物件 (包含 webm 與 mp4) 實現「雙格式優化備援」
+                    if (typeof data.media === 'object') {
+                        if (data.media.webm) {
+                            const webmSource = document.createElement('source');
+                            webmSource.src = data.media.webm;
+                            webmSource.type = 'video/webm';
+                            lightboxVideo.appendChild(webmSource);
+                        }
+                        if (data.media.mp4) {
+                            const mp4Source = document.createElement('source');
+                            mp4Source.src = data.media.mp4;
+                            mp4Source.type = 'video/mp4';
+                            lightboxVideo.appendChild(mp4Source);
+                        }
+                    } else {
+                        // 傳統單一字串 (mp4 或是 webm 格式)
+                        const source = document.createElement('source');
+                        source.src = data.media;
+                        source.type = data.media.endsWith('.webm') ? 'video/webm' : 'video/mp4';
+                        lightboxVideo.appendChild(source);
+                    }
+                    
+                    lightboxVideo.load(); // 載入新 Source
+                    lightboxVideo.classList.remove('hidden');
+                    setTimeout(() => { 
+                        lightboxVideo.style.opacity = 1; 
+                        lightboxVideo.play().catch(e => console.log('Autoplay prevented')); 
+                    }, 50);
+                }
+            } else {
+                // 情況 C：靜態圖片作品集
+                isLightboxVideo = false;
+                lightboxImg.classList.remove('hidden');
+                lightboxThumb.classList.remove('hidden');
+                
+                currentLightboxImages = data.media;
+                currentLightboxIndex = 0;
+                
+                if (currentLightboxImages.length > 1) {
+                    prevBtn.classList.remove('hidden');
+                    nextBtn.classList.remove('hidden');
+                    counter.classList.remove('hidden');
+                    updateLightboxCounter();
+                } else {
+                    prevBtn.classList.add('hidden');
+                    nextBtn.classList.add('hidden');
+                    counter.classList.add('hidden');
+                }
+                
+                lightboxThumb.src = data.thumb; 
+                lightboxThumb.style.opacity = 0.5;
+                
+                loadLightboxImage(currentLightboxImages[currentLightboxIndex]);
+            }
+
+            // 寫入文字與參數
+            document.getElementById('lightbox-title').textContent = data.title;
+            document.getElementById('lightbox-category').textContent = data.subtitle;
+            document.getElementById('lightbox-director').textContent = data.director;
+            document.getElementById('lightbox-light').textContent = data.light;
+            document.getElementById('lightbox-vibe').textContent = data.vibe;
 
             document.getElementById('lightbox').classList.remove('hidden'); 
             document.getElementById('lightbox').classList.add('flex');
             document.body.style.overflow = 'hidden';
-            // 💡 不再隱藏自訂游標！讓毛玻璃在燈箱內依然能完美運作
         }
 
-        function closeLightbox() {
+        function loadLightboxImage(src) {
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxThumb = document.getElementById('lightbox-thumb');
+            const spinner = document.getElementById('lightbox-spinner');
+            
+            spinner.classList.remove('hidden');
+            lightboxImg.style.opacity = 0;
+            
+            const tempImg = new Image();
+            tempImg.onload = () => { 
+                lightboxImg.src = src; 
+                lightboxImg.style.opacity = 1; 
+                spinner.classList.add('hidden');
+                
+                setTimeout(() => { lightboxThumb.style.opacity = 0; }, 200); 
+                
+                if (currentLightboxImages.length > 1) {
+                    const nextIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+                    const preloadImg = new Image();
+                    preloadImg.src = currentLightboxImages[nextIndex];
+                }
+            };
+            tempImg.src = src;
+        }
+
+        function nextLightboxImage(e) {
+            if(e) e.stopPropagation();
+            if(currentLightboxImages.length <= 1 || isLightboxVideo) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+            loadLightboxImage(currentLightboxImages[currentLightboxIndex]);
+            updateLightboxCounter();
+        }
+
+        function prevLightboxImage(e) {
+            if(e) e.stopPropagation();
+            if(currentLightboxImages.length <= 1 || isLightboxVideo) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+            loadLightboxImage(currentLightboxImages[currentLightboxIndex]);
+            updateLightboxCounter();
+        }
+
+        function updateLightboxCounter() {
+            document.getElementById('lightbox-counter').textContent = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+        }
+
+        function closeLightbox(e) {
+            if(e && e.target.closest('#lightbox-prev') || e && e.target.closest('#lightbox-next') || e && e.target.closest('#lightbox-img')) return;
+            
             document.getElementById('lightbox').classList.add('hidden'); 
             document.getElementById('lightbox').classList.remove('flex');
             document.body.style.overflow = '';
+            
+            // 暫停原生影片並重置
+            const lightboxVideo = document.getElementById('lightbox-video');
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+            lightboxVideo.innerHTML = '';
+
+            // 暫停並重置外嵌 iframe
+            const lightboxIframe = document.getElementById('lightbox-iframe');
+            lightboxIframe.src = '';
         }
 
-        // --- 8. 雜項共用工具 ---
+        // --- 雜項共用工具 ---
         function handlePhoneContact(event) {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
             if (!isMobile) {
                 event.preventDefault();
+                event.stopPropagation();
                 const tempInput = document.createElement("input"); tempInput.value = "0976961929";
                 document.body.appendChild(tempInput); tempInput.select(); tempInput.setSelectionRange(0, 99999); 
                 try { document.execCommand("copy"); showToast("已複製聯絡電話 0976961929"); } catch (err) {}
@@ -1116,12 +1328,19 @@
             }
         }
 
+        // 👑 原本的控制邏輯：按鈕操控背景動畫暫停與播放
         function togglePlaySim(btn){
-            const icon = btn.querySelector('i'); const reelsBg = document.getElementById('reels-bg');
+            const icon = btn.querySelector('i');
+            const reelsBg = document.getElementById('reels-bg');
+
             if(icon.classList.contains('fa-play')){
-                icon.className='fa-solid fa-pause text-xl'; if(reelsBg) reelsBg.style.animationPlayState = 'running'; showToast('開始動態導覽');
+                icon.className='fa-solid fa-pause text-xl';
+                if(reelsBg) reelsBg.style.animationPlayState = 'running';
+                showToast('開始動態導覽');
             }else{
-                icon.className='fa-solid fa-play text-xl ml-1'; if(reelsBg) reelsBg.style.animationPlayState = 'paused'; showToast('已暫停播放');
+                icon.className='fa-solid fa-play text-xl ml-1';
+                if(reelsBg) reelsBg.style.animationPlayState = 'paused';
+                showToast('已暫停播放');
             }
         }
         
@@ -1133,9 +1352,12 @@
             setTimeout(() => { toast.classList.remove('opacity-100', 'translate-y-0'); toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none'); }, 3000);
         }
 
-        // --- 9. GSAP 動畫 ---
+        // --- GSAP 動畫 ---
         function initGSAP() {
             gsap.registerPlugin(ScrollTrigger);
+            
+            initLazyLoad();
+
             gsap.fromTo('.gs-reveal', { y: 40, opacity: 0 }, { scrollTrigger: { trigger: '.gs-reveal', start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.2, ease: "power3.out" });
             gsap.fromTo('.gs-img-reveal', { y: 50, opacity: 0 }, { scrollTrigger: { trigger: "#philosophy-images", start: "top 80%", once: true }, y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out" });
             gsap.fromTo('.portfolio-item', { y: 60, opacity: 0 }, { scrollTrigger: { trigger: "#portfolio-grid", start: "top 85%", once: true }, y: 0, opacity: 1, duration: 1.0, stagger: 0.15, ease: "power2.out" });
@@ -1145,10 +1367,21 @@
                 gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", once: true }, textContent: el.dataset.target, duration: 2.5, ease: "power2.out", snap: { textContent: 1 }, onUpdate: function() { el.innerText = Math.ceil(this.targets()[0].textContent); } });
             });
 
-            gsap.fromTo(card3D, { rotateY: 180 }, { rotateY: 0, duration: 1.8, ease: "back.out(1.2)", scrollTrigger: { trigger: ".card-container", start: "top 75%", once: true }, onComplete: () => { card3D.classList.add('interactive'); } });
+            gsap.fromTo(card3D, { rotateY: 180 }, { rotateY: 0, duration: 1.8, ease: "back.out(1.2)", scrollTrigger: { trigger: ".card-container", start: "top 75%", once: true }, onComplete: () => { card3D.classList.add('interactive'); updateCardPointerEvents(); } });
+            
+            cardContainer.addEventListener('click', (e) => {
+                if(!card3D.classList.contains('interactive')) return;
+                if (e.target.closest('a')) {
+                    e.stopPropagation();
+                    return;
+                }
+                cardFlipped = !cardFlipped; 
+                card3D.style.transform = cardFlipped ? `rotateY(180deg)` : `rotateY(0deg)`;
+                updateCardPointerEvents();
+            });
         }
 
-        // --- 10. Web3Forms ---
+        // --- Web3Forms ---
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
