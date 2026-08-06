@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNI 1對1 五表 | 張仁謙</title>
+    
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            ice: '#ebf4f6',      
+                            slate: '#2c302e',    
+                            muted: '#717b76',    
+                            border: '#d1dadd',   
+                            neon: '#fff200',
+                            bni: '#cf202e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Satoshi"', '"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            font-family: "Satoshi", "Noto Sans TC", sans-serif; 
+            background-color: #ebf4f6; 
+            color: #2c302e; 
+            overflow-x: hidden;
+        }
+
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: linear-gradient(120deg, #ebf4f6 0%, #d8e8eb 50%, #ebf4f6 100%);
+            background-size: 200% 200%;
+            animation: liquidFlow 15s ease infinite;
+        }
+
+        .grid-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(#2c302e 0.5px, transparent 0.5px), radial-gradient(#2c302e 0.5px, #ebf4f6 0.5px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            opacity: 0.03;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        @keyframes liquidFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 35px -5px rgba(44, 48, 46, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(44, 48, 46, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 4px;
+            background-color: #fff200;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .clickable-img {
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .clickable-img:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+        }
+    </style>
+</head>
+<body class="selection:bg-brand-neon selection:text-brand-slate relative antialiased pb-20">
+
+    <div class="liquid-bg"></div>
+    <div class="grid-mesh"></div>
+
+    <main class="max-w-5xl mx-auto px-6 pt-16 relative z-10 space-y-12">
+        
+        <!-- Header Section -->
+        <header class="text-center space-y-4 mb-16">
+            <!-- BNI LOGO -->
+            <div class="mx-auto w-16 h-16 bg-brand-bni rounded-lg flex items-center justify-center text-white font-black text-2xl shadow-lg mb-6 tracking-tighter">
+                BNI
+            </div>
+            
+            <span class="inline-block px-3 py-1 bg-brand-slate text-brand-neon rounded text-[11px] font-bold tracking-[0.2em] uppercase">廣豐分會</span>
+            <h1 class="text-4xl md:text-5xl font-light tracking-wider text-brand-slate mt-4">1對1 五表</h1>
+            <p class="text-xl text-brand-slate font-medium tracking-widest mt-2">張仁謙</p>
+            <p class="text-sm text-brand-muted tracking-widest uppercase">候鳥影像工作室 · 商業攝影 · 攝影師</p>
+            <div class="flex justify-center gap-4 text-xs text-brand-muted mt-4">
+                <span>行業經驗：7 年</span>
+                <span>版本：4</span>
+                <span>最近修訂：2026/07/27</span>
+            </div>
+        </header>
+
+        <!-- 1. 會員資料表 -->
+        <section class="glass-card rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
+            <h2 class="text-2xl font-light mb-8 section-title tracking-widest">會員資料表</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xs font-bold text-brand-slate/50 uppercase tracking-widest mb-3">商業資訊</h3>
+                        <ul class="space-y-3 text-sm text-brand-slate">
+                            <li><span class="text-brand-muted font-medium w-24 inline-block">公司名稱：</span>候鳥影像工作室</li>
+                            <li><span class="text-brand-muted font-medium w-24 inline-block">職業：</span>負責人、攝影師</li>
+                            <li><span class="text-brand-muted font-medium w-24 inline-block">代表行業：</span>商業攝影</li>
+                            <li><span class="text-brand-muted font-medium w-24 inline-block">行業經驗：</span>7 年</li>
+                            <li><span class="text-brand-muted font-medium w-24 inline-block">地址：</span>臺北市</li>
+                            <li class="leading-relaxed"><span class="text-brand-muted font-medium block mb-1">前一份工作類型：</span>室內設計公司影音行銷，操作SEO優化、廣告投放、專案頻道管理。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xs font-bold text-brand-slate/50 uppercase tracking-widest mb-3">個人資訊</h3>
+                        <ul class="space-y-3 text-sm text-brand-slate">
+                            <li class="leading-relaxed"><span class="text-brand-muted font-medium block mb-1">家庭資訊：</span>父、母、姊 (律師事務所 法務主任）、妹 (新北市 國小教師）</li>
+                            <li class="flex gap-6">
+                                <span><span class="text-brand-muted font-medium">配偶：</span>無</span>
+                                <span><span class="text-brand-muted font-medium">孩子：</span>無</span>
+                            </li>
+                            <li><span class="text-brand-muted font-medium">寵物：</span>愛貓人士沒養貓</li>
+                            <li><span class="text-brand-muted font-medium">居住地：</span>苗栗、板橋 (居住多久：18年、8年)</li>
+                            <li class="leading-relaxed"><span class="text-brand-muted font-medium block mb-1">感興趣的活動：</span>聲響藝術、裝幀設計座談、夜間河濱騎腳踏車、料理、羽球。</li>
+                            <li class="leading-relaxed"><span class="text-brand-muted font-medium block mb-1">業餘愛好：</span>曾參與多個 地方創生/藝術 計畫，獲政府補助。參加外星人讀書會、召喚飛碟。Vibe coding 品牌網站與企業儲值管理系統。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-brand-slate/10 space-y-6">
+                <h3 class="text-xs font-bold text-brand-slate/50 uppercase tracking-widest mb-3">綜合資訊</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-brand-slate">
+                    <div class="bg-white/40 p-5 rounded-2xl border border-white/60">
+                        <h4 class="font-bold mb-2">我強烈的願望是：</h4>
+                        <p class="leading-relaxed">創建一個華文地區具高度影響力，以居家生活風格、空間、建築影像為視覺核心的風格新媒體平臺，幫助客戶放大價值。</p>
+                    </div>
+                    <div class="bg-white/40 p-5 rounded-2xl border border-white/60">
+                        <h4 class="font-bold mb-2">沒有人知道的秘密是：</h4>
+                        <p class="leading-relaxed">成人亞斯個案 而具極度專注、邏輯清晰、對細節執著的特質。</p>
+                    </div>
+                    <div class="bg-white/40 p-5 rounded-2xl border border-white/60">
+                        <h4 class="font-bold mb-2">我成功的關鍵是：</h4>
+                        <p class="leading-relaxed">藝術大學畢業的本科系美學背景，行銷職務經驗的策略思維。以多種工具與切入角度，提供客戶更全面的影像解決方案、製作彈性、與更方便的企業儲值制度。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. GAINS 五要素 -->
+        <section class="glass-card rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
+            <h2 class="text-2xl font-light mb-8 section-title tracking-widest">GAINS 五要素</h2>
+            
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Goals -->
+                    <div class="bg-white/50 p-6 rounded-2xl border border-white/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-neon flex items-center justify-center text-brand-slate font-bold">G</div>
+                            <h3 class="font-bold text-brand-slate tracking-widest">Goals / 目標</h3>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-brand-slate leading-relaxed">
+                            <li>每年穩定簽下4至6個、單季或年度合約價值30萬至50萬元的企業影像統籌/訂閱專案。</li>
+                            <li>執行大型空間拍攝專案。 (客群:建設/設計公司、連鎖商辦、公共展演。規模:百坪商空、整棟透天、企業總部、大型展區。)</li>
+                            <li>組建影像團隊:(PM、執行攝影師、後期、行銷)、雙北攝影棚。</li>
+                            <li>企業儲值客戶累積10位 up。</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Accomplishments -->
+                    <div class="bg-white/50 p-6 rounded-2xl border border-white/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-neon flex items-center justify-center text-brand-slate font-bold">A</div>
+                            <h3 class="font-bold text-brand-slate tracking-widest">Accomplishments / 成就</h3>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-brand-slate leading-relaxed">
+                            <li>BMW展示中心拍攝、儀器大廠 Keysight產品拍攝。</li>
+                            <li>30up合作設計師拍攝。</li>
+                            <li>服務領域橫跨:居家生活、商業零售、時尚人像與大型展演空間。</li>
+                            <li>創室內設計頻道破圈0至萬觀看。(職場新鮮人出道作即達1.4萬觀看)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Interests -->
+                    <div class="bg-white/50 p-6 rounded-2xl border border-white/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-neon flex items-center justify-center text-brand-slate font-bold">I</div>
+                            <h3 class="font-bold text-brand-slate tracking-widest">Interests / 興趣</h3>
+                        </div>
+                        <p class="text-sm text-brand-slate leading-relaxed">Lifestyle(居家)、神秘學/玄學、藝文與音樂、從無到有拆解並建立系統。</p>
+                    </div>
+                    
+                    <!-- Networks -->
+                    <div class="bg-white/50 p-6 rounded-2xl border border-white/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-neon flex items-center justify-center text-brand-slate font-bold">N</div>
+                            <h3 class="font-bold text-brand-slate tracking-widest">Networks / 人際網絡</h3>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-brand-slate leading-relaxed">
+                            <li><strong class="font-bold">空間相關：</strong>室內設計師、軟裝師、植物設計、燈光師等空間影像協作夥伴。</li>
+                            <li><strong class="font-bold">其他：</strong>其他領域攝影師、多位不同領域KOL、軟體工程師、留法廚師、藝術家、平面設計師、舞蹈教室負責人、劇場總監、日本旅宿業者。</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="bg-white/50 p-6 rounded-2xl border border-white/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-neon flex items-center justify-center text-brand-slate font-bold">S</div>
+                            <h3 class="font-bold text-brand-slate tracking-widest">Skills / 技能專長</h3>
+                        </div>
+                        <p class="text-sm text-brand-slate leading-relaxed">空間攝影 / 商業攝影 / 專業商業電修與色彩調校 / AI輔助製作。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 業務人脈圈 & 客戶清單 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- 業務人脈圈規劃表 -->
+            <section class="glass-card rounded-[2rem] p-8 relative overflow-hidden h-full">
+                <h2 class="text-2xl font-light mb-6 section-title tracking-widest">業務人脈圈規劃表</h2>
+                
+                <h3 class="text-sm font-bold text-brand-slate mb-4">業務人脈圈前十名！</h3>
+                <ol class="list-decimal list-inside grid grid-cols-2 gap-y-3 text-sm text-brand-slate mb-8">
+                    <li>室內設計師 （商業空間）</li>
+                    <li>展覽/策展公司</li>
+                    <li>品牌行銷顧問</li>
+                    <li>房地產代銷</li>
+                    <li>傢俱/建材品牌商</li>
+                    <li>網頁設計公司</li>
+                    <li>軟裝師</li>
+                    <li>數位廣告投放代理商</li>
+                    <li>造景/照明設計</li>
+                    <li>系統傢俱規劃</li>
+                </ol>
+
+                <div class="bg-brand-neon/20 p-5 rounded-2xl border border-brand-neon/50">
+                    <h3 class="text-sm font-bold text-brand-slate mb-2">哪三種職業能讓你完成你的業務人脈圈？</h3>
+                    <p class="text-sm text-brand-slate font-medium">室內設計師（商業空間）、展覽/策展公司、品牌行銷顧問。</p>
+                </div>
+            </section>
+
+            <!-- 最近十大客戶表 -->
+            <section class="glass-card rounded-[2rem] p-8 relative overflow-hidden h-full">
+                <h2 class="text-2xl font-light mb-6 section-title tracking-widest">最近十大客戶表</h2>
+                
+                <ol class="list-decimal list-inside space-y-2 text-sm text-brand-slate mb-8">
+                    <li>BMW新竹展示中心 /新車發表、年度車主拍攝</li>
+                    <li>Keysight台灣區經銷商/產品拍攝</li>
+                    <li>翻轉吧整合行銷/市售食品加工產品拍攝</li>
+                    <li>捕夢床/家居產品拍攝</li>
+                    <li>一穰設計/室內空間拍攝</li>
+                    <li>苗栗縣政府、文化部/村落藝文向下扎根計畫</li>
+                    <li>搗壺DAOHU DAY/飲料店新品拍攝</li>
+                    <li>達奧植物規劃 /新北茶業博物館活動、好感空間展</li>
+                    <li>多位不同領域KOL/ 短影片拍攝</li>
+                    <li>阿凱老師的歌詞教室/專輯拍攝</li>
+                </ol>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
+                        <h4 class="font-bold text-emerald-700 text-sm mb-2"><i class="fa-solid fa-circle-check mr-1"></i> 好的引薦</h4>
+                        <ul class="list-disc list-inside text-xs text-brand-slate space-y-1">
+                            <li>單案預算 5 萬以上。</li>
+                            <li>連鎖品牌展店。</li>
+                            <li>動靜態統包。</li>
+                            <li>百坪商空或透天建案。</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-500/10 p-4 rounded-xl border border-red-500/20">
+                        <h4 class="font-bold text-red-700 text-sm mb-2"><i class="fa-solid fa-circle-xmark mr-1"></i> 不好的引薦</h4>
+                        <ul class="list-disc list-inside text-xs text-brand-slate space-y-1">
+                            <li>單案預算低於 2 萬。</li>
+                            <li>僅需大量單一「白底去背照」。</li>
+                            <li>非商業攝影且需求不明確，溝通成本高的案件。</li>
+                            <li>長時間活動紀錄。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 作品展示 1 -->
+        <section class="glass-card rounded-[2rem] p-4 md:p-6 relative overflow-hidden mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1781287257/hero-01.jpg" alt="作品展示" class="clickable-img w-full h-auto rounded-xl object-cover" onclick="openLightbox(this.src)">
+                <img src="https://images.cakeresume.com/post-images/6feaff1d-1edf-4dfc-b557-b74f8204d0af.jpeg" alt="作品展示" class="clickable-img w-full h-auto rounded-xl object-cover" onclick="openLightbox(this.src)">
+                <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1781287261/about-03.webp" alt="作品展示" class="clickable-img w-full h-auto rounded-xl object-cover" onclick="openLightbox(this.src)">
+            </div>
+        </section>
+
+        <!-- 4. 1對1 DANCE CARD -->
+        <section class="glass-card rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
+            <h2 class="text-2xl font-light mb-8 section-title tracking-widest">1對1 DANCE CARD</h2>
+            
+            <div class="space-y-6 text-sm text-brand-slate">
+                
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">1. 請詳細說明你所提供的產品與服務: (務必清晰並具體描述)</h4>
+                    <p class="text-brand-muted leading-relaxed">空間攝影/商業攝影/品牌形象/空拍,提供「動靜態整合」的專業影像解決方案,具行銷思維的高規格動態影像素材。</p>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">2. 你與你的競爭對手有什麼不同? (例如:我的產品五年內免費維修)</h4>
+                    <p class="text-brand-muted leading-relaxed">高度重視細節的「非全AI」商業精修/企業儲值方案/免費影像諮詢與服務流程說明。</p>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">3. 請明確列舉你想找尋的目標市場與主力客群:</h4>
+                    <p class="text-brand-muted leading-relaxed">中小型室內設計公司(5-20人)、家居品牌、連鎖品牌展店、商業空間、大型展覽、造景規劃。</p>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">4. 還有哪些與你相關的業務人脈圈尚未加入你的分會?</h4>
+                    <p class="text-brand-muted leading-relaxed">展覽/策展公司、室內設計公司(商業空間)、軟裝師、進口傢俱品牌、公關公司、照明設計、系統傢俱規劃、不動產代銷。</p>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">5. 告訴我當我聽到一句怎樣的話,即表示有機會可以為你找到合適的引薦?</h4>
+                    <p class="text-brand-muted leading-relaxed">我最近有個案子/空間需要找攝影師拍攝完工紀錄,行銷用,最好可以拍照片+短影片。</p>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">6. 請教我用一段好的開場白,讓你的目標客戶聽了後就想更瞭解你?</h4>
+                    <p class="text-brand-muted leading-relaxed flex gap-2">
+                        <i class="fa-solid fa-quote-left text-brand-neon/60 mt-1"></i>
+                        <span>我認識一個專門拍空間,拍過非常多住宅,執行過BMW展示中心、科技儀器大廠等專案,有行銷背景,而且提供還蠻划算的企業儲值方案的攝影師。</span>
+                    </p>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">7. 我該如何衡量一個引薦的質量/認真程度？</h4>
+                    <ul class="space-y-2 text-brand-muted">
+                        <li><strong class="text-brand-slate">好的引薦：</strong> 對方有明確影像需求，且單日拍攝預算達2萬。</li>
+                        <li><strong class="text-brand-slate">理想引薦：</strong> 專案預算4-5萬 ，且有專責窗口單一決策者，溝通流程高效。</li>
+                        <li><strong class="text-brand-slate">夢幻引薦：</strong> 單案預算10萬以上，需求明確，業主授權專業發揮，並將我視為長期視覺策略夥伴。</li>
+                    </ul>
+                </div>
+
+                <div class="border-b border-brand-slate/10 pb-4">
+                    <h4 class="font-bold mb-2">8. 對你來說什麼會是一個不合適的引薦？</h4>
+                    <ul class="list-disc list-inside text-brand-muted space-y-1">
+                        <li>單案預算低於2萬。</li>
+                        <li>非商業攝影且需求不明確，溝通成本高的案件。</li>
+                        <li>需求模糊的長時間活動紀錄。</li>
+                    </ul>
+                </div>
+
+                <div class="pb-2">
+                    <h4 class="font-bold mb-2">9. 一般人對你的業務有什麼誤解及我應如何回應？</h4>
+                    <div class="bg-white/40 p-4 rounded-xl border border-white/60 space-y-3 mt-3">
+                        <p><strong class="text-brand-slate block mb-1">誤會：</strong> <span class="text-brand-muted">「為什麼需要找攝影，成本高且效益未知、流程麻煩，現在 AI 很強用 AI 就好啦。」</span></p>
+                        <p><strong class="text-brand-slate block mb-1">解釋：</strong> <span class="text-brand-muted">AI 無法呈現「真實施工品質」與「設計落地後的現場氣息」。實體攝影能傳達出設計師對實際材質應用、切分空間規劃的理解，與後續對於行銷及客戶展示的真實信任感，對於空間設計領域是相對重要的。效益則是可以藉由行銷策略的規劃、後台數據監測與優化、畫面品質等要素提前控管。</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 結束後名片與作品展示 -->
+        <section class="space-y-8 mt-12">
+            <!-- 作品與名片展示區 -->
+            <div class="glass-card rounded-[2rem] p-6 md:p-8 relative overflow-hidden">
+                <h3 class="text-xs font-bold text-brand-slate/50 uppercase tracking-widest mb-6">品牌名片與作品精選</h3>
+                
+                <!-- 名片 -->
+                <div class="mb-6 overflow-hidden rounded-2xl border border-white/60">
+                    <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1786024990/Image0001_gnsf0x.jpg" alt="名片" class="clickable-img w-full h-auto object-contain" onclick="openLightbox(this.src)">
+                </div>
+
+                <!-- 6張作品 Grid 網格 (設定固定長寬比 aspect-[4/3] 確保整齊) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-200">
+                        <img src="https://images.cakeresume.com/post-images/4f027a7d-daa9-4c2a-87c1-574888bab2c3.jpeg" alt="作品展示" class="clickable-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-200">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1781287265/about-02.webp" alt="作品展示" class="clickable-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-200">
+                        <img src="https://images.cakeresume.com/post-images/554bab5e-1603-4d18-bba1-e8e29a1c3876.jpeg" alt="作品展示" class="clickable-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-200">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1786025235/DJI_0055_qcjxie.jpg" alt="作品展示" class="clickable-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-200">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1786025797/_DSC7919_cfelnj.jpg" alt="作品展示" class="clickable-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-200">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/v1786025232/1-2_agqjqw.jpg" alt="作品展示" class="clickable-img w-full h-full object-cover" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pt-16 pb-8 text-[10px] text-brand-muted tracking-widest uppercase">
+            <p>Made by Ren</p>
+        </footer>
+
+    </main>
+
+    <!-- Lightbox 圖片放大彈窗 -->
+    <div id="lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
+        <img id="lightbox-img" class="max-w-full max-h-full rounded-lg shadow-2xl object-contain pointer-events-auto" src="" alt="Zoomed image">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
