@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HONEW STUDIO 候鳥影像 | 短影音託管與剪輯服務價目</title>
+    
+    <link class="cursor-interact" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='%231aff30'/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            ice: '#ebf4f6',
+                            slate: '#2c302e',
+                            neon: '#1aff30',
+                            neutral: '#f5f7f8',
+                            muted: '#717b76'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Satoshi"', '"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: "Satoshi", "Noto Sans TC", sans-serif;
+            background-color: #ebf4f6;
+            color: #2c302e;
+            overflow-x: hidden;
+            cursor: none; 
+        }
+
+        a, button, input, select, textarea, .cursor-interact {
+            cursor: none !important;
+        }
+
+        /* 移植主站液態毛玻璃游標 */
+        #custom-cursor {
+            position: fixed;
+            top: -100px; left: -100px;
+            width: 64px; height: 64px; 
+            pointer-events: none;
+            z-index: 99999; 
+            backdrop-filter: blur(1.5px); 
+            -webkit-backdrop-filter: blur(1.5px);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transform: translate(-50%, -50%); 
+            animation: liquidMorph 4s ease-in-out infinite alternate;
+            transition: width 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
+                        height 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
+                        background-color 0.3s ease, 
+                        border-color 0.3s ease,
+                        opacity 0.3s ease;
+        }
+        
+        #custom-cursor::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px; height: 4px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            transition: width 0.3s, height 0.3s, opacity 0.3s;
+        }
+
+        @keyframes liquidMorph {
+            0% { border-radius: 50%; }
+            50% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        #custom-cursor.cursor-hover {
+            width: 86px; height: 86px;
+            background: rgba(26, 255, 48, 0.1);
+            border-color: rgba(26, 255, 48, 0.25);
+            animation: liquidMorphHover 2s ease-in-out infinite alternate;
+        }
+        
+        #custom-cursor.cursor-hover::after { width: 0; height: 0; opacity: 0; }
+
+        @keyframes liquidMorphHover {
+            0% { border-radius: 50%; }
+            50% { border-radius: 35% 65% 55% 45% / 45% 45% 65% 55%; }
+            100% { border-radius: 65% 35% 45% 55% / 55% 65% 45% 45%; }
+        }
+
+        #custom-cursor.cursor-click {
+            width: 48px; height: 48px;
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (hover: none) and (pointer: coarse), (max-width: 768px) {
+            #custom-cursor { display: none !important; }
+            body, a, button, input, select, textarea, .cursor-interact { cursor: auto !important; }
+            a, button, .cursor-interact { cursor: pointer !important; }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #ebf4f6; }
+        ::-webkit-scrollbar-thumb { background: #cbdcdb; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1aff30; }
+
+        .grid-mesh {
+            background-image: radial-gradient(#2c302e 0.5px, transparent 0.5px), radial-gradient(#2c302e 0.5px, #ebf4f6 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-neon selection:text-brand-slate">
+
+    <!-- 自訂毛玻璃游標 -->
+    <div id="custom-cursor"></div>
+
+    <!-- 導覽列 -->
+    <nav class="fixed top-0 left-0 w-full z-40 backdrop-blur-md bg-brand-ice/80 border-b border-brand-slate/5 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex flex-col group cursor-interact">
+                <div class="flex items-center gap-1">
+                    <svg class="w-10 h-4 overflow-visible" viewBox="0 0 100 30" fill="none">
+                        <path d="M 5,22 C 15,12 30,2 50,15 C 70,2 85,12 95,22" stroke="#1aff30" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="flex items-center gap-1.5 mt-1.5">
+                    <span class="text-sm font-light tracking-[0.2em] text-brand-slate group-hover:text-brand-neon transition-colors">候鳥影像</span>
+                    <span class="w-[4px] h-[4px] rounded-full bg-brand-neon"></span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-10 text-sm tracking-widest text-brand-slate/85 font-light">
+                <a href="#plans" class="cursor-interact hover:text-brand-neon transition-colors">月付託管方案</a>
+                <a href="#editing" class="cursor-interact hover:text-brand-neon transition-colors">純剪輯服務</a>
+                <a href="#enterprise" class="cursor-interact hover:text-brand-neon transition-colors">客製企業方案</a>
+                <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact px-5 py-2 border border-brand-slate/20 rounded-full hover:border-brand-neon hover:bg-brand-slate hover:text-brand-ice transition-all">諮詢成案</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁區塊 -->
+    <section class="relative pt-36 pb-16 md:pt-44 md:pb-24 overflow-hidden">
+        <div class="absolute inset-0 grid-mesh z-0"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2.5 mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>
+                <span class="text-xs uppercase tracking-[0.34em] text-brand-muted font-medium">Monthly Short Video & Editing Solutions</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-light text-brand-slate tracking-wide leading-tight mb-6">
+                品牌影音託管 <span class="font-normal relative inline-block">與 後製剪輯服務
+                    <span class="absolute left-0 w-full bg-brand-neon" style="height: 2px; bottom: -4px;"></span>
+                </span>
+            </h1>
+            <p class="text-sm md:text-base text-brand-muted font-light leading-relaxed tracking-wide max-w-2xl mx-auto mb-10">
+                針對不同階段的品牌流量需求，提供一站式影音託管與精準剪輯。透過集中拍攝與模組化製作，大幅降低單支影片成本，穩定輸出高品質內容。
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <a href="#plans" class="cursor-interact px-8 py-4 bg-brand-slate text-brand-ice text-xs tracking-[0.2em] rounded-full hover:bg-brand-neon hover:text-brand-slate transition-all shadow-lg">
+                    查看月付方案
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. 月付影音託管方案 -->
+    <section id="plans" class="py-20 bg-brand-neutral relative z-10 border-t border-brand-slate/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted font-medium mb-3">MONTHLY OPERATIONS</h2>
+                <h3 class="text-2xl md:text-4xl font-light text-brand-slate tracking-wide">月付影音託管方案</h3>
+                <p class="text-xs md:text-sm text-brand-muted font-light mt-3">方案皆包含企劃腳本、雙北集中拍攝與專業後製剪輯</p>
+                <div class="w-12 h-[1px] bg-brand-neon mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 方案 A -->
+                <div class="bg-white/60 backdrop-blur-md rounded-3xl p-8 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono tracking-widest text-brand-muted uppercase">Plan A</span>
+                            <span class="text-xs bg-brand-slate/5 text-brand-slate px-3 py-1 rounded-full font-medium">微量試水</span>
+                        </div>
+                        <h4 class="text-xl font-medium text-brand-slate mb-2">每月 產出 3 支</h4>
+                        <p class="text-xs text-brand-muted font-light mb-6">適合剛開始經營，想測試風格與預算有限的品牌。</p>
+                        
+                        <div class="mb-8">
+                            <div class="text-3xl font-mono font-light text-brand-slate">$9,000 <span class="text-xs text-brand-muted font-sans">/ 月</span></div>
+                            <div class="text-[11px] text-brand-muted mt-1 font-mono">平均單價 $3,000 / 支</div>
+                        </div>
+
+                        <div class="border-t border-brand-slate/10 pt-6 space-y-3.5 text-xs text-brand-slate font-light">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>短影音產出 <strong>3 支</strong>（含企劃腳本）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>雙北集中拍攝 <strong>3 小時</strong>（方案總時數）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>專業剪輯（含字卡/特效/音效/調色）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-brand-slate/5">
+                        <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact block text-center py-3 rounded-xl border border-brand-slate/20 hover:border-brand-neon hover:bg-brand-slate hover:text-brand-ice transition-all text-xs tracking-wider">選擇方案 A</a>
+                    </div>
+                </div>
+
+                <!-- 方案 B (推薦) -->
+                <div class="bg-white/90 backdrop-blur-md rounded-3xl p-8 border-2 border-brand-neon shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-neon text-brand-slate text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-bl-xl uppercase">RECOMMENDED 推薦</div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono tracking-widest text-brand-muted uppercase">Plan B</span>
+                            <span class="text-xs bg-brand-neon/20 text-brand-slate px-3 py-1 rounded-full font-medium">標準月更</span>
+                        </div>
+                        <h4 class="text-xl font-medium text-brand-slate mb-2">每月 產出 5 支</h4>
+                        <p class="text-xs text-brand-muted font-light mb-6">適合每週更新 1 次，維持穩定流量與粉絲黏著度。</p>
+                        
+                        <div class="mb-8">
+                            <div class="text-3xl font-mono font-light text-brand-slate">$14,000 <span class="text-xs text-brand-muted font-sans">/ 月</span></div>
+                            <div class="text-[11px] text-brand-muted mt-1 font-mono">平均單價 $2,800 / 支</div>
+                        </div>
+
+                        <div class="border-t border-brand-slate/10 pt-6 space-y-3.5 text-xs text-brand-slate font-light">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>短影音產出 <strong>5 支</strong>（含企劃腳本）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>雙北集中拍攝 <strong>4 小時</strong>（方案總時數）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>專業剪輯（含字卡/特效/音效/調色）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5 text-brand-slate font-normal bg-brand-neon/10 p-2.5 rounded-lg">
+                                <i class="fa-solid fa-gift text-brand-slate text-sm mt-0.5"></i>
+                                <span>贈送：社群平台發布標籤與文案建議</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-brand-slate/5">
+                        <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact block text-center py-3 rounded-xl bg-brand-slate text-brand-ice hover:bg-brand-neon hover:text-brand-slate transition-all text-xs tracking-wider font-medium">選擇方案 B</a>
+                    </div>
+                </div>
+
+                <!-- 方案 C -->
+                <div class="bg-white/60 backdrop-blur-md rounded-3xl p-8 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono tracking-widest text-brand-muted uppercase">Plan C</span>
+                            <span class="text-xs bg-brand-slate/5 text-brand-slate px-3 py-1 rounded-full font-medium">高頻霸屏 (高CP值)</span>
+                        </div>
+                        <h4 class="text-xl font-medium text-brand-slate mb-2">每月 產出 8 支</h4>
+                        <p class="text-xs text-brand-muted font-light mb-6">適合一週雙更，快速建立 IP 形象與搶佔社群流量。</p>
+                        
+                        <div class="mb-8">
+                            <div class="text-3xl font-mono font-light text-brand-slate">$22,000 <span class="text-xs text-brand-muted font-sans">/ 月</span></div>
+                            <div class="text-[11px] text-brand-muted mt-1 font-mono">平均單價 $2,750 / 支</div>
+                        </div>
+
+                        <div class="border-t border-brand-slate/10 pt-6 space-y-3.5 text-xs text-brand-slate font-light">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>短影音產出 <strong>8 支</strong>（含企劃腳本）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>雙北集中拍攝 <strong>6 小時</strong>（方案總時數）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-neon text-sm mt-0.5"></i>
+                                <span>專業剪輯（含字卡/特效/音效/調色）</span>
+                            </div>
+                            <div class="flex items-start gap-2.5 text-brand-slate font-normal bg-brand-slate/5 p-2.5 rounded-lg">
+                                <i class="fa-solid fa-chart-line text-brand-slate text-sm mt-0.5"></i>
+                                <span>限時贈送：數據承諾，未達預期多贈送 1 支剪輯</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-brand-slate/5">
+                        <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact block text-center py-3 rounded-xl border border-brand-slate/20 hover:border-brand-neon hover:bg-brand-slate hover:text-brand-ice transition-all text-xs tracking-wider">選擇方案 C</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-xs text-brand-muted font-light">
+                * 超過每月 8 支需求另有優惠，歡迎直接諮詢洽談。
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 短影音純剪輯價目表 -->
+    <section id="editing" class="py-20 bg-brand-ice relative border-t border-brand-slate/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted font-medium mb-3">POST-PRODUCTION</h2>
+                <h3 class="text-2xl md:text-4xl font-light text-brand-slate tracking-wide">短影音純剪輯價目</h3>
+                <p class="text-xs md:text-sm text-brand-muted font-light mt-3">包含畫面精選、流暢剪接、基礎轉場與聲音降噪處理</p>
+                <div class="w-12 h-[1px] bg-brand-neon mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- 基礎剪輯費率 -->
+                <div class="lg:col-span-6 bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-white shadow-sm">
+                    <h4 class="text-lg font-medium text-brand-slate mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-scissors text-brand-neon"></i> 基礎剪輯費率
+                    </h4>
+                    <div class="space-y-4 font-mono text-sm">
+                        <div class="flex justify-between items-center p-4 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <span class="text-brand-slate font-sans">0 – 30 秒（影片長度）</span>
+                            <span class="text-brand-slate font-bold">$1,000 <span class="text-xs text-brand-muted font-normal">/ 支</span></span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <span class="text-brand-slate font-sans">30 秒 – 1 分鐘（影片長度）</span>
+                            <span class="text-brand-slate font-bold">$1,500 <span class="text-xs text-brand-muted font-normal">/ 支</span></span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <span class="text-brand-slate font-sans">1 分鐘以上</span>
+                            <span class="text-brand-slate font-bold">另行報價</span>
+                        </div>
+                    </div>
+
+                    <!-- 毛片限制說明 -->
+                    <div class="mt-6 p-4 bg-brand-slate/5 rounded-xl border border-brand-slate/10 text-xs text-brand-slate font-light leading-relaxed">
+                        <i class="fa-solid fa-circle-info text-brand-slate mr-1"></i>
+                        <strong>毛片時間上限規範：</strong>單支影片之原始毛片素材時間上限為 <strong>15 分鐘</strong>。若拍攝素材超過 15 分鐘，將依下方「海量素材洗選」標準酌收加價費用。
+                    </div>
+                </div>
+
+                <!-- 外加項目與規範 -->
+                <div class="lg:col-span-6 bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-white shadow-sm">
+                    <h4 class="text-lg font-medium text-brand-slate mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-brand-neon"></i> 外加項目與加價規範
+                    </h4>
+                    
+                    <div class="space-y-3.5 text-xs text-brand-slate">
+                        <div class="p-3.5 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <div class="flex justify-between items-center font-medium mb-1">
+                                <span>外加複雜剪輯</span>
+                                <span class="font-mono text-sm">$500 <span class="text-brand-muted text-xs font-normal">/ 項</span></span>
+                            </div>
+                            <p class="text-brand-muted font-light">含 MG 動畫、特殊字卡、聲音設計等高級後製。</p>
+                        </div>
+
+                        <div class="p-3.5 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <div class="flex justify-between items-center font-medium mb-1">
+                                <span>修改次數</span>
+                                <span class="text-brand-slate">免費 2 次內 / 第 3 次起 $300/次</span>
+                            </div>
+                            <p class="text-brand-muted font-light">定稿前提供 2 次免費微調，第 3 次起每次酌收 $300。</p>
+                        </div>
+
+                        <div class="p-3.5 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <div class="flex justify-between items-center font-medium mb-1">
+                                <span>長片轉精華</span>
+                                <span class="text-brand-slate">5min 內免費 / 超出 +$200/min</span>
+                            </div>
+                            <p class="text-brand-muted font-light">長影片精華剪輯，原始素材 5 分鐘內免費。</p>
+                        </div>
+
+                        <div class="p-3.5 bg-brand-neutral rounded-xl border border-brand-slate/5">
+                            <div class="flex justify-between items-center font-medium mb-1">
+                                <span>海量素材洗選（毛片超過 15 分鐘適用）</span>
+                                <span class="text-brand-slate">30min 內免費 / 30-60min $1000</span>
+                            </div>
+                            <p class="text-brand-muted font-light">60 分鐘以上每 30 分鐘加收 $500，協助素材分類挑選。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 客製化企業目標方案 -->
+    <section id="enterprise" class="py-20 bg-brand-slate text-brand-ice relative overflow-hidden">
+        <div class="absolute inset-0 grid-mesh opacity-10 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 flex flex-col gap-6">
+                    <div class="inline-flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-neon"></span>
+                        <span class="text-xs uppercase tracking-[0.4em] text-brand-neon">CUSTOM ENTERPRISE SOLUTION</span>
+                    </div>
+                    <h3 class="text-3xl md:text-5xl font-light tracking-wide leading-tight">
+                        客製化企業目標方案<br>
+                        <span class="font-normal text-brand-neon">以 KPI 成效與效益簽約</span>
+                    </h3>
+                    <p class="text-sm md:text-base text-brand-ice/80 font-light leading-relaxed">
+                        針對有明確曝光與轉換目標的企業，我們提供全面的專案託管服務。不以單支計價，而是以全盤行銷成效與品牌 IP 建構為核心，確保每一分影音預算皆能創造實質商業回報。
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                            <div class="text-brand-neon font-medium text-sm mb-1"><i class="fa-solid fa-bullseye mr-2"></i>成效 KPI 導向</div>
+                            <p class="text-xs text-brand-ice/60 font-light">設定觀看數、互動率或名單轉換目標，並定期進行數據復盤與策略優化。</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                            <div class="text-brand-neon font-medium text-sm mb-1"><i class="fa-solid fa-file-contract mr-2"></i>完整合約與全方位服務</div>
+                            <p class="text-xs text-brand-ice/60 font-light">包含正規商業合約保障、腳本企劃、專業攝影與完整後製，提供一站式託管。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
+                    <div class="text-xs font-mono tracking-widest text-brand-neon uppercase mb-2">QUARTERLY CONTRACT</div>
+                    <h4 class="text-2xl font-medium text-white mb-4">目標導向企業託管</h4>
+                    
+                    <div class="my-6 pb-6 border-b border-white/10">
+                        <div class="text-4xl font-mono font-light text-white">$30,000 <span class="text-xs text-brand-ice/60 font-sans">/ 月</span></div>
+                        <div class="text-xs text-brand-neon mt-2 font-mono"><i class="fa-solid fa-calendar-check mr-1"></i> 本方案以「一季（三個月）」為簽約單位</div>
+                        <div class="text-[11px] text-brand-ice/50 mt-1">* 費用不含社群平台廣告投放預算</div>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-brand-ice/80 font-light mb-8">
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-neon"></i>
+                            <span>客製化品牌短影音行銷策略</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-neon"></i>
+                            <span>全套腳本規劃、腳本企劃與風格定調</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-neon"></i>
+                            <span>高彈性現場拍攝與燈光佈局</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-check text-brand-neon"></i>
+                            <span>完整商業合約保障與版權規範</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact block w-full text-center py-4 rounded-xl bg-brand-neon text-brand-slate font-medium text-xs tracking-[0.2em] uppercase hover:bg-white transition-all shadow-lg">
+                        洽談企業目標方案
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-ice text-brand-slate py-16 border-t border-brand-slate/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 text-center">
+            <div class="flex items-center justify-center gap-5">
+                <a href="https://instagram.com/ren.chian_1122" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon transition-all"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://instagram.com/honew.studio" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-brand-neon transition-all"><i class="fa-solid fa-camera"></i></a>
+                <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="cursor-interact w-10 h-10 rounded-full bg-white border border-brand-slate/10 flex items-center justify-center text-brand-slate hover:text-[#06C755] transition-all"><i class="fa-brands fa-line"></i></a>
+            </div>
+            <div class="text-xs tracking-widest text-brand-muted">
+                <p>© 2026 HONEW STUDIO 候鳥影像工作室. All Rights Reserved.</p>
+                <p class="text-[9px] text-brand-muted/50 uppercase tracking-[0.3em] mt-1">Honing the Vision, Refining the Value.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 自訂游標 logic -->
+    <script>
+        function initCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if(cursor && window.innerWidth > 768) {
+                cursor.style.top = '50%';
+                cursor.style.left = '50%';
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
+                let cursorX = mouseX;
+                let cursorY = mouseY;
+                
+                window.addEventListener("mousemove", e => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+
+                function renderCursor() {
+                    cursorX += (mouseX - cursorX) * 0.2;
+                    cursorY += (mouseY - cursorY) * 0.2;
+                    cursor.style.left = `${cursorX}px`;
+                    cursor.style.top = `${cursorY}px`;
+                    requestAnimationFrame(renderCursor);
+                }
+                requestAnimationFrame(renderCursor);
+
+                window.addEventListener("mousedown", () => cursor.classList.add('cursor-click'));
+                window.addEventListener("mouseup", () => cursor.classList.remove('cursor-click'));
+
+                document.body.addEventListener("mouseover", (e) => {
+                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button')) {
+                        cursor.classList.add('cursor-hover');
+                    }
+                });
+                document.body.addEventListener("mouseout", (e) => {
+                    if (e.target.closest('.cursor-interact') || e.target.closest('a') || e.target.closest('button')) {
+                        cursor.classList.remove('cursor-hover');
+                    }
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", initCursor);
+    </script>
+</body>
+</html>
