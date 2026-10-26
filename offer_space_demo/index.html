@@ -437,22 +437,265 @@
     </section>
 
 
-    <!-- 僅供審閱：Vimeo 影片待挑選後才置入真實影片 -->
-    <section class="py-20 bg-brand-neutral border-t border-brand-slate/5 relative z-10">
+    <!-- Demo only: 7 Vimeo films, keep native ratios, only load a player on interaction -->
+    <section id="space-films" class="py-20 md:py-24 bg-brand-neutral border-t border-brand-slate/5 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12 gs-reveal">
                 <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted mb-3">Space in Motion</h2>
-                <h3 class="text-2xl md:text-3xl font-light text-brand-slate">空間形象短影片</h3>
-                <p class="text-sm text-brand-muted mt-4 font-light">用動態影像延伸空間的光影、細節與氛圍。</p>
+                <h3 class="text-2xl md:text-3xl font-light text-brand-slate tracking-wide">空間形象短影片</h3>
+                <p class="text-sm text-brand-muted mt-4 font-light leading-relaxed">以光影、運鏡與節奏，延續空間的故事。</p>
+                <p class="text-xs text-brand-muted/85 mt-3">點選作品直接播放 · 畫面完整呈現、不裁切</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 gs-reveal">
-                <div class="aspect-video rounded-[24px] bg-brand-slate/90 flex items-center justify-center"><span class="text-xs tracking-widest text-brand-ice/70">Vimeo 影片 01 · 待選</span></div>
-                <div class="aspect-video rounded-[24px] bg-brand-slate/90 flex items-center justify-center"><span class="text-xs tracking-widest text-brand-ice/70">Vimeo 影片 02 · 待選</span></div>
-                <div class="aspect-video rounded-[24px] bg-brand-slate/90 flex items-center justify-center"><span class="text-xs tracking-widest text-brand-ice/70">Vimeo 影片 03 · 待選</span></div>
+            <div id="space-film-grid" class="columns-1 sm:columns-2 lg:columns-3 gap-6 gs-reveal">
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1091770143" aria-label="播放空間形象短影片 1">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 01</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 01</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 01</span>
+                    </span>
+                </button>
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1091770158" aria-label="播放空間形象短影片 2">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 02</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 02</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 02</span>
+                    </span>
+                </button>
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1091770222" aria-label="播放空間形象短影片 3">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 03</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 03</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 03</span>
+                    </span>
+                </button>
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1093149030" aria-label="播放空間形象短影片 4">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 04</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 04</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 04</span>
+                    </span>
+                </button>
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1150916069" aria-label="播放空間形象短影片 5">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 05</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 05</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 05</span>
+                    </span>
+                </button>
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1091770174" aria-label="播放空間形象短影片 6">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 06</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 06</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 06</span>
+                    </span>
+                </button>
+                <button type="button" class="space-film-tile group cursor-interact break-inside-avoid w-full mb-6 text-left rounded-[24px] overflow-hidden bg-white/60 border border-brand-slate/10 shadow-[0_8px_30px_rgba(0,0,0,0.025)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.09)] hover:-translate-y-1 transition-[transform,box-shadow] duration-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" data-film-id="1091769722" aria-label="播放空間形象短影片 7">
+                    <span class="space-film-cover block relative bg-brand-slate aspect-[16/10] overflow-hidden">
+                        <img class="space-film-poster hidden absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.015]" loading="lazy" decoding="async" alt="空間形象影片封面">
+                        <span class="space-film-fallback absolute inset-0 flex items-center justify-center text-brand-ice/35 text-xs tracking-[0.25em]">SPACE FILM / 07</span>
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="w-14 h-14 rounded-full border border-white/55 bg-brand-slate/35 backdrop-blur-lg text-brand-ice flex items-center justify-center group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon transition-all duration-500 group-hover:scale-110 shadow-lg"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                    </span>
+                    <span class="block px-5 py-4">
+                        <span class="block text-[10px] uppercase tracking-[0.24em] text-brand-muted mb-1.5">FILM 07</span>
+                        <span class="space-film-title block text-sm text-brand-slate font-light tracking-wide">空間影像作品 07</span>
+                    </span>
+                </button>
             </div>
-            <p class="text-sm text-brand-slate text-center tracking-wide mt-10">空間形象短影片另洽報價</p>
+            <p class="text-center text-sm text-brand-slate tracking-wide mt-10">空間形象短影片另洽報價</p>
         </div>
     </section>
+
+    <!-- Single Vimeo player modal: keeps page light and preserves actual video aspect ratio -->
+    <div id="space-film-modal" class="fixed inset-0 z-[160] hidden items-center justify-center bg-brand-slate/95 backdrop-blur-xl px-3 py-14 md:p-10" role="dialog" aria-modal="true" aria-label="空間形象影片播放器" aria-hidden="true">
+        <button id="space-film-close" type="button" class="absolute right-4 top-4 md:right-8 md:top-7 z-20 rounded-full h-11 w-11 border border-brand-ice/30 text-brand-ice hover:bg-white/10 transition-colors cursor-interact" aria-label="關閉影片播放器"><i class="fa-solid fa-xmark"></i></button>
+        <div class="flex flex-col items-center justify-center w-full gap-5">
+            <div id="space-film-frame" style="--film-ratio:1.777778;width:min(calc((100dvh - 150px) * var(--film-ratio)),94vw,1100px);aspect-ratio:var(--film-ratio)" class="relative max-h-[calc(100dvh-150px)] rounded-lg overflow-hidden bg-black shadow-2xl border border-white/10 transition-[width] duration-500">
+                <iframe id="space-film-player" class="absolute inset-0 w-full h-full border-0" title="Vimeo 空間形象短影片" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <p id="space-film-modal-title" class="text-brand-ice/75 text-xs tracking-widest text-center font-light"></p>
+        </div>
+    </div>
+    <script>
+        (function () {
+            // Vimeo metadata is loaded for cover/title/ratio only. No iframe is loaded until click.
+            const modal = document.getElementById('space-film-modal');
+            const frame = document.getElementById('space-film-frame');
+            const iframe = document.getElementById('space-film-player');
+            const title = document.getElementById('space-film-modal-title');
+            const closeBtn = document.getElementById('space-film-close');
+            const tiles = Array.from(document.querySelectorAll('.space-film-tile'));
+            const metadata = {};
+            let previousFocus = null, previousOverflow = '', activeFilmId = null, playerScriptPromise = null;
+
+            function applyMetadata(tile, info) {
+                if (!info || typeof info !== 'object') return;
+                const id = tile.dataset.filmId;
+                metadata[id] = info;
+                if (info.title && typeof info.title === 'string') {
+                    tile.querySelector('.space-film-title').textContent = info.title;
+                }
+                const cover = tile.querySelector('.space-film-cover');
+                const width = Number(info.width || info.thumbnail_width);
+                const height = Number(info.height || info.thumbnail_height);
+                if (width > 0 && height > 0) {
+                    const ratio = Math.max(0.45, Math.min(2.5, width / height));
+                    cover.style.aspectRatio = String(ratio);
+                }
+                if (typeof info.thumbnail_url === 'string') {
+                    try {
+                        const url = new URL(info.thumbnail_url);
+                        if (url.protocol === 'https:' && (url.hostname.endsWith('.vimeocdn.com') || url.hostname.endsWith('.vimeo.com'))) {
+                            const img = tile.querySelector('.space-film-poster');
+                            img.onload = function () {
+                                img.classList.remove('hidden');
+                                tile.querySelector('.space-film-fallback').classList.add('hidden');
+                            };
+                            img.src = url.toString();
+                        }
+                    } catch (_) {}
+                }
+            }
+
+            // JSONP fallback is supported by Vimeo's documented oEmbed examples.
+            function loadMetadata(tile) {
+                const id = tile.dataset.filmId;
+                const endpoint = 'https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + id);
+                const controller = new AbortController();
+                const abort = setTimeout(function () { controller.abort(); }, 5000);
+                fetch(endpoint, { signal: controller.signal })
+                    .then(function (res) { if (!res.ok) throw new Error('oEmbed HTTP ' + res.status); return res.json(); })
+                    .then(function (info) { clearTimeout(abort); applyMetadata(tile, info); })
+                    .catch(function () {
+                        clearTimeout(abort);
+                        const callback = 'honewVimeoMetadata_' + id;
+                        const script = document.createElement('script');
+                        let finished = false;
+                        const finish = function (info) {
+                            if (finished) return;
+                            finished = true;
+                            clearTimeout(timer);
+                            delete window[callback];
+                            script.remove();
+                            if (info) applyMetadata(tile, info);
+                        };
+                        window[callback] = finish;
+                        script.src = endpoint + '&callback=' + callback;
+                        script.onerror = function () { finish(null); };
+                        const timer = setTimeout(function () { finish(null); }, 5000);
+                        document.head.appendChild(script);
+                    });
+            }
+
+            function loadPlayerScript() {
+                if (window.Vimeo && window.Vimeo.Player) return Promise.resolve();
+                if (playerScriptPromise) return playerScriptPromise;
+                playerScriptPromise = new Promise(function(resolve, reject) {
+                    const script = document.createElement('script');
+                    script.src = 'https://player.vimeo.com/api/player.js';
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
+                });
+                return playerScriptPromise;
+            }
+
+            function setRatio(width, height) {
+                if (!(width > 0 && height > 0)) return;
+                frame.style.setProperty('--film-ratio', String(Math.max(0.45, Math.min(2.5, width / height))));
+            }
+
+            function openFilm(tile) {
+                const id = tile.dataset.filmId;
+                if (!/^\d+$/.test(id)) return;
+                activeFilmId = id;
+                previousFocus = document.activeElement;
+                previousOverflow = document.body.style.overflow;
+                const data = metadata[id] || {};
+                setRatio(Number(data.width || data.thumbnail_width) || 16, Number(data.height || data.thumbnail_height) || 9);
+                title.textContent = tile.querySelector('.space-film-title').textContent;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+                iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+                loadPlayerScript().then(function() {
+                    if (activeFilmId !== id || !window.Vimeo || !window.Vimeo.Player) return;
+                    const player = new window.Vimeo.Player(iframe);
+                    return Promise.all([player.getVideoWidth(), player.getVideoHeight()]).then(function(dimensions) {
+                        if (activeFilmId === id) setRatio(dimensions[0], dimensions[1]);
+                    });
+                }).catch(function () { /* Native Vimeo iframe still works without the SDK. */ });
+            }
+
+            function closeFilm() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modal.setAttribute('aria-hidden', 'true');
+                activeFilmId = null;
+                iframe.removeAttribute('src'); // Stop playback and release network resources
+                document.body.style.overflow = previousOverflow;
+                if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+            }
+
+            tiles.forEach(function (tile) {
+                tile.addEventListener('click', function () { openFilm(tile); });
+                loadMetadata(tile);
+            });
+            closeBtn.addEventListener('click', closeFilm);
+            modal.addEventListener('click', function(event) { if (event.target === modal) closeFilm(); });
+            document.addEventListener('keydown', function(event) {
+                if (modal.classList.contains('hidden')) return;
+                if (event.key === 'Escape') { event.preventDefault(); closeFilm(); }
+                if (event.key === 'Tab' && event.target === closeBtn && event.shiftKey) { event.preventDefault(); closeBtn.focus(); }
+            });
+        })();
+    </script>
 
     <section class="py-20 bg-brand-slate text-center relative z-10">
         <div class="max-w-3xl mx-auto px-6 gs-reveal">
