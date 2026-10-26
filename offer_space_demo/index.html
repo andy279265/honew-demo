@@ -238,21 +238,133 @@
     </section>
 
 
-    <!-- 僅供審閱：精選空間攝影作品 -->
+    <!-- Demo: 精選作品區，縮圖統一裁切；點擊在燈箱中以原始長寬比顯示 -->
     <section class="py-20 bg-brand-ice relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12 gs-reveal">
                 <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted mb-3">Selected Spaces</h2>
                 <h3 class="text-2xl md:text-3xl font-light text-brand-slate">精選空間影像</h3>
                 <p class="text-sm text-brand-muted mt-4 font-light">讓作品先說話，呈現空間獨有的光線與設計語言。</p>
+                <p class="text-xs text-brand-muted mt-2">點選照片即可全幅瀏覽 · 保留影像原始比例</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 gs-reveal">
-                <figure class="group"><div class="aspect-[4/5] overflow-hidden rounded-[24px] bg-brand-neutral"><img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287264/portfolio-01.jpg" alt="一穰設計 · 柞居空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div><figcaption class="text-xs text-brand-muted mt-4 tracking-widest">一穰設計 · 柞居</figcaption></figure>
-                <figure class="group"><div class="aspect-[4/5] overflow-hidden rounded-[24px] bg-brand-neutral"><img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/hero-01" alt="一穰設計 · 寬和空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div><figcaption class="text-xs text-brand-muted mt-4 tracking-widest">一穰設計 · 寬和</figcaption></figure>
-                <figure class="group"><div class="aspect-[4/5] overflow-hidden rounded-[24px] bg-brand-neutral"><img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287255/portfolio-03.jpg" alt="耘品設計 · 楊梅別墅空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div><figcaption class="text-xs text-brand-muted mt-4 tracking-widest">耘品設計 · 楊梅別墅</figcaption></figure>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 md:gap-6 gs-reveal">
+                <button type="button" class="group cursor-interact text-left w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(0)" aria-label="放大檢視 一穰設計 · 柞居">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287264/portfolio-01.jpg" alt="一穰設計 · 柞居空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 柞居</span>
+                </button>
+                <button type="button" class="group cursor-interact text-left w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(1)" aria-label="放大檢視 一穰設計 · 寬和">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/hero-01" alt="一穰設計 · 寬和空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 寬和</span>
+                </button>
+                <button type="button" class="group cursor-interact text-left w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(2)" aria-label="放大檢視 耘品設計 · 楊梅別墅">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287255/portfolio-03.jpg" alt="耘品設計 · 楊梅別墅空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">耘品設計 · 楊梅別墅</span>
+                </button>
+                <button type="button" class="group cursor-interact text-left w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(3)" aria-label="放大檢視 一穰設計 · 柞居 02">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1782817298/世貿新城-20_vfkqq3.jpg" alt="一穰設計 · 柞居 02空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 柞居 02</span>
+                </button>
+                <button type="button" class="group cursor-interact text-left w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(4)" aria-label="放大檢視 一穰設計 · 寬和 02">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781347878/帝璟寬和-9_ws2yan" alt="一穰設計 · 寬和 02空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 寬和 02</span>
+                </button>
+                <button type="button" class="group cursor-interact text-left w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(5)" aria-label="放大檢視 一穰設計 · 半伴寓所">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1200/v1781287251/portfolio-05.jpg" alt="一穰設計 · 半伴寓所空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 半伴寓所</span>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- 燈箱只作用於本區照片，不更動全站其他功能 -->
+    <div id="space-photo-lightbox" role="dialog" aria-modal="true" aria-label="精選空間作品放大瀏覽" class="fixed inset-0 z-[130] bg-brand-slate/95 backdrop-blur-md hidden items-center justify-center p-4 md:p-8" onclick="if(event.target === this) closeSpacePhoto()">
+        <button id="space-photo-close" type="button" onclick="closeSpacePhoto()" class="absolute top-4 right-4 md:top-8 md:right-8 text-brand-ice border border-white/30 w-11 h-11 rounded-full hover:bg-white/10 z-10 cursor-interact" aria-label="關閉照片"><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" onclick="stepSpacePhoto(-1)" class="absolute left-2 md:left-8 text-brand-ice w-10 h-12 md:w-12 rounded-full bg-brand-slate/70 hover:bg-white/10 z-10 cursor-interact" aria-label="上一張照片"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="flex flex-col items-center justify-center gap-4 w-full max-w-6xl h-full pointer-events-none">
+            <img id="space-photo-full" class="block max-w-full max-h-[76vh] w-auto h-auto object-contain rounded-md shadow-2xl pointer-events-auto" alt="空間攝影大圖">
+            <div class="text-center text-brand-ice/80 text-xs md:text-sm tracking-wide pointer-events-auto"><span id="space-photo-caption"></span><span class="text-brand-ice/45 mx-3">/</span><span id="space-photo-count"></span></div>
+        </div>
+        <button type="button" onclick="stepSpacePhoto(1)" class="absolute right-2 md:right-8 text-brand-ice w-10 h-12 md:w-12 rounded-full bg-brand-slate/70 hover:bg-white/10 z-10 cursor-interact" aria-label="下一張照片"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <script>
+        const spacePhotoSet = [
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781287264/portfolio-01.jpg", title: "一穰設計 · 柞居" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/hero-01", title: "一穰設計 · 寬和" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781287255/portfolio-03.jpg", title: "耘品設計 · 楊梅別墅" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1782817298/世貿新城-20_vfkqq3.jpg", title: "一穰設計 · 柞居 02" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/帝璟寬和-9_ws2yan", title: "一穰設計 · 寬和 02" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781287251/portfolio-05.jpg", title: "一穰設計 · 半伴寓所" }
+        ];
+        let spacePhotoIndex = 0;
+        let spacePhotoPreviousOverflow = '';
+        let spacePhotoPreviousFocus = null;
+        function updateSpacePhoto() {
+            const current = spacePhotoSet[spacePhotoIndex];
+            const full = document.getElementById('space-photo-full');
+            full.src = current.src;
+            full.alt = current.title;
+            document.getElementById('space-photo-caption').textContent = current.title;
+            document.getElementById('space-photo-count').textContent = (spacePhotoIndex + 1) + ' / ' + spacePhotoSet.length;
+        }
+        function openSpacePhoto(index) {
+            spacePhotoIndex = index;
+            spacePhotoPreviousFocus = document.activeElement;
+            spacePhotoPreviousOverflow = document.body.style.overflow;
+            updateSpacePhoto();
+            const layer = document.getElementById('space-photo-lightbox');
+            layer.classList.remove('hidden');
+            layer.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('space-photo-close').focus();
+        }
+        function stepSpacePhoto(delta) {
+            spacePhotoIndex = (spacePhotoIndex + delta + spacePhotoSet.length) % spacePhotoSet.length;
+            updateSpacePhoto();
+        }
+        function closeSpacePhoto() {
+            const layer = document.getElementById('space-photo-lightbox');
+            layer.classList.add('hidden');
+            layer.classList.remove('flex');
+            document.body.style.overflow = spacePhotoPreviousOverflow;
+            document.getElementById('space-photo-full').removeAttribute('src');
+            if (spacePhotoPreviousFocus && spacePhotoPreviousFocus.focus) spacePhotoPreviousFocus.focus();
+        }
+        document.addEventListener('keydown', function(event) {
+            const layer = document.getElementById('space-photo-lightbox');
+            if (!layer || layer.classList.contains('hidden')) return;
+            if (event.key === 'Escape') { event.preventDefault(); closeSpacePhoto(); }
+            if (event.key === 'ArrowLeft') { event.preventDefault(); stepSpacePhoto(-1); }
+            if (event.key === 'ArrowRight') { event.preventDefault(); stepSpacePhoto(1); }
+        });
+        let spacePhotoTouchStartX = null;
+        document.getElementById('space-photo-lightbox').addEventListener('touchstart', function(e) {
+            spacePhotoTouchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        document.getElementById('space-photo-lightbox').addEventListener('touchend', function(e) {
+            if (spacePhotoTouchStartX === null) return;
+            const diff = e.changedTouches[0].clientX - spacePhotoTouchStartX;
+            if (Math.abs(diff) > 55) stepSpacePhoto(diff < 0 ? 1 : -1);
+            spacePhotoTouchStartX = null;
+        }, { passive: true });
+    </script>
 
     <section class="py-24 bg-brand-ice relative z-10">
         <div class="max-w-5xl mx-auto px-6">
