@@ -77,7 +77,7 @@
 
     <!-- 精簡編輯式首屏：以內容、留白與排版呈現品牌專業，不使用裝飾性標籤 -->
     <!-- 原本置中編排，保留精修後的文字 -->
-    <section class="relative pt-36 pb-16 md:pt-48 md:pb-24 overflow-hidden">
+    <section class="relative pt-28 pb-10 md:pt-32 md:pb-12 overflow-hidden">
         <div class="absolute inset-0 grid-mesh z-0"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 gs-reveal">
             <div class="text-center max-w-3xl mx-auto">
@@ -101,18 +101,23 @@
                     從光線、尺度到材質細節，讓每一處設計被忠實呈現。<br class="hidden md:block">為室內設計與建築空間提供專業攝影及動態影像製作。
                 </p>
                 
-                <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="mt-10 inline-flex items-center gap-4 bg-white/60 backdrop-blur-md px-6 py-3 rounded-full border border-brand-slate/10 shadow-sm cursor-interact hover:border-brand-neon hover:shadow-md transition-all">
-                    <div class="w-8 h-8 rounded-full bg-brand-slate flex items-center justify-center text-brand-neon text-sm"><i class="fa-solid fa-mug-hot"></i></div>
-                    <div class="text-left">
-                        <p class="text-xs font-medium tracking-widest text-brand-slate">預約一次免費線上諮詢</p>
-                        <p class="text-[10px] text-brand-muted tracking-wide mt-0.5">讓我們了解您的案場風格與需求</p>
-                    </div>
-                </a>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-7">
+                    <a href="https://line.me/R/ti/p/~930631929" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 bg-white/60 backdrop-blur-md px-6 py-3 rounded-full border border-brand-slate/10 shadow-sm cursor-interact hover:border-brand-neon hover:shadow-md transition-all">
+                        <div class="w-8 h-8 rounded-full bg-brand-slate flex items-center justify-center text-brand-neon text-sm"><i class="fa-solid fa-mug-hot"></i></div>
+                        <div class="text-left">
+                            <p class="text-xs font-medium tracking-widest text-brand-slate">預約一次免費線上諮詢</p>
+                            <p class="text-[10px] text-brand-muted tracking-wide mt-0.5">讓我們了解您的案場風格與需求</p>
+                        </div>
+                    </a>
+                    <a href="#space-pricing" class="inline-flex items-center gap-2 text-xs tracking-[0.1em] text-brand-slate/75 border-b border-brand-slate/25 pb-1 hover:border-brand-neon hover:text-brand-slate transition-colors cursor-interact" aria-label="往下查看空間攝影報價方案">
+                        查看拍攝方案 <i class="fa-solid fa-arrow-down text-[10px]" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-6 mb-24 relative z-10 gs-reveal">
+    <section id="space-pricing" class="max-w-7xl mx-auto px-6 mb-24 relative z-10 gs-reveal scroll-mt-24 md:scroll-mt-28">
         <!-- 常規單場方案：維持低調常規配色 -->
         <div class="mb-6 rounded-[32px] border border-brand-slate/10 bg-white/60 p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div class="flex-1">
