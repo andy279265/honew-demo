@@ -83,17 +83,17 @@
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 mb-6">
                     <span class="w-[5px] h-[5px] rounded-full bg-brand-neon"></span>
-                    <span class="text-xs uppercase tracking-[0.35em] text-brand-muted font-normal">Investment</span>
+                    <span class="text-xs uppercase tracking-[0.39em] text-brand-muted font-normal">Investment</span>
                 </div>
                 <h1 class="text-3xl md:text-5xl font-light tracking-[0.055em] flex flex-col gap-2 md:gap-3 leading-none text-brand-slate">
                     <span>為空間敘事，</span>
                     <span>做最精準的<span class="font-normal border-b-[3px] border-brand-neon pb-0">影像投資</span>。</span>
                 </h1>
                 <p class="mt-7 text-sm md:text-base font-light tracking-[0.1em] text-brand-slate/75">候鳥空間攝影方案</p>
-                <p class="mt-8 text-[11px] md:text-xs text-brand-muted font-light leading-[1.9] tracking-wide">
+                <p class="mt-6 text-[10px] md:text-[11px] text-brand-muted font-light leading-[1.9] tracking-wide">
                     無論是一次性的完美紀錄，還是長期的視覺資產累積，<br class="hidden md:block">我們提供透明、彈性的報價方案，確保每一次快門都為您的品牌創造價值。
                 </p>
-                <p class="mt-3 text-[11px] md:text-xs text-brand-muted font-light leading-[1.9] tracking-wide">
+                <p class="mt-2 text-[10px] md:text-[11px] text-brand-muted font-light leading-[1.9] tracking-wide">
                     從光線、尺度到材質細節，讓每一處設計被忠實呈現。<br class="hidden md:block">為室內設計與建築空間提供專業攝影及動態影像製作。
                 </p>
                 
@@ -445,7 +445,6 @@
                 <h3 class="text-2xl md:text-3xl font-light text-brand-slate tracking-wide">空間形象作品</h3>
                 <p class="text-sm text-brand-muted mt-4 font-light leading-relaxed">以光影、運鏡與節奏，延續空間的故事。</p>
                 <p class="text-xs text-brand-muted mt-3">靜音滑動預覽 · 點選作品完整播放</p>
-                <button id="space-preview-toggle" type="button" class="cursor-interact text-[11px] tracking-widest text-brand-muted mt-4 border-b border-brand-slate/20 pb-1 hover:text-brand-slate transition-colors" aria-pressed="true">自動預覽：開</button>
             </div>
             <div class="flex items-center justify-between mb-5">
                 <h4 class="text-xs tracking-[0.2em] uppercase text-brand-slate/70">Architectural Films <span class="text-brand-muted">/ 橫幅作品</span></h4>
@@ -591,7 +590,6 @@
             const modalFrame = document.getElementById('space-film-frame');
             const iframe = document.getElementById('space-film-player');
             const modalTitle = document.getElementById('space-film-modal-title');
-            const toggle = document.getElementById('space-preview-toggle');
             const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const saveData = Boolean(navigator.connection && navigator.connection.saveData);
             const meta = Object.create(null);
@@ -605,8 +603,6 @@
             let previewEnabled = !reduceMotion && !saveData;
             let previewFrame = null, previewTile = null, previewTimer = null, previewToken = 0;
             let active = null, previousFocus = null, previousOverflow = '', sdkPromise = null, closeTimer = null, frameTimer = null;
-            toggle.setAttribute('aria-pressed',String(previewEnabled));
-            toggle.textContent = '自動預覽：' + (previewEnabled ? '開' : '關');
 
             function ratio(w,h) {
                 if (Number(w) > 0 && Number(h) > 0) {
@@ -738,13 +734,6 @@
             });
             document.addEventListener('visibilitychange',function() {
                 if(document.hidden){clearTimeout(previewTimer);stopPreview();}
-                else schedulePreview();
-            });
-            toggle.addEventListener('click',function(){
-                previewEnabled=!previewEnabled;
-                toggle.setAttribute('aria-pressed',String(previewEnabled));
-                toggle.textContent='自動預覽：'+(previewEnabled?'開':'關');
-                if(!previewEnabled){clearTimeout(previewTimer);stopPreview();}
                 else schedulePreview();
             });
             function openFilm(tile) {
