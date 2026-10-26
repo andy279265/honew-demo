@@ -5,6 +5,7 @@ on:
       - vimeo-tail-audit-20261026
     paths:
       - .github/workflows/vimeo-outro-inspection.yml
+      - scripts/vimeo_tail_audit.py
 permissions:
   contents: write
 jobs:
