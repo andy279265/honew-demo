@@ -237,6 +237,129 @@
         </div>
     </section>
 
+
+    <!-- Demo: 精選作品區，縮圖統一裁切；點擊在燈箱中以原始長寬比顯示 -->
+    <section class="py-20 bg-brand-ice relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 gs-reveal">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted mb-3">Selected Spaces</h2>
+                <h3 class="text-2xl md:text-3xl font-light text-brand-slate">精選空間影像</h3>
+                <p class="text-sm text-brand-muted mt-4 font-light">讓作品先說話，呈現空間獨有的光線與設計語言。</p>
+                <p class="text-xs text-brand-muted mt-2">點選照片即可全幅瀏覽 · 保留影像原始比例</p>
+            </div>
+            <div class="flex overflow-x-auto lg:overflow-visible lg:grid lg:grid-cols-4 gap-4 md:gap-6 pb-4 lg:pb-0 snap-x snap-mandatory scroll-smooth gs-reveal" style="scrollbar-width:thin">
+                <button type="button" class="group snap-start shrink-0 w-[72vw] sm:w-[43vw] lg:w-auto lg:min-w-0 text-left cursor-interact focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(0)" aria-label="放大檢視 一穰設計 · 柞居">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287264/portfolio-01.jpg" alt="一穰設計 · 柞居空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 柞居</span>
+                </button>
+                <button type="button" class="group snap-start shrink-0 w-[72vw] sm:w-[43vw] lg:w-auto lg:min-w-0 text-left cursor-interact focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(5)" aria-label="放大檢視 一穰設計 · 寬和">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781347878/hero-01" alt="一穰設計 · 寬和空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">一穰設計 · 寬和</span>
+                </button>
+                <button type="button" class="group snap-start shrink-0 w-[72vw] sm:w-[43vw] lg:w-auto lg:min-w-0 text-left cursor-interact focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(11)" aria-label="放大檢視 MORI 森研築 · 豐景">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287251/portfolio-04.jpg" alt="MORI 森研築 · 豐景空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">MORI 森研築 · 豐景</span>
+                </button>
+                <button type="button" class="group snap-start shrink-0 w-[72vw] sm:w-[43vw] lg:w-auto lg:min-w-0 text-left cursor-interact focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" onclick="openSpacePhoto(12)" aria-label="放大檢視 耘品設計 · 楊梅別墅">
+                    <span class="relative block aspect-[4/5] rounded-[22px] overflow-hidden bg-brand-neutral">
+                        <img src="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287255/portfolio-03.jpg" alt="耘品設計 · 楊梅別墅空間攝影" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <span class="absolute bottom-3 right-3 w-9 h-9 bg-brand-slate/65 backdrop-blur-md rounded-full flex items-center justify-center text-brand-ice border border-white/20"><i class="fa-solid fa-expand text-xs"></i></span>
+                    </span>
+                    <span class="block text-xs text-brand-muted mt-3 tracking-wide">耘品設計 · 楊梅別墅</span>
+                </button>
+            </div>
+            <p class="lg:hidden text-right text-[11px] text-brand-muted tracking-wide mt-2">左右滑動探索 4 個案場 <i class="fa-solid fa-arrow-right ml-1"></i></p>
+        </div>
+    </section>
+
+    <!-- 燈箱只作用於本區照片，不更動全站其他功能 -->
+    <div id="space-photo-lightbox" role="dialog" aria-modal="true" aria-label="精選空間作品放大瀏覽" class="fixed inset-0 z-[130] bg-brand-slate/95 backdrop-blur-md hidden items-center justify-center p-4 md:p-8" onclick="if(event.target === this) closeSpacePhoto()">
+        <button id="space-photo-close" type="button" onclick="closeSpacePhoto()" class="absolute top-4 right-4 md:top-8 md:right-8 text-brand-ice border border-white/30 w-11 h-11 rounded-full hover:bg-white/10 z-10 cursor-interact" aria-label="關閉照片"><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" onclick="stepSpacePhoto(-1)" class="absolute left-2 md:left-8 text-brand-ice w-10 h-12 md:w-12 rounded-full bg-brand-slate/70 hover:bg-white/10 z-10 cursor-interact" aria-label="上一張照片"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="flex flex-col items-center justify-center gap-4 w-full max-w-6xl h-full pointer-events-none">
+            <img id="space-photo-full" class="block max-w-full max-h-[76vh] w-auto h-auto object-contain rounded-md shadow-2xl pointer-events-auto" alt="空間攝影大圖">
+            <div class="text-center text-brand-ice/80 text-xs md:text-sm tracking-wide pointer-events-auto"><span id="space-photo-caption"></span><span class="text-brand-ice/45 mx-3">/</span><span id="space-photo-count"></span></div>
+        </div>
+        <button type="button" onclick="stepSpacePhoto(1)" class="absolute right-2 md:right-8 text-brand-ice w-10 h-12 md:w-12 rounded-full bg-brand-slate/70 hover:bg-white/10 z-10 cursor-interact" aria-label="下一張照片"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <script>
+        const spacePhotoSet = [
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781287264/portfolio-01.jpg", title: "一穰設計 · 柞居 · 1/5" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1782817298/世貿新城-20_vfkqq3.jpg", title: "一穰設計 · 柞居 · 2/5" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1782817298/世貿新城-9_cdozcp", title: "一穰設計 · 柞居 · 3/5" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1782817298/世貿新城-5_qjtijy", title: "一穰設計 · 柞居 · 4/5" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1782817298/世貿新城-2_ntxop7", title: "一穰設計 · 柞居 · 5/5" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/hero-01", title: "一穰設計 · 寬和 · 1/6" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/帝璟寬和-9_ws2yan", title: "一穰設計 · 寬和 · 2/6" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/帝璟寬和-12_rdo3xn", title: "一穰設計 · 寬和 · 3/6" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/帝璟寬和-17_rgdxni", title: "一穰設計 · 寬和 · 4/6" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/帝璟寬和-2_dffze0", title: "一穰設計 · 寬和 · 5/6" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781347878/帝璟寬和-4_cppzkq", title: "一穰設計 · 寬和 · 6/6" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781287251/portfolio-04.jpg", title: "MORI 森研築 · 豐景" },
+            { src: "https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_1800/v1781287255/portfolio-03.jpg", title: "耘品設計 · 楊梅別墅" }
+        ];
+        let spacePhotoIndex = 0;
+        let spacePhotoPreviousOverflow = '';
+        let spacePhotoPreviousFocus = null;
+        function updateSpacePhoto() {
+            const current = spacePhotoSet[spacePhotoIndex];
+            const full = document.getElementById('space-photo-full');
+            full.src = current.src;
+            full.alt = current.title;
+            document.getElementById('space-photo-caption').textContent = current.title;
+            document.getElementById('space-photo-count').textContent = (spacePhotoIndex + 1) + ' / ' + spacePhotoSet.length;
+        }
+        function openSpacePhoto(index) {
+            spacePhotoIndex = index;
+            spacePhotoPreviousFocus = document.activeElement;
+            spacePhotoPreviousOverflow = document.body.style.overflow;
+            updateSpacePhoto();
+            const layer = document.getElementById('space-photo-lightbox');
+            layer.classList.remove('hidden');
+            layer.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('space-photo-close').focus();
+        }
+        function stepSpacePhoto(delta) {
+            spacePhotoIndex = (spacePhotoIndex + delta + spacePhotoSet.length) % spacePhotoSet.length;
+            updateSpacePhoto();
+        }
+        function closeSpacePhoto() {
+            const layer = document.getElementById('space-photo-lightbox');
+            layer.classList.add('hidden');
+            layer.classList.remove('flex');
+            document.body.style.overflow = spacePhotoPreviousOverflow;
+            document.getElementById('space-photo-full').removeAttribute('src');
+            if (spacePhotoPreviousFocus && spacePhotoPreviousFocus.focus) spacePhotoPreviousFocus.focus();
+        }
+        document.addEventListener('keydown', function(event) {
+            const layer = document.getElementById('space-photo-lightbox');
+            if (!layer || layer.classList.contains('hidden')) return;
+            if (event.key === 'Escape') { event.preventDefault(); closeSpacePhoto(); }
+            if (event.key === 'ArrowLeft') { event.preventDefault(); stepSpacePhoto(-1); }
+            if (event.key === 'ArrowRight') { event.preventDefault(); stepSpacePhoto(1); }
+        });
+        let spacePhotoTouchStartX = null;
+        document.getElementById('space-photo-lightbox').addEventListener('touchstart', function(e) {
+            spacePhotoTouchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        document.getElementById('space-photo-lightbox').addEventListener('touchend', function(e) {
+            if (spacePhotoTouchStartX === null) return;
+            const diff = e.changedTouches[0].clientX - spacePhotoTouchStartX;
+            if (Math.abs(diff) > 55) stepSpacePhoto(diff < 0 ? 1 : -1);
+            spacePhotoTouchStartX = null;
+        }, { passive: true });
+    </script>
+
     <section class="py-24 bg-brand-ice relative z-10">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16 gs-reveal">
@@ -306,6 +429,353 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Demo video section: intentional wide films + vertical Reels-inspired rail -->
+    <section id="space-films" class="py-20 md:py-24 bg-brand-neutral border-t border-brand-slate/5 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 gs-reveal">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted mb-3">Space in Motion</h2>
+                <h3 class="text-2xl md:text-3xl font-light text-brand-slate tracking-wide">空間形象短影片</h3>
+                <p class="text-sm text-brand-muted mt-4 font-light leading-relaxed">以光影、運鏡與節奏，延續空間的故事。</p>
+                <p class="text-xs text-brand-muted mt-3">靜音滑動預覽 · 點選作品完整播放</p>
+                <button id="space-preview-toggle" type="button" class="cursor-interact text-[11px] tracking-widest text-brand-muted mt-4 border-b border-brand-slate/20 pb-1 hover:text-brand-slate transition-colors" aria-pressed="true">自動預覽：開</button>
+            </div>
+            <div class="flex items-center justify-between mb-5">
+                <h4 class="text-xs tracking-[0.2em] uppercase text-brand-slate/70">Architectural Films <span class="text-brand-muted">/ 橫幅作品</span></h4>
+                <span class="lg:hidden text-[11px] text-brand-muted">左右滑動 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+            </div>
+            <div class="space-film-rail flex gap-4 md:gap-6 overflow-x-auto lg:overflow-visible lg:grid lg:grid-cols-3 snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0" style="scrollbar-width:thin;overscroll-behavior-x:contain">
+                <button type="button" data-film-id="1091770143" data-film-shape="wide" data-film-title="無界 · Boundless" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[84vw] sm:w-[47vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 無界 · Boundless">
+                    <span class="space-film-image block relative overflow-hidden aspect-[16/10] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287264/portfolio-01.jpg') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1091770143.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287264/portfolio-01.jpg" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="無界 · Boundless影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">SPACE FILM · 01</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">無界 · Boundless</span>
+                        </span>
+                    </span>
+                </button>
+                <button type="button" data-film-id="1093149030" data-film-shape="wide" data-film-title="國家一號院" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[84vw] sm:w-[47vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 國家一號院">
+                    <span class="space-film-image block relative overflow-hidden aspect-[16/10] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287255/portfolio-03.jpg') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1093149030.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287255/portfolio-03.jpg" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="國家一號院影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">SPACE FILM · 02</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">國家一號院</span>
+                        </span>
+                    </span>
+                </button>
+                <button type="button" data-film-id="1091769722" data-film-shape="wide" data-film-title="世貿新城" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[84vw] sm:w-[47vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 世貿新城">
+                    <span class="space-film-image block relative overflow-hidden aspect-[16/10] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287255/portfolio-03.jpg') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1091769722.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287255/portfolio-03.jpg" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="世貿新城影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">SPACE FILM · 03</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">世貿新城</span>
+                        </span>
+                    </span>
+                </button>
+            </div>
+            <div class="flex items-center justify-between mt-12 mb-5">
+                <h4 class="text-xs tracking-[0.2em] uppercase text-brand-slate/70">Vertical Stories <span class="text-brand-muted">/ 空間短影音</span></h4>
+                <span class="lg:hidden text-[11px] text-brand-muted">左右滑動 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+            </div>
+            <div class="space-film-rail flex gap-4 md:gap-6 overflow-x-auto lg:overflow-visible lg:grid lg:grid-cols-4 snap-x snap-mandatory lg:snap-none pb-3 lg:pb-0" style="scrollbar-width:thin;overscroll-behavior-x:contain">
+                <button type="button" data-film-id="1091770158" data-film-shape="portrait" data-film-title="情鏡音悅廳" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[58vw] sm:w-[34vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 情鏡音悅廳">
+                    <span class="space-film-image block relative overflow-hidden aspect-[9/16] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781347878/hero-01') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1091770158.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781347878/hero-01" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="情鏡音悅廳影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">VERTICAL FILM · 04</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">情鏡音悅廳</span>
+                        </span>
+                    </span>
+                </button>
+                <button type="button" data-film-id="1091770222" data-film-shape="portrait" data-film-title="KROX" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[58vw] sm:w-[34vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 KROX">
+                    <span class="space-film-image block relative overflow-hidden aspect-[9/16] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287251/portfolio-04.jpg') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1091770222.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287251/portfolio-04.jpg" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="KROX影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">VERTICAL FILM · 05</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">KROX</span>
+                        </span>
+                    </span>
+                </button>
+                <button type="button" data-film-id="1150916069" data-film-shape="portrait" data-film-title="帝璟寬和" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[58vw] sm:w-[34vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 帝璟寬和">
+                    <span class="space-film-image block relative overflow-hidden aspect-[9/16] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287253/portfolio-06.jpg') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1150916069.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287253/portfolio-06.jpg" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="帝璟寬和影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">VERTICAL FILM · 06</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">帝璟寬和</span>
+                        </span>
+                    </span>
+                </button>
+                <button type="button" data-film-id="1091770174" data-film-shape="portrait" data-film-title="新業自由居" class="space-film-tile group relative text-left cursor-interact shrink-0 snap-center w-[58vw] sm:w-[34vw] lg:w-auto rounded-[24px] overflow-hidden bg-white/65 border border-brand-slate/10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(0,0,0,0.09)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-slate" aria-label="播放 新業自由居">
+                    <span class="space-film-image block relative overflow-hidden aspect-[9/16] bg-brand-slate">
+                        <span class="absolute inset-0 opacity-35" style="background:url('https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287251/portfolio-05.jpg') center / cover;filter:blur(12px)"></span>
+                        <img src="https://vumbnail.com/1091770174.jpg" data-fallback="https://res.cloudinary.com/djm18pi15/image/upload/f_auto,q_auto,w_900/v1781287251/portfolio-05.jpg" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}" alt="新業自由居影片封面" loading="lazy" decoding="async" class="space-film-poster absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-500 group-hover:scale-[1.03]">
+                        <span class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none z-20"></span>
+                        <span class="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                            <span class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/65 bg-brand-slate/35 backdrop-blur-md text-brand-ice flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:bg-brand-neon group-hover:text-brand-slate group-hover:border-brand-neon"><i class="fa-solid fa-play text-sm ml-0.5"></i></span>
+                        </span>
+                        <span class="absolute left-4 bottom-4 right-4 text-white pointer-events-none z-30">
+                            <span class="block uppercase tracking-[0.22em] text-[10px] text-white/70 mb-1">VERTICAL FILM · 07</span>
+                            <span class="block text-sm md:text-base font-light tracking-wide">新業自由居</span>
+                        </span>
+                    </span>
+                </button>
+            </div>
+            <!-- Subtle but readable video service CTA -->
+            <div class="mt-14 rounded-[26px] border border-brand-slate/10 bg-white/65 p-6 md:px-9 md:py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.23em] text-brand-muted mb-2">Video Production</p>
+                    <h4 class="text-lg md:text-xl font-light text-brand-slate tracking-wide">讓空間，在影像中延續故事。</h4>
+                    <p class="mt-3 flex flex-wrap items-center gap-2 text-sm text-brand-slate/80 tracking-wide"><span>空間形象短影片依拍攝需求</span><span class="inline-flex items-center rounded-md border border-brand-neon/30 bg-brand-neon/20 px-2.5 py-1 font-medium text-brand-slate">另洽報價</span></p>
+                </div>
+                <a href="https://line.me/R/ti/p/~930631929" target="_blank" rel="noopener noreferrer" class="cursor-interact shrink-0 inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-brand-slate text-brand-ice text-xs tracking-[0.16em] hover:bg-brand-slate/85 hover:-translate-y-0.5 transition-all duration-300">
+                    洽詢影片製作 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player modal: native aspect ratio; loaded only after intentional user click -->
+    <div id="space-film-modal" class="fixed inset-0 z-[160] hidden opacity-0 transition-opacity duration-300 items-center justify-center bg-brand-slate/95 backdrop-blur-xl px-3 py-14 md:p-10" role="dialog" aria-modal="true" aria-label="空間形象短影片播放器" aria-hidden="true">
+        <button id="space-film-close" type="button" class="absolute right-4 top-4 md:right-8 md:top-7 z-20 rounded-full h-11 w-11 border border-brand-ice/30 text-brand-ice hover:bg-white/10 transition-colors cursor-interact" aria-label="關閉影片"><i class="fa-solid fa-xmark"></i></button>
+        <div class="flex flex-col items-center justify-center w-full gap-5">
+            <div id="space-film-frame" style="--film-ratio:1.777778;width:min(94vw,1100px,calc((100dvh - 145px) * var(--film-ratio)));aspect-ratio:var(--film-ratio)" class="relative rounded-lg overflow-hidden bg-black shadow-2xl border border-white/10 transition-[width] duration-300">
+                <div class="absolute inset-0 flex items-center justify-center bg-black text-brand-ice/70 text-sm">
+                    <span class="inline-block h-7 w-7 rounded-full border-2 border-white/15 border-t-brand-neon animate-spin" role="status" aria-label="影片載入中"></span>
+                </div>
+                <iframe id="space-film-player" class="absolute inset-0 w-full h-full border-0 z-10 opacity-0 transition-opacity duration-300" title="Vimeo 空間形象短影片" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <p id="space-film-modal-title" class="text-brand-ice/75 text-xs tracking-widest text-center font-light"></p>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const tiles = Array.from(document.querySelectorAll('.space-film-tile'));
+            const modal = document.getElementById('space-film-modal');
+            const modalFrame = document.getElementById('space-film-frame');
+            const iframe = document.getElementById('space-film-player');
+            const modalTitle = document.getElementById('space-film-modal-title');
+            const toggle = document.getElementById('space-preview-toggle');
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+            const meta = Object.create(null);
+            let previewEnabled = !reduceMotion && !saveData;
+            let previewFrame = null, previewTile = null, previewTimer = null, previewToken = 0;
+            let active = null, previousFocus = null, previousOverflow = '', sdkPromise = null, closeTimer = null, frameTimer = null;
+            toggle.setAttribute('aria-pressed',String(previewEnabled));
+            toggle.textContent = '自動預覽：' + (previewEnabled ? '開' : '關');
+
+            function ratio(w,h) {
+                if (Number(w) > 0 && Number(h) > 0) {
+                    modalFrame.style.setProperty('--film-ratio',String(Math.max(.45,Math.min(2.5,Number(w)/Number(h)))));
+                }
+            }
+            function loadPlayerSDK() {
+                if (window.Vimeo && window.Vimeo.Player) return Promise.resolve();
+                if (sdkPromise) return sdkPromise;
+                sdkPromise = new Promise(function(resolve,reject) {
+                    const s = document.createElement('script');
+                    s.src = 'https://player.vimeo.com/api/player.js';
+                    s.onload = resolve;
+                    s.onerror = reject;
+                    document.head.appendChild(s);
+                });
+                return sdkPromise;
+            }
+            function loadMeta(tile) {
+                if (tile.dataset.metaRequested) return;
+                tile.dataset.metaRequested = '1';
+                const id = tile.dataset.filmId, cb = 'honewMeta_' + id;
+                const s = document.createElement('script');
+                let done = false, timer;
+                function finish(d) {
+                    if (done) return;
+                    done = true; clearTimeout(timer); delete window[cb]; s.remove();
+                    if (!d || typeof d !== 'object') return;
+                    meta[id] = d;
+                    if (typeof d.thumbnail_url === 'string') {
+                        try {
+                            const u = new URL(d.thumbnail_url);
+                            if(u.protocol !== 'https:' || !u.hostname.endsWith('.vimeocdn.com')) return;
+                            const poster = tile.querySelector('.space-film-poster');
+                            const next = new Image();
+                            next.onload = function() { poster.src = u.href; };
+                            next.src = u.href;
+                        } catch (_) {}
+                    }
+                }
+                window[cb] = finish;
+                s.src = 'https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + id) + '&width=640&callback=' + cb;
+                s.onerror = function() {finish(null);};
+                timer = setTimeout(function() {finish(null);}, 6000);
+                document.head.appendChild(s);
+            }
+            if ('IntersectionObserver' in window) {
+                const metaObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry){
+                        if(!entry.isIntersecting) return;
+                        loadMeta(entry.target); metaObserver.unobserve(entry.target);
+                    });
+                }, {rootMargin:'300px'});
+                tiles.forEach(function(tile){metaObserver.observe(tile);});
+            } else tiles.forEach(loadMeta);
+
+            function stopPreview() {
+                previewToken++;
+                if (previewFrame) {previewFrame.remove(); previewFrame=null;}
+                if (previewTile) {
+                    previewTile.querySelector('.space-film-poster').classList.remove('opacity-0');
+                    previewTile = null;
+                }
+            }
+            function setPreview(tile) {
+                if (!previewEnabled || active !== null || document.hidden || previewTile === tile) return;
+                stopPreview();
+                previewTile = tile;
+                const token = previewToken;
+                const id = tile.dataset.filmId;
+                const cover = tile.querySelector('.space-film-image');
+                const poster = tile.querySelector('.space-film-poster');
+                const f = document.createElement('iframe');
+                f.className = 'absolute inset-0 z-10 w-full h-full border-0 pointer-events-none opacity-0 transition-opacity duration-500';
+                f.setAttribute('allow','autoplay');
+                f.setAttribute('tabindex','-1');
+                f.setAttribute('aria-hidden','true');
+                f.setAttribute('loading','eager');
+                // Reveal only when playback has actually begun; keep the poster while buffering
+                f.addEventListener('load',function(){
+                    if (token !== previewToken || previewTile !== tile) return;
+                    loadPlayerSDK().then(function(){
+                        if (token !== previewToken || previewTile !== tile) return;
+                        const player = new window.Vimeo.Player(f);
+                        let revealed = false;
+                        function reveal() {
+                            if (revealed || token !== previewToken || previewTile !== tile) return;
+                            revealed = true;
+                            f.classList.remove('opacity-0');
+                            poster.classList.add('opacity-0');
+                        }
+                        player.on('playing',reveal);
+                        player.on('timeupdate',reveal);
+                    }).catch(function(){ /* On autoplay failure, the cover remains usable */ });
+                });
+                f.src = 'https://player.vimeo.com/video/' + id + '?background=1&muted=1&autoplay=1&loop=1&playsinline=1&autopause=0&dnt=1';
+                cover.appendChild(f);
+                previewFrame = f;
+            }
+            function pickPreview() {
+                if (!previewEnabled || active !== null || document.hidden) {stopPreview();return;}
+                let best=null, bestScore=-Infinity;
+                for (const tile of tiles) {
+                    const r=tile.getBoundingClientRect();
+                    if(r.height<=0 || r.width<=0) continue;
+                    const vh=Math.max(0,Math.min(r.bottom,window.innerHeight)-Math.max(r.top,0));
+                    const vw=Math.max(0,Math.min(r.right,window.innerWidth)-Math.max(r.left,0));
+                    const fraction=(vh/r.height)*(vw/r.width);
+                    if(fraction<.62) continue;
+                    const dy=Math.abs((r.top+r.bottom)/2-window.innerHeight/2)/window.innerHeight;
+                    const dx=Math.abs((r.left+r.right)/2-window.innerWidth/2)/window.innerWidth;
+                    const score=fraction-.25*dy-.12*dx;
+                    if(score>bestScore){best=tile;bestScore=score;}
+                }
+                if (!best) {stopPreview(); return;}
+                if(best===previewTile)return;
+                setPreview(best);
+            }
+            function schedulePreview() {
+                clearTimeout(previewTimer);
+                previewTimer=setTimeout(pickPreview,450);
+            }
+            window.addEventListener('scroll',schedulePreview,{passive:true});
+            window.addEventListener('resize',schedulePreview,{passive:true});
+            document.querySelectorAll('.space-film-rail').forEach(function(rail) {
+                rail.addEventListener('scroll',schedulePreview,{passive:true});
+                rail.addEventListener('touchend',schedulePreview,{passive:true});
+            });
+            document.addEventListener('visibilitychange',function() {
+                if(document.hidden){clearTimeout(previewTimer);stopPreview();}
+                else schedulePreview();
+            });
+            toggle.addEventListener('click',function(){
+                previewEnabled=!previewEnabled;
+                toggle.setAttribute('aria-pressed',String(previewEnabled));
+                toggle.textContent='自動預覽：'+(previewEnabled?'開':'關');
+                if(!previewEnabled){clearTimeout(previewTimer);stopPreview();}
+                else schedulePreview();
+            });
+            function openFilm(tile) {
+                const id=tile.dataset.filmId;
+                if(!/^\d+$/.test(id))return;
+                clearTimeout(previewTimer);stopPreview();clearTimeout(closeTimer);
+                active=id; previousFocus=document.activeElement; previousOverflow=document.body.style.overflow;
+                const d=meta[id]||{};
+                ratio(Number(d.width)|| (tile.dataset.filmShape==='portrait'?9:16), Number(d.height)||(tile.dataset.filmShape==='portrait'?16:9));
+                modalTitle.textContent=tile.dataset.filmTitle;
+                modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false');
+                document.body.style.overflow='hidden';
+                requestAnimationFrame(function(){if(active===id)modal.classList.add('opacity-100');});
+                document.getElementById('space-film-close').focus();
+                iframe.classList.add('opacity-0');
+                iframe.src='https://player.vimeo.com/video/'+id+'?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+                loadPlayerSDK().then(function(){
+                    if(active!==id || !window.Vimeo || !window.Vimeo.Player)return;
+                    const player=new window.Vimeo.Player(iframe);
+                    Promise.all([player.getVideoWidth(),player.getVideoHeight()]).then(function(dims){
+                        if(active===id)ratio(dims[0],dims[1]);
+                    }).catch(function(){});
+                }).catch(function(){});
+            }
+            function closeFilm(){
+                if(active===null)return;
+                active=null; modal.classList.remove('opacity-100'); modal.setAttribute('aria-hidden','true');
+                iframe.classList.add('opacity-0');iframe.removeAttribute('src');
+                document.body.style.overflow=previousOverflow;
+                if(previousFocus && previousFocus.focus)previousFocus.focus();
+                closeTimer=setTimeout(function(){
+                    if(active===null){modal.classList.add('hidden');modal.classList.remove('flex');}
+                },300);
+                schedulePreview();
+            }
+            iframe.addEventListener('load',function(){
+                if(active!==null)iframe.classList.remove('opacity-0');
+            });
+            tiles.forEach(function(tile){tile.addEventListener('click',function(){openFilm(tile);});});
+            document.getElementById('space-film-close').addEventListener('click',closeFilm);
+            modal.addEventListener('click',function(e){if(e.target===modal)closeFilm();});
+            document.addEventListener('keydown',function(e){if(active!==null&&e.key==='Escape'){e.preventDefault();closeFilm();}});
+            schedulePreview();
+        })();
+    </script>
 
     <section class="py-20 bg-brand-slate text-center relative z-10">
         <div class="max-w-3xl mx-auto px-6 gs-reveal">
