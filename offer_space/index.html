@@ -672,10 +672,22 @@
                 f.setAttribute('tabindex','-1');
                 f.setAttribute('aria-hidden','true');
                 f.setAttribute('loading','eager');
+                // Reveal only when playback has actually begun; keep the poster while buffering
                 f.addEventListener('load',function(){
                     if (token !== previewToken || previewTile !== tile) return;
-                    f.classList.remove('opacity-0');
-                    poster.classList.add('opacity-0');
+                    loadPlayerSDK().then(function(){
+                        if (token !== previewToken || previewTile !== tile) return;
+                        const player = new window.Vimeo.Player(f);
+                        let revealed = false;
+                        function reveal() {
+                            if (revealed || token !== previewToken || previewTile !== tile) return;
+                            revealed = true;
+                            f.classList.remove('opacity-0');
+                            poster.classList.add('opacity-0');
+                        }
+                        player.on('playing',reveal);
+                        player.on('timeupdate',reveal);
+                    }).catch(function(){ /* On autoplay failure, the cover remains usable */ });
                 });
                 f.src = 'https://player.vimeo.com/video/' + id + '?background=1&muted=1&autoplay=1&loop=1&playsinline=1&autopause=0&dnt=1';
                 cover.appendChild(f);
