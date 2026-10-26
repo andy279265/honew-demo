@@ -75,29 +75,30 @@
         </div>
     </nav>
 
-    <section class="relative pt-36 pb-16 md:pt-48 md:pb-24 overflow-hidden">
+    <!-- 精簡編輯式首屏：以內容、留白與排版呈現品牌專業，不使用裝飾性標籤 -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden">
         <div class="absolute inset-0 grid-mesh z-0"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 gs-reveal">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center gap-2 mb-6">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>
-                    <span class="text-xs uppercase tracking-[0.4em] text-brand-muted font-medium">Investment</span>
+            <div class="border-t border-brand-slate/15 pt-7 md:pt-9 grid grid-cols-1 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] gap-y-10 gap-x-14 xl:gap-x-20">
+                <div>
+                    <p class="text-[10px] md:text-xs tracking-[0.3em] text-brand-muted font-medium uppercase">HONEW STUDIO <span class="mx-2 text-brand-slate/30">/</span> SPACE PHOTOGRAPHY</p>
+                    <h1 class="mt-10 md:mt-14 text-[clamp(2.45rem,5vw,5.25rem)] leading-[1.25] tracking-[0.045em] text-brand-slate font-light">
+                        <span class="block">為設計留下，</span>
+                        <span class="block">值得細看的影像。</span>
+                    </h1>
+                    <div class="w-14 h-[2px] bg-brand-neon mt-10 md:mt-14" aria-hidden="true"></div>
                 </div>
-                <h1 class="text-3xl md:text-5xl font-light tracking-[0.1em] flex flex-col gap-3 md:gap-5 leading-none text-brand-slate">
-                    <span>為空間敘事，</span>
-                    <span>做最精準的<span class="font-normal border-b border-brand-neon pb-1">影像投資。</span></span>
-                </h1>
-                <p class="mt-8 text-sm md:text-base text-brand-muted font-light leading-[1.8] tracking-wide">
-                    無論是一次性的完美紀錄，還是長期的視覺資產累積，<br class="hidden md:block">我們提供透明、彈性的報價方案，確保每一次快門都為您的品牌創造價值。
-                </p>
-                
-                <a href="https://line.me/R/ti/p/~930631929" target="_blank" class="mt-10 inline-flex items-center gap-4 bg-white/60 backdrop-blur-md px-6 py-3 rounded-full border border-brand-slate/10 shadow-sm cursor-interact hover:border-brand-neon hover:shadow-md transition-all">
-                    <div class="w-8 h-8 rounded-full bg-brand-slate flex items-center justify-center text-brand-neon text-sm"><i class="fa-solid fa-mug-hot"></i></div>
-                    <div class="text-left">
-                        <p class="text-xs font-medium tracking-widest text-brand-slate">預約一次免費線上諮詢</p>
-                        <p class="text-[10px] text-brand-muted tracking-wide mt-0.5">讓我們了解您的案場風格與需求</p>
+                <div class="flex flex-col justify-end lg:pb-2">
+                    <p class="text-sm md:text-base font-light text-brand-slate/75 leading-[2] tracking-[0.04em]">
+                        從光線、尺度到材質細節，讓每一處設計被忠實呈現。為室內設計與建築空間提供專業攝影及動態影像製作，從單一案場到長期合作，皆有清楚的服務方案。
+                    </p>
+                    <div class="mt-9 flex items-center gap-5 flex-wrap">
+                        <a href="https://line.me/R/ti/p/~930631929" target="_blank" rel="noopener noreferrer" class="cursor-interact inline-flex items-center gap-5 border-b border-brand-slate pb-3 text-sm text-brand-slate tracking-[0.12em] font-medium hover:border-brand-neon transition-colors">
+                            洽談拍攝需求 <i class="fa-solid fa-arrow-up-right-long text-xs" aria-hidden="true"></i>
+                        </a>
+                        <span class="text-[11px] text-brand-muted tracking-wide">空間攝影 · 動態影像 · 長期合作</span>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
@@ -436,7 +437,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12 gs-reveal">
                 <h2 class="text-xs uppercase tracking-[0.4em] text-brand-muted mb-3">Space in Motion</h2>
-                <h3 class="text-2xl md:text-3xl font-light text-brand-slate tracking-wide">空間形象短影片</h3>
+                <h3 class="text-2xl md:text-3xl font-light text-brand-slate tracking-wide">空間形象作品</h3>
                 <p class="text-sm text-brand-muted mt-4 font-light leading-relaxed">以光影、運鏡與節奏，延續空間的故事。</p>
                 <p class="text-xs text-brand-muted mt-3">靜音滑動預覽 · 點選作品完整播放</p>
                 <button id="space-preview-toggle" type="button" class="cursor-interact text-[11px] tracking-widest text-brand-muted mt-4 border-b border-brand-slate/20 pb-1 hover:text-brand-slate transition-colors" aria-pressed="true">自動預覽：開</button>
@@ -556,7 +557,7 @@
                 <div>
                     <p class="text-[10px] uppercase tracking-[0.23em] text-brand-muted mb-2">Video Production</p>
                     <h4 class="text-lg md:text-xl font-light text-brand-slate tracking-wide">讓空間，在影像中延續故事。</h4>
-                    <p class="mt-3 flex flex-wrap items-center gap-2 text-sm text-brand-slate/80 tracking-wide"><span>空間形象短影片依拍攝需求</span><span class="inline-flex items-center rounded-md border border-brand-neon/30 bg-brand-neon/20 px-2.5 py-1 font-medium text-brand-slate">另洽報價</span></p>
+                    <p class="mt-3 flex flex-wrap items-center gap-2 text-sm text-brand-slate/80 tracking-wide"><span>空間形象短影片依拍攝需求</span><span class="font-medium text-brand-slate whitespace-nowrap" style="background-image:linear-gradient(to top, rgba(26,255,48,0.6) 0 0.2em, transparent 0.2em);background-repeat:no-repeat;">另洽報價</span></p>
                 </div>
                 <a href="https://line.me/R/ti/p/~930631929" target="_blank" rel="noopener noreferrer" class="cursor-interact shrink-0 inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-brand-slate text-brand-ice text-xs tracking-[0.16em] hover:bg-brand-slate/85 hover:-translate-y-0.5 transition-all duration-300">
                     洽詢影片製作 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
@@ -589,6 +590,13 @@
             const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const saveData = Boolean(navigator.connection && navigator.connection.saveData);
             const meta = Object.create(null);
+            // 每支影片如需略去結尾品牌動畫，請在確認實際畫面秒數後填入。
+            // 範例：'1091770143': 28.5（此處不預設任何未經檢視的時間）
+            const filmClipEnds = Object.freeze({});
+            function clipEndParam(id) {
+                const end = filmClipEnds[id];
+                return Number.isFinite(end) && end > 0 ? '&end_time=' + encodeURIComponent(end) + '&watch_full_video=0' : '';
+            }
             let previewEnabled = !reduceMotion && !saveData;
             let previewFrame = null, previewTile = null, previewTimer = null, previewToken = 0;
             let active = null, previousFocus = null, previousOverflow = '', sdkPromise = null, closeTimer = null, frameTimer = null;
@@ -689,7 +697,7 @@
                         player.on('timeupdate',reveal);
                     }).catch(function(){ /* On autoplay failure, the cover remains usable */ });
                 });
-                f.src = 'https://player.vimeo.com/video/' + id + '?background=1&muted=1&autoplay=1&loop=1&playsinline=1&autopause=0&dnt=1';
+                f.src = 'https://player.vimeo.com/video/' + id + '?background=1&muted=1&autoplay=1&loop=1&playsinline=1&autopause=0&dnt=1&end_time=8&watch_full_video=0' + (filmClipEnds[id] && filmClipEnds[id] < 8 ? '&end_time=' + encodeURIComponent(filmClipEnds[id]) : '');
                 cover.appendChild(f);
                 previewFrame = f;
             }
@@ -746,7 +754,7 @@
                 requestAnimationFrame(function(){if(active===id)modal.classList.add('opacity-100');});
                 document.getElementById('space-film-close').focus();
                 iframe.classList.add('opacity-0');
-                iframe.src='https://player.vimeo.com/video/'+id+'?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+                iframe.src='https://player.vimeo.com/video/'+id+'?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1'+clipEndParam(id);
                 loadPlayerSDK().then(function(){
                     if(active!==id || !window.Vimeo || !window.Vimeo.Player)return;
                     const player=new window.Vimeo.Player(iframe);
