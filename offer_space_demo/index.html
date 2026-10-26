@@ -697,7 +697,8 @@
                         player.on('timeupdate',reveal);
                     }).catch(function(){ /* On autoplay failure, the cover remains usable */ });
                 });
-                f.src = 'https://player.vimeo.com/video/' + id + '?background=1&muted=1&autoplay=1&loop=1&playsinline=1&autopause=0&dnt=1&end_time=8&watch_full_video=0' + (filmClipEnds[id] && filmClipEnds[id] < 8 ? '&end_time=' + encodeURIComponent(filmClipEnds[id]) : '');
+                const previewEnd = Number.isFinite(filmClipEnds[id]) && filmClipEnds[id] > 0 ? Math.min(8, filmClipEnds[id]) : 8;
+                f.src = 'https://player.vimeo.com/video/' + id + '?background=1&muted=1&autoplay=1&loop=1&playsinline=1&autopause=0&dnt=1&end_time=' + encodeURIComponent(previewEnd) + '&watch_full_video=0';
                 cover.appendChild(f);
                 previewFrame = f;
             }
