@@ -23,18 +23,52 @@ for video_id in IDS:
     entry = {"id": video_id}
     print("Inspecting", video_id, flush=True)
     try:
-        options = {"quiet": True, "no_warnings": True, "skip_download": True,
-                   "noplaylist": True, "socket_timeout": 12}
-        with yt_dlp.YoutubeDL(options) as ydl:
-            info = ydl.extract_info("https://vimeo.com/" + video_id, download=False)
-        duration = float(info.get("duration") or 0)
-        formats = [f for f in info.get("formats", []) if f.get("url") and
-                   (f.get("vcodec") or "none") != "none"]
-        chosen = next((f for f in sorted(formats, key=lambda x: abs((x.get("height") or 480) - 480))
-                       if f.get("protocol") in ("https", "http") and f.get("ext") in ("mp4", "mov")), None)
+        import requests
+        chosen, duration, title = None, 0, None
+        errors = []
+        for hostname in ("https://player.vimeo.com/video/",):
+            try:
+                resp = requests.get(hostname + video_id + "/config",
+                    headers={"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36",
+                             "Referer":"https://honew-studio.com/offer_space/",
+                             "Origin":"https://honew-studio.com"}, timeout=20)
+                resp.raise_for_status()
+                config = resp.json()
+                duration = float(config.get("video", {}).get("duration", 0))
+                title = config.get("video", {}).get("title")
+                files = config.get("request", {}).get("files", {})
+                progressive = files.get("progressive") or []
+                chosen = min(progressive, key=lambda f: abs((f.get("height") or 480)-480), default=None)
+                if chosen: chosen = {"url": chosen["url"], "format_id": "vimeo-progressive", "http_headers": {"Referer": "https://player.vimeo.com/"}}
+                if not chosen:
+                    hls = (files.get("hls") or {}).get("cdns") or {}
+                    selected = next(iter(hls.values()), None)
+                    if selected: chosen = {"url": selected.get("url"), "format_id":"vimeo-hls","http_headers":{"Referer":"https://player.vimeo.com/"}}
+                break
+            except Exception as exc:
+                errors.append("config:" + str(exc)[:150])
         if not chosen:
-            chosen = next((f for f in formats if f.get("protocol") in ("m3u8_native", "m3u8")), None)
-        entry.update({"duration": duration, "title": info.get("title"), "format": chosen.get("format_id") if chosen else None})
+            for video_url in ("https://player.vimeo.com/video/"+video_id,
+                              "https://vimeo.com/"+video_id):
+                try:
+                    options = {"quiet": True, "no_warnings": True, "skip_download": True,
+                               "noplaylist": True, "socket_timeout": 12,
+                               "http_headers":{"Referer":"https://honew-studio.com/offer_space/"}}
+                    with yt_dlp.YoutubeDL(options) as ydl:
+                        info = ydl.extract_info(video_url, download=False)
+                    duration = float(info.get("duration") or 0)
+                    title = info.get("title")
+                    formats = [f for f in info.get("formats", []) if f.get("url") and
+                               (f.get("vcodec") or "none") != "none"]
+                    chosen = next((f for f in sorted(formats, key=lambda x: abs((x.get("height") or 480)-480))
+                                   if f.get("protocol") in ("https", "http") and f.get("ext") in ("mp4", "mov")), None)
+                    if not chosen:
+                        chosen = next((f for f in formats if f.get("protocol") in ("m3u8_native","m3u8")),None)
+                    if chosen: break
+                except Exception as exc:
+                    errors.append("ytdlp:" + str(exc)[:150])
+        entry.update({"duration":duration, "title":title, "format":chosen.get("format_id") if chosen else None})
+        if not chosen: entry["access_errors"]=errors
         if not chosen or duration <= 1:
             entry["error"] = "No stream available for frame inspection"
         else:
