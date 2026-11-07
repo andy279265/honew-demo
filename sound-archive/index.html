@@ -111,7 +111,7 @@ function render(d){
  setText("artistsTotal",format(d.artists.size));
  setText("tracksTotal",format(d.trackCount));
  setText("evolutionNote","辨識 "+format(d.valid)+" 次有效聆聽（單次至少 30 秒）。年度資料可能存在缺口，不以未記錄的年份推測喜好。");
- elem("timeline").innerHTML=range.map(function(y){var n=d.years.get(y).ms;return '<div class="tl-row"><span>'+y+'</span><div class="meter"><i style="width:"+(n/peak*100).toFixed(2)+'%"></i></div><small>'+format(Math.round(n/3600000))+' h</small></div>';}).join("");
+ elem("timeline").innerHTML=range.map(function(y){var n=d.years.get(y).ms;return '<div class="tl-row"><span>'+y+'</span><div class="meter"><i style="width:'+(n/peak*100).toFixed(2)+'%"></i></div><small>'+format(Math.round(n/3600000))+' h</small></div>';}).join("");
  var lastLeader=null,change=null;range.forEach(function(y){var leader=leaders(d.years.get(y).artist,1)[0];if(leader&&lastLeader&&lastLeader[1]!==leader[0])change={year:y,from:lastLeader[1],to:leader[0]};if(leader)lastLeader=[y,leader[0]];});
  setText("turningPoint",change?change.year+" 年，年度聆聽時長榜首從「"+change.from+"」變成「"+change.to+"」。":"資料涵蓋的年份中，暫無足夠的年度榜首更替證據。");
  var night=0;for(var h=0;h<24;h++)if(h>=18||h<6)night+=d.hours[h];
