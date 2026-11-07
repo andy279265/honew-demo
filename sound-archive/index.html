@@ -60,7 +60,7 @@ var elem=function(id){return document.getElementById(id);};
 var format=function(n){return new Intl.NumberFormat("zh-TW",{maximumFractionDigits:0}).format(n);};
 var escapeHTML=function(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
 function sizePoster(){var w=Math.max(260,Math.min(1080,elem("frame").clientWidth));var scale=w/1080;var holder=elem("holder");holder.style.width=w+"px";holder.style.height=(1350*scale)+"px";posters.forEach(function(p){p.style.transform="scale("+scale+")";});}
-function setPage(i){active=(i+6)%6;posters.forEach(function(p,j){p.classList.toggle("active",j===active);});[].slice.call(document.querySelectorAll(".page-btn")).forEach(function(b,j){b.classList.toggle("active",j===active);});elem("pageCount")=elem("pageCount");elem("pageCount").textContent=String(active+1).padStart(2,"0")+" / 06";sizePoster();}
+function setPage(i){active=(i+6)%6;posters.forEach(function(p,j){p.classList.toggle("active",j===active);});[].slice.call(document.querySelectorAll(".page-btn")).forEach(function(b,j){b.classList.toggle("active",j===active);});elem("pageCount").textContent=String(active+1).padStart(2,"0")+" / 06";sizePoster();}
 [].slice.call(document.querySelectorAll(".page-btn")).forEach(function(b,i){b.addEventListener("click",function(){setPage(i);});});
 elem("previous").addEventListener("click",function(){setPage(active-1);});
 elem("next").addEventListener("click",function(){setPage(active+1);});
@@ -134,7 +134,7 @@ async function parseFile(file){
  if(/\.zip$/i.test(file.name)){
   if(!window.JSZip)throw Error("ZIP 讀取元件未載入，請確認網路或先解壓後匯入 JSON。");
   var archive=await window.JSZip.loadAsync(file);var paths=Object.keys(archive.files).filter(function(x){return /\.json$/i.test(x)&&!archive.files[x].dir;});
-  for(var i=0;i<paths.length;i++){var body=await archive.files[paths[i]].async("string");try{var data=JSON.parse(body);if(Array.isArray(data))output.push.apply(output,data);else if(Array.isArray(data.items))output.push.apply(output,data.items);}catch(e){}}
+  for(var i=0;i<paths.length;i++){var body=await archive.files[paths[i]].async("string");try{var data=JSON.parse(body);if(Array.isArray(data))output=output.concat(data);else if(Array.isArray(data.items))output=output.concat(data.items);}catch(e){}}
  }else{var data=JSON.parse(await file.text());if(Array.isArray(data))output=data;else if(Array.isArray(data.items))output=data.items;else throw Error(file.name+" 不是可辨識的播放歷史格式。");}
  return output;
 }
