@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>P.TEAM Reels審稿｜候鳥影像</title><style>*{box-sizing:border-box}body{margin:0;background:#ebf2f3;color:#253530;font:16px/1.6 system-ui,sans-serif}iframe{position:fixed;inset:0;width:100%;height:100%;border:0}p{padding:10vh 8vw}</style></head>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>P.TEAM Reels審稿｜候鳥影像</title><style>*{box-sizing:border-box}html,body{min-height:100vh;min-height:100dvh;margin:0;background:#ebf2f3;color:#253530;font:16px/1.6 system-ui,sans-serif}iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#ebf2f3;visibility:hidden}p{padding:10vh 8vw}</style></head>
 <body><p>請使用候鳥影像提供的完整審稿連結。</p>
 <script>
 const key = location.hash.slice(1)
@@ -9,6 +9,19 @@ if (/^[a-f0-9]{48}$/.test(key)) {
   frame.allow = 'fullscreen'
   frame.allowFullscreen = true
   frame.referrerPolicy = 'no-referrer'
+  const reveal = () => { frame.style.visibility = 'visible' }
+  window.addEventListener('message', event => {
+    if(event.origin === 'https://pteam-screening-room.vercel.app' && event.source === frame.contentWindow && event.data === 'review-ready') reveal()
+  })
+  frame.addEventListener('load', reveal)
+  window.addEventListener('message', event => {
+    if(event.origin !== 'https://pteam-screening-room.vercel.app' || event.source !== frame.contentWindow || event.data !== 'review-author-request') return
+    try {
+      let token = localStorage.getItem('pteam-review-author')
+      if (!token) { token = crypto.randomUUID(); localStorage.setItem('pteam-review-author',token) }
+      event.source.postMessage({reviewAuthor:token},event.origin)
+    } catch {}
+  })
   frame.src = 'https://pteam-screening-room.vercel.app/r/' + key
   document.body.replaceChildren(frame)
 }
